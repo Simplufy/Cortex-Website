@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "OpsKings: Operations Consulting & Custom Business Systems",
+      "hasCanvas": false,
+      "bodyTextLen": 11422,
+      "bodyTextHash": "c781f134637268115e46f134255eb4939c4f6c5c8f93e81a9a4f44e4aab0382d",
+      "bodyTextPrefix": "How We Work About Us Industries Services Case Studies Resources ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "OpsKings: Operations Consulting & Custom Business Systems",
+      "hasCanvas": false,
+      "bodyTextLen": 11346,
+      "bodyTextHash": "7089f538490a863a5ed8a2e63cb8fb6239ec64a9884f95e5afc775e46faf9168",
+      "bodyTextPrefix": "Menu How We Work About Us Industries Services Case Studies Resou",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
