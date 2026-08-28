@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { IndustryPage } from "@/components/pages/inner";
-import { industryBySlug } from "@/data/site";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/industry-roofing")({
-  component: () => <IndustryPage industry={industryBySlug("roofing")} />,
+  beforeLoad: () => {
+    throw redirect({ to: "/industries/$slug", params: { slug: "roofing" } });
+  },
 });

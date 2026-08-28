@@ -1,7 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { BRAND } from "@/data/brand";
+import { pageHead } from "@/lib/seo";
+import { RevealSection } from "@/components/reveal";
 
-export const Route = createFileRoute("/terms")({ component: Terms });
+export const Route = createFileRoute("/terms")({
+  head: () =>
+    pageHead({
+      title: "Terms of Service",
+      description: `Terms for using ${BRAND.domain} and working with Cortex.`,
+      path: "/terms",
+    }),
+  component: Terms,
+});
 
 function Terms() {
   return (
@@ -16,7 +26,7 @@ function Terms() {
           If you don't, please don't use the Site. These Terms cover the website only. If we do work together, that
           engagement is governed by a separate signed agreement.
         </p>
-        <section>
+        <RevealSection>
           <h2 className="text-xl font-medium text-fg">1. Use of the Site</h2>
           <p className="mt-3">You agree to use the Site only for lawful purposes. You won't:</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
@@ -26,8 +36,8 @@ function Terms() {
             <li>Send unsolicited commercial messages through forms or email addresses listed on the Site.</li>
             <li>Use the Site in any way that could damage, disable, overburden, or impair it.</li>
           </ul>
-        </section>
-        <section>
+        </RevealSection>
+        <RevealSection>
           <h2 className="text-xl font-medium text-fg">2. Intellectual property</h2>
           <p className="mt-3">
             The content on the Site, including the {BRAND.name} name, logo, written copy, case studies, field notes, and
@@ -35,23 +45,23 @@ function Terms() {
             and a link back. You may not republish, sell, or use our content for commercial purposes without written
             permission.
           </p>
-        </section>
-        <section>
+        </RevealSection>
+        <RevealSection>
           <h2 className="text-xl font-medium text-fg">3. No professional advice</h2>
           <p className="mt-3">
             The information on the Site is general information about how {BRAND.name} approaches operations and
             software, not specific business, legal, financial, or technical advice for your situation.
           </p>
-        </section>
-        <section>
+        </RevealSection>
+        <RevealSection>
           <h2 className="text-xl font-medium text-fg">4. Disclaimer of warranties</h2>
           <p className="mt-3">
             The Site is provided "as is" and "as available." To the fullest extent permitted by law, we disclaim all
             warranties, including merchantability, fitness for a particular purpose, non-infringement, accuracy, and
             uninterrupted access.
           </p>
-        </section>
-        <section>
+        </RevealSection>
+        <RevealSection>
           <h2 className="text-xl font-medium text-fg">5. Limitation of liability</h2>
           <p className="mt-3">
             To the fullest extent permitted by law, {BRAND.name} will not be liable for any indirect, incidental,
@@ -59,8 +69,8 @@ function Terms() {
             arising out of your use of the Site. Our total liability for any claim related to the Site is limited to one
             hundred U.S. dollars (US$100).
           </p>
-        </section>
-        <section>
+        </RevealSection>
+        <RevealSection>
           <h2 className="text-xl font-medium text-fg">6. Contact</h2>
           <p className="mt-3">
             Questions:{" "}
@@ -68,7 +78,7 @@ function Terms() {
               {BRAND.email}
             </a>
           </p>
-        </section>
+        </RevealSection>
       </div>
     </article>
   );

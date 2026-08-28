@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8081/case-studies/detail-driven",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Detail Driven: Private AI Across Four Automotive Businesses | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 13675,
+      "bodyTextHash": "acf0783f6033f89e4283cdf1150e00db191bbe8c747975ed5bcbee01ecfd8d87",
+      "bodyTextPrefix": "CORTEX Put your software to work. How It Works Industries Servic",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/cs-prod.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Detail Driven: Private AI Across Four Automotive Businesses | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 13652,
+      "bodyTextHash": "cdaf99047f389193d53c5e0041feb39df68f620584fd85ab7b69c9913bc95393",
+      "bodyTextPrefix": "CORTEX Menu How It Works Industries Services Case Study Resource",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/cs-prod-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/cs-prod.json"
+}

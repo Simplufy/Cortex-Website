@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8081/trust",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Trust and Security | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 5998,
+      "bodyTextHash": "ae7f145a89788bddd84fa28d9ae4405fb05cec7a18493f622921e1ee62c193e9",
+      "bodyTextPrefix": "CORTEX Put your software to work. How It Works Industries Servic",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/trust-prod.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Trust and Security | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 5975,
+      "bodyTextHash": "5834c8c9754a1da2d80f99ed68456890e948bb7b51e93789567f6a8aedc28d77",
+      "bodyTextPrefix": "CORTEX Menu How It Works Industries Services Case Study Resource",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/trust-prod-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/trust-prod.json"
+}

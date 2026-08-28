@@ -10,12 +10,13 @@ type Props = {
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit";
+  disabled?: boolean;
 };
 
-export function BeamButton({ to, href, children, size = "md", className, onClick, type = "button" }: Props) {
+export function BeamButton({ to, href, children, size = "md", className, onClick, type = "button", disabled }: Props) {
   const pad = size === "sm" ? "px-5 py-2.5 text-[11px]" : "px-10 py-4 text-sm";
   const cls = cn(
-    "group inline-flex overflow-hidden uppercase transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgb(var(--gold-rgb)/0.35)] focus:outline-none font-semibold text-fg tracking-widest rounded-full relative items-center justify-center",
+    "group inline-flex overflow-hidden uppercase transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgb(var(--gold-rgb)/0.35)] font-semibold text-fg tracking-widest rounded-full relative items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 disabled:pointer-events-none disabled:opacity-50",
     pad,
     className,
   );
@@ -66,7 +67,7 @@ export function BeamButton({ to, href, children, size = "md", className, onClick
     );
   }
   return (
-    <button type={type} className={cls} onClick={onClick}>
+    <button type={type} className={cls} onClick={onClick} disabled={disabled}>
       {inner}
     </button>
   );

@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8081/integrations",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Integrations | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 3120,
+      "bodyTextHash": "45dd04f2d5b9c408073b2b43c723b572fd058162f15b796f41f308072eae0ee9",
+      "bodyTextPrefix": "CORTEX Put your software to work. How It Works Industries Servic",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/int-prod.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Integrations | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 2998,
+      "bodyTextHash": "1ed136f8f43d025baa875978d09bfa6ee2cd32776105845fddc1b00cf73dc236",
+      "bodyTextPrefix": "CORTEX Menu How It Works Industries Services Case Study Resource",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/int-prod-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/int-prod.json"
+}

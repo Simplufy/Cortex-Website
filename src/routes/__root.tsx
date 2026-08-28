@@ -3,22 +3,22 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { SiteShell } from "@/components/layout/site-shell";
 import { BRAND } from "@/data/brand";
+import { orgJsonLd, pageHead } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
-const APP_NAME = `${BRAND.name}: ${BRAND.tagline.replace(/\.$/, "")}`;
+const home = pageHead({
+  title: `${BRAND.name}: ${BRAND.tagline.replace(/\.$/, "")}`,
+  description: BRAND.description,
+  path: "/",
+});
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: APP_NAME },
-      {
-        name: "description",
-        content:
-          "Cortex installs AI agents inside the software service businesses already use. Follow-up, monitoring, reporting. Auto shops, HVAC, pest, roofing, and the trades. Start with a Free AI Operations Audit.",
-      },
       { name: "theme-color", content: "#050505" },
+      ...home.meta,
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -32,7 +32,9 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap",
       },
+      ...home.links,
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(orgJsonLd()) }],
   }),
   component: () => (
     <html lang="en" suppressHydrationWarning>

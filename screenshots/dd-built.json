@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/case-studies/detail-driven",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Detail Driven: Private AI Workforce | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 10140,
+      "bodyTextHash": "1f5ee8f84e1e25a22799a753e6b36cb88983c3900daa84f29a8be96f195271ef",
+      "bodyTextPrefix": "CORTEX An AI workforce inside the software you already run. How ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/dd-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Detail Driven: Private AI Workforce | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 9969,
+      "bodyTextHash": "9b5028a3d90b95c38d1fb7114840e7b948b8fdc0a58b4eae96f7f03892105b3f",
+      "bodyTextPrefix": "CORTEX Menu How It Works Industries Services Case Study Resource",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/dd-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/dd-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

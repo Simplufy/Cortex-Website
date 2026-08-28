@@ -2,8 +2,18 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, SectionHead } from "@/components/ui/page-hero";
 import { FinalCtaBlock } from "@/components/pages/inner";
 import { BLOG_POSTS } from "@/data/site";
+import { pageHead } from "@/lib/seo";
+import { RevealSection } from "@/components/reveal";
 
-export const Route = createFileRoute("/resources")({ component: Page });
+export const Route = createFileRoute("/resources")({
+  head: () =>
+    pageHead({
+      title: "Field Notes",
+      description: "How we installed a private AI workforce, local vs cloud, what agents can do in a shop, agents vs automations, and how the audit works.",
+      path: "/resources",
+    }),
+  component: Page,
+});
 
 function Page() {
   return (
@@ -13,7 +23,7 @@ function Page() {
         title="Notes from the field"
         body="How work actually moves in shops and trades, and what agents can watch without replacing the software you already run."
       />
-      <section id="blog" className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection id="blog" className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead
           kicker="Writing"
           title="Tactical breakdowns from the field."
@@ -36,7 +46,7 @@ function Page() {
             </Link>
           ))}
         </div>
-      </section>
+      </RevealSection>
       <FinalCtaBlock />
     </>
   );

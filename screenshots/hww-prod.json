@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8081/how-we-work",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "How We Work | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 4625,
+      "bodyTextHash": "a848aae06c9d79ef8fafdb864e314dc09a281da0584bb04e7f5dd4bac50c301d",
+      "bodyTextPrefix": "CORTEX Put your software to work. How It Works Industries Servic",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/hww-prod.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "How We Work | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 4503,
+      "bodyTextHash": "349ccfde2cb19728502ec4913f113f490f13240070077e55473ce088eeca321a",
+      "bodyTextPrefix": "CORTEX Menu How It Works Industries Services Case Study Resource",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/hww-prod-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/hww-prod.json"
+}

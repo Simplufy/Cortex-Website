@@ -179,6 +179,50 @@
   opacity: 0;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  section.js-reveal:not(.is-on) {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    filter: blur(6px);
+  }
+  section.js-reveal {
+    transition:
+      opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
+  }
+  section.js-reveal.is-on {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  section.js-reveal.is-on .grid > * {
+    animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  section.js-reveal.is-on .grid > *:nth-child(1) {
+    animation-delay: 40ms;
+  }
+  section.js-reveal.is-on .grid > *:nth-child(2) {
+    animation-delay: 110ms;
+  }
+  section.js-reveal.is-on .grid > *:nth-child(3) {
+    animation-delay: 180ms;
+  }
+  section.js-reveal.is-on .grid > *:nth-child(4) {
+    animation-delay: 250ms;
+  }
+  section.js-reveal.is-on .grid > *:nth-child(5) {
+    animation-delay: 320ms;
+  }
+  section.js-reveal.is-on .grid > *:nth-child(6) {
+    animation-delay: 390ms;
+  }
+  section.js-reveal.is-on .grid > *:nth-child(n + 7) {
+    animation-delay: 450ms;
+  }
+}
+
 .delay-100 {
   animation-delay: 100ms;
 }
@@ -408,7 +452,10 @@
   .vsl-glow-orbit,
   .vsl-rim {
     opacity: 1;
+    transform: none;
+    filter: none;
     animation: none !important;
+    transition: none !important;
   }
 }
 

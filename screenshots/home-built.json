@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Cortex: An AI workforce and a secure dashboard inside the software you already run",
+      "hasCanvas": false,
+      "bodyTextLen": 11568,
+      "bodyTextHash": "af97d79c5afeae3f9c1b824b1138629e27612d2797b4eb5ff152af96424d4143",
+      "bodyTextPrefix": "CORTEX An AI workforce and a secure dashboard inside the softwar",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/home-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Cortex: An AI workforce and a secure dashboard inside the software you already run",
+      "hasCanvas": false,
+      "bodyTextLen": 11351,
+      "bodyTextHash": "8a8a44288ee478d2a78cbaa5577d74ca21d18c4c17ffd5265f0be042c030510e",
+      "bodyTextPrefix": "CORTEX Menu How It Works Industries Services Case Study Resource",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/home-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/home-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

@@ -1,9 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="OpsKings">
-  <!-- 3-point gold crown: chunky silhouette, reads at 16px -->
-  <path fill="#a68358" d="M16 2.2c.7 0 1.25.55 1.25 1.25v1.7l3.4 2.05 2.55-3.55a1.05 1.05 0 0 1 1.8.22L27.3 8.4l2.35-1.25a1.05 1.05 0 0 1 1.45 1.2L29.6 13.2H2.4L.9 8.35a1.05 1.05 0 0 1 1.45-1.2L4.7 8.4 6.95 3.87a1.05 1.05 0 0 1 1.8-.22l2.55 3.55 3.4-2.05v-1.7c0-.7.55-1.25 1.25-1.25z"/>
-  <path fill="#a68358" d="M3.1 14.1h25.8l-1.7 10.6c-.25 1.35-1.4 2.3-2.75 2.3H7.55c-1.35 0-2.5-.95-2.75-2.3z"/>
-  <rect x="4.2" y="14.7" width="23.6" height="3" rx="0.4" fill="#dcc195"/>
-  <circle cx="10.4" cy="16.2" r="1.05" fill="#a68358"/>
-  <circle cx="16" cy="16.2" r="1.05" fill="#a68358"/>
-  <circle cx="21.6" cy="16.2" r="1.05" fill="#a68358"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Cortex">
+  <rect width="32" height="32" rx="8" fill="#050505"/>
+  <circle cx="16" cy="7.5" r="3.1" fill="#ff571f"/>
+  <circle cx="7.2" cy="22.5" r="3.1" fill="#ff571f"/>
+  <circle cx="24.8" cy="22.5" r="3.1" fill="#ff571f"/>
+  <circle cx="16" cy="16.5" r="2.1" fill="#ff571f"/>
+  <path d="M16 10.6v3.6M13.9 15.4 9.6 20.3M18.1 15.4l4.3 4.9M8.8 20.1l5.4-2.6M23.2 20.1l-5.4-2.6" stroke="#ff571f" stroke-width="1.35" stroke-linecap="round" fill="none" opacity="0.9"/>
 </svg>

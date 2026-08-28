@@ -11,14 +11,14 @@ export function PageHero({
   title,
   titleNode,
   body,
-  primary = { to: "/audit", label: "Get a Free Audit" },
+  primary = { to: "/audit", label: "Get Your Free AI Operations Audit" },
   secondary,
 }: {
   eyebrow?: string;
   title?: string;
   titleNode?: React.ReactNode;
   body: string;
-  primary?: { to: string; label: string };
+  primary?: { to?: string; href?: string; label: string };
   secondary?: { to: string; label: string };
 }) {
   return (
@@ -26,13 +26,13 @@ export function PageHero({
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-6 text-center">
         {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
         {titleNode ?? (
-          <h1 className="text-balance text-4xl leading-[1.1] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="animate-fade-up delay-100 text-balance text-4xl leading-[1.1] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl lg:text-7xl">
             {title}
           </h1>
         )}
-        <p className="mt-8 max-w-2xl text-balance text-lg leading-relaxed font-light text-fg/60 md:text-xl">{body}</p>
-        <div className="mt-10 flex w-full flex-col items-center gap-6 sm:w-auto sm:flex-row">
-          <BeamButton to={primary.to}>{primary.label}</BeamButton>
+        <p className="animate-fade-up delay-200 mt-8 max-w-2xl text-balance text-lg leading-relaxed font-light text-fg/60 md:text-xl">{body}</p>
+        <div className="animate-fade-up delay-300 mt-10 flex w-full flex-col items-center gap-6 sm:w-auto sm:flex-row">
+          <BeamButton to={primary.to} href={primary.href}>{primary.label}</BeamButton>
           {secondary && <GhostButton to={secondary.to}>{secondary.label}</GhostButton>}
         </div>
       </div>

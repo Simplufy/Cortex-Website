@@ -5,12 +5,13 @@ import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
 import { AuditProvider, AuditButton } from "@/components/audit-modal";
 import { CortexLogo } from "@/components/logo";
+import { RevealRoot } from "@/components/reveal";
 import { BRAND } from "@/data/brand";
 import { openCookieManager } from "@/components/cookie-banner";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const landing = pathname === "/audit";
+  const landing = pathname === "/audit" || pathname === "/schedule" || pathname === "/confirmed" || pathname === "/thanks";
 
   return (
     <AuditProvider>
@@ -18,7 +19,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <NetBackground />
         <div className="relative z-10 flex min-h-screen flex-col">
           {landing ? <LandingHeader /> : <SiteHeader />}
-          <div className="flex-1">{children}</div>
+          <div className="flex-1">
+            <RevealRoot>{children}</RevealRoot>
+          </div>
           {landing ? <LandingFooter /> : <SiteFooter />}
         </div>
         <CookieBanner />
@@ -28,11 +31,18 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 }
 
 function LandingHeader() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <header className="sticky top-0 z-40 border-b border-fg/5 bg-bg/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <CortexLogo size="sm" withTagline={false} />
-        <AuditButton size="sm">Free audit</AuditButton>
+        {pathname === "/schedule" || pathname === "/confirmed" || pathname === "/thanks" ? (
+          <a href={`mailto:${BRAND.email}`} className="text-xs tracking-widest text-fg/60 uppercase hover:text-fg">
+            {BRAND.email}
+          </a>
+        ) : (
+          <AuditButton size="sm">Free audit</AuditButton>
+        )}
       </div>
     </header>
   );

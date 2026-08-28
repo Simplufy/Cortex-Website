@@ -35,9 +35,9 @@ export function CookieBanner() {
     <div className="fixed inset-x-0 bottom-0 z-[80] p-4 sm:p-6">
       <div className="mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-fg/10 bg-surface/95 p-5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:flex-row sm:items-center sm:p-6">
         <p className="flex-1 text-sm font-light leading-relaxed text-fg/70">
-          We use cookies to run the site and, if you accept, to measure how it's used.{" "}
+          We use cookies needed to run the site. We do not currently load analytics.{" "}
           <Link to="/privacy" className="text-gold hover:text-gold-light">
-            Learn more
+            Privacy
           </Link>
           .
         </p>

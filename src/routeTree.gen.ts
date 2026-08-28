@@ -12,41 +12,39 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as AiAgentsRouteImport } from './routes/ai-agents'
-import { Route as AiEnablementRouteImport } from './routes/ai-enablement'
 import { Route as AiImplementationRouteImport } from './routes/ai-implementation'
+import { Route as AiWorkshopsRouteImport } from './routes/ai-workshops'
 import { Route as AuditRouteImport } from './routes/audit'
-import { Route as BookACallRouteImport } from './routes/book-a-call'
-import { Route as BusinessSystemsDevelopmentRouteImport } from './routes/business-systems-development'
+import { Route as BrandKitRouteImport } from './routes/brand-kit'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
-import { Route as CyberSecurityRouteImport } from './routes/cyber-security'
+import { Route as ConfirmedRouteImport } from './routes/confirmed'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as HowWeWorkRouteImport } from './routes/how-we-work'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as IndustryAutomotiveRouteImport } from './routes/industry-automotive'
 import { Route as IndustryContractingRouteImport } from './routes/industry-contracting'
 import { Route as IndustryElectricalRouteImport } from './routes/industry-electrical'
-import { Route as IndustryFinancialServicesRouteImport } from './routes/industry-financial-services'
 import { Route as IndustryHomeServicesRouteImport } from './routes/industry-home-services'
 import { Route as IndustryHvacRouteImport } from './routes/industry-hvac'
-import { Route as IndustryLogisticsRouteImport } from './routes/industry-logistics'
-import { Route as IndustryManufacturingRouteImport } from './routes/industry-manufacturing'
-import { Route as IndustryMarketingRouteImport } from './routes/industry-marketing'
 import { Route as IndustryPestControlRouteImport } from './routes/industry-pest-control'
 import { Route as IndustryPlumbingRouteImport } from './routes/industry-plumbing'
-import { Route as IndustryProfessionalServicesRouteImport } from './routes/industry-professional-services'
-import { Route as IndustryRecruitingRouteImport } from './routes/industry-recruiting'
 import { Route as IndustryRoofingRouteImport } from './routes/industry-roofing'
 import { Route as IndustrySmartHomeRouteImport } from './routes/industry-smart-home'
 import { Route as IndustryWindowsRouteImport } from './routes/industry-windows'
+import { Route as IntegrationsRouteImport } from './routes/integrations'
 import { Route as ManagedAiRouteImport } from './routes/managed-ai'
-import { Route as OpsConsultingRouteImport } from './routes/ops-consulting'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PrivateAiRouteImport } from './routes/private-ai'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ThanksRouteImport } from './routes/thanks'
+import { Route as TrustRouteImport } from './routes/trust'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
-import { Route as PodcastSlugRouteImport } from './routes/podcast.$slug'
+import { Route as IndustriesIndexRouteImport } from './routes/industries.index'
+import { Route as IndustriesSlugRouteImport } from './routes/industries.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -63,14 +61,14 @@ const AiAgentsRoute = AiAgentsRouteImport.update({
   path: '/ai-agents',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AiEnablementRoute = AiEnablementRouteImport.update({
-  id: '/ai-enablement',
-  path: '/ai-enablement',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AiImplementationRoute = AiImplementationRouteImport.update({
   id: '/ai-implementation',
   path: '/ai-implementation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiWorkshopsRoute = AiWorkshopsRouteImport.update({
+  id: '/ai-workshops',
+  path: '/ai-workshops',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuditRoute = AuditRouteImport.update({
@@ -78,25 +76,24 @@ const AuditRoute = AuditRouteImport.update({
   path: '/audit',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BookACallRoute = BookACallRouteImport.update({
-  id: '/book-a-call',
-  path: '/book-a-call',
+const BrandKitRoute = BrandKitRouteImport.update({
+  id: '/brand-kit',
+  path: '/brand-kit',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BusinessSystemsDevelopmentRoute =
-  BusinessSystemsDevelopmentRouteImport.update({
-    id: '/business-systems-development',
-    path: '/business-systems-development',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const CaseStudiesRoute = CaseStudiesRouteImport.update({
   id: '/case-studies',
   path: '/case-studies',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CyberSecurityRoute = CyberSecurityRouteImport.update({
-  id: '/cyber-security',
-  path: '/cyber-security',
+const ConfirmedRoute = ConfirmedRouteImport.update({
+  id: '/confirmed',
+  path: '/confirmed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowWeWorkRoute = HowWeWorkRouteImport.update({
@@ -124,12 +121,6 @@ const IndustryElectricalRoute = IndustryElectricalRouteImport.update({
   path: '/industry-electrical',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndustryFinancialServicesRoute =
-  IndustryFinancialServicesRouteImport.update({
-    id: '/industry-financial-services',
-    path: '/industry-financial-services',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const IndustryHomeServicesRoute = IndustryHomeServicesRouteImport.update({
   id: '/industry-home-services',
   path: '/industry-home-services',
@@ -140,21 +131,6 @@ const IndustryHvacRoute = IndustryHvacRouteImport.update({
   path: '/industry-hvac',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndustryLogisticsRoute = IndustryLogisticsRouteImport.update({
-  id: '/industry-logistics',
-  path: '/industry-logistics',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndustryManufacturingRoute = IndustryManufacturingRouteImport.update({
-  id: '/industry-manufacturing',
-  path: '/industry-manufacturing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndustryMarketingRoute = IndustryMarketingRouteImport.update({
-  id: '/industry-marketing',
-  path: '/industry-marketing',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndustryPestControlRoute = IndustryPestControlRouteImport.update({
   id: '/industry-pest-control',
   path: '/industry-pest-control',
@@ -163,17 +139,6 @@ const IndustryPestControlRoute = IndustryPestControlRouteImport.update({
 const IndustryPlumbingRoute = IndustryPlumbingRouteImport.update({
   id: '/industry-plumbing',
   path: '/industry-plumbing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndustryProfessionalServicesRoute =
-  IndustryProfessionalServicesRouteImport.update({
-    id: '/industry-professional-services',
-    path: '/industry-professional-services',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const IndustryRecruitingRoute = IndustryRecruitingRouteImport.update({
-  id: '/industry-recruiting',
-  path: '/industry-recruiting',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndustryRoofingRoute = IndustryRoofingRouteImport.update({
@@ -191,14 +156,14 @@ const IndustryWindowsRoute = IndustryWindowsRouteImport.update({
   path: '/industry-windows',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IntegrationsRoute = IntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ManagedAiRoute = ManagedAiRouteImport.update({
   id: '/managed-ai',
   path: '/managed-ai',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OpsConsultingRoute = OpsConsultingRouteImport.update({
-  id: '/ops-consulting',
-  path: '/ops-consulting',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -216,9 +181,24 @@ const ResourcesRoute = ResourcesRouteImport.update({
   path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThanksRoute = ThanksRouteImport.update({
+  id: '/thanks',
+  path: '/thanks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustRoute = TrustRouteImport.update({
+  id: '/trust',
+  path: '/trust',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
@@ -236,131 +216,129 @@ const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => CaseStudiesRoute,
 } as any)
-const PodcastSlugRoute = PodcastSlugRouteImport.update({
-  id: '/podcast/$slug',
-  path: '/podcast/$slug',
-  getParentRoute: () => rootRouteImport,
+const IndustriesIndexRoute = IndustriesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => IndustriesRoute,
+} as any)
+const IndustriesSlugRoute = IndustriesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => IndustriesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/ai-agents': typeof AiAgentsRoute
-  '/ai-enablement': typeof AiEnablementRoute
   '/ai-implementation': typeof AiImplementationRoute
+  '/ai-workshops': typeof AiWorkshopsRoute
   '/audit': typeof AuditRoute
-  '/book-a-call': typeof BookACallRoute
-  '/business-systems-development': typeof BusinessSystemsDevelopmentRoute
+  '/brand-kit': typeof BrandKitRoute
   '/case-studies': typeof CaseStudiesRouteWithChildren
-  '/cyber-security': typeof CyberSecurityRoute
+  '/confirmed': typeof ConfirmedRoute
+  '/contact': typeof ContactRoute
   '/how-we-work': typeof HowWeWorkRoute
-  '/industries': typeof IndustriesRoute
+  '/industries': typeof IndustriesRouteWithChildren
   '/industry-automotive': typeof IndustryAutomotiveRoute
   '/industry-contracting': typeof IndustryContractingRoute
   '/industry-electrical': typeof IndustryElectricalRoute
-  '/industry-financial-services': typeof IndustryFinancialServicesRoute
   '/industry-home-services': typeof IndustryHomeServicesRoute
   '/industry-hvac': typeof IndustryHvacRoute
-  '/industry-logistics': typeof IndustryLogisticsRoute
-  '/industry-manufacturing': typeof IndustryManufacturingRoute
-  '/industry-marketing': typeof IndustryMarketingRoute
   '/industry-pest-control': typeof IndustryPestControlRoute
   '/industry-plumbing': typeof IndustryPlumbingRoute
-  '/industry-professional-services': typeof IndustryProfessionalServicesRoute
-  '/industry-recruiting': typeof IndustryRecruitingRoute
   '/industry-roofing': typeof IndustryRoofingRoute
   '/industry-smart-home': typeof IndustrySmartHomeRoute
   '/industry-windows': typeof IndustryWindowsRoute
+  '/integrations': typeof IntegrationsRoute
   '/managed-ai': typeof ManagedAiRoute
-  '/ops-consulting': typeof OpsConsultingRoute
   '/privacy': typeof PrivacyRoute
   '/private-ai': typeof PrivateAiRoute
   '/resources': typeof ResourcesRoute
+  '/schedule': typeof ScheduleRoute
   '/terms': typeof TermsRoute
+  '/thanks': typeof ThanksRoute
+  '/trust': typeof TrustRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
-  '/podcast/$slug': typeof PodcastSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/ai-agents': typeof AiAgentsRoute
-  '/ai-enablement': typeof AiEnablementRoute
   '/ai-implementation': typeof AiImplementationRoute
+  '/ai-workshops': typeof AiWorkshopsRoute
   '/audit': typeof AuditRoute
-  '/book-a-call': typeof BookACallRoute
-  '/business-systems-development': typeof BusinessSystemsDevelopmentRoute
-  '/cyber-security': typeof CyberSecurityRoute
+  '/brand-kit': typeof BrandKitRoute
+  '/confirmed': typeof ConfirmedRoute
+  '/contact': typeof ContactRoute
   '/how-we-work': typeof HowWeWorkRoute
-  '/industries': typeof IndustriesRoute
   '/industry-automotive': typeof IndustryAutomotiveRoute
   '/industry-contracting': typeof IndustryContractingRoute
   '/industry-electrical': typeof IndustryElectricalRoute
-  '/industry-financial-services': typeof IndustryFinancialServicesRoute
   '/industry-home-services': typeof IndustryHomeServicesRoute
   '/industry-hvac': typeof IndustryHvacRoute
-  '/industry-logistics': typeof IndustryLogisticsRoute
-  '/industry-manufacturing': typeof IndustryManufacturingRoute
-  '/industry-marketing': typeof IndustryMarketingRoute
   '/industry-pest-control': typeof IndustryPestControlRoute
   '/industry-plumbing': typeof IndustryPlumbingRoute
-  '/industry-professional-services': typeof IndustryProfessionalServicesRoute
-  '/industry-recruiting': typeof IndustryRecruitingRoute
   '/industry-roofing': typeof IndustryRoofingRoute
   '/industry-smart-home': typeof IndustrySmartHomeRoute
   '/industry-windows': typeof IndustryWindowsRoute
+  '/integrations': typeof IntegrationsRoute
   '/managed-ai': typeof ManagedAiRoute
-  '/ops-consulting': typeof OpsConsultingRoute
   '/privacy': typeof PrivacyRoute
   '/private-ai': typeof PrivateAiRoute
   '/resources': typeof ResourcesRoute
+  '/schedule': typeof ScheduleRoute
   '/terms': typeof TermsRoute
+  '/thanks': typeof ThanksRoute
+  '/trust': typeof TrustRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
-  '/podcast/$slug': typeof PodcastSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/case-studies': typeof CaseStudiesIndexRoute
+  '/industries': typeof IndustriesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about-us': typeof AboutUsRoute
   '/ai-agents': typeof AiAgentsRoute
-  '/ai-enablement': typeof AiEnablementRoute
   '/ai-implementation': typeof AiImplementationRoute
+  '/ai-workshops': typeof AiWorkshopsRoute
   '/audit': typeof AuditRoute
-  '/book-a-call': typeof BookACallRoute
-  '/business-systems-development': typeof BusinessSystemsDevelopmentRoute
+  '/brand-kit': typeof BrandKitRoute
   '/case-studies': typeof CaseStudiesRouteWithChildren
-  '/cyber-security': typeof CyberSecurityRoute
+  '/confirmed': typeof ConfirmedRoute
+  '/contact': typeof ContactRoute
   '/how-we-work': typeof HowWeWorkRoute
-  '/industries': typeof IndustriesRoute
+  '/industries': typeof IndustriesRouteWithChildren
   '/industry-automotive': typeof IndustryAutomotiveRoute
   '/industry-contracting': typeof IndustryContractingRoute
   '/industry-electrical': typeof IndustryElectricalRoute
-  '/industry-financial-services': typeof IndustryFinancialServicesRoute
   '/industry-home-services': typeof IndustryHomeServicesRoute
   '/industry-hvac': typeof IndustryHvacRoute
-  '/industry-logistics': typeof IndustryLogisticsRoute
-  '/industry-manufacturing': typeof IndustryManufacturingRoute
-  '/industry-marketing': typeof IndustryMarketingRoute
   '/industry-pest-control': typeof IndustryPestControlRoute
   '/industry-plumbing': typeof IndustryPlumbingRoute
-  '/industry-professional-services': typeof IndustryProfessionalServicesRoute
-  '/industry-recruiting': typeof IndustryRecruitingRoute
   '/industry-roofing': typeof IndustryRoofingRoute
   '/industry-smart-home': typeof IndustrySmartHomeRoute
   '/industry-windows': typeof IndustryWindowsRoute
+  '/integrations': typeof IntegrationsRoute
   '/managed-ai': typeof ManagedAiRoute
-  '/ops-consulting': typeof OpsConsultingRoute
   '/privacy': typeof PrivacyRoute
   '/private-ai': typeof PrivateAiRoute
   '/resources': typeof ResourcesRoute
+  '/schedule': typeof ScheduleRoute
   '/terms': typeof TermsRoute
+  '/thanks': typeof ThanksRoute
+  '/trust': typeof TrustRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
-  '/podcast/$slug': typeof PodcastSlugRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -368,159 +346,148 @@ export interface FileRouteTypes {
     | '/'
     | '/about-us'
     | '/ai-agents'
-    | '/ai-enablement'
     | '/ai-implementation'
+    | '/ai-workshops'
     | '/audit'
-    | '/book-a-call'
-    | '/business-systems-development'
+    | '/brand-kit'
     | '/case-studies'
-    | '/cyber-security'
+    | '/confirmed'
+    | '/contact'
     | '/how-we-work'
     | '/industries'
     | '/industry-automotive'
     | '/industry-contracting'
     | '/industry-electrical'
-    | '/industry-financial-services'
     | '/industry-home-services'
     | '/industry-hvac'
-    | '/industry-logistics'
-    | '/industry-manufacturing'
-    | '/industry-marketing'
     | '/industry-pest-control'
     | '/industry-plumbing'
-    | '/industry-professional-services'
-    | '/industry-recruiting'
     | '/industry-roofing'
     | '/industry-smart-home'
     | '/industry-windows'
+    | '/integrations'
     | '/managed-ai'
-    | '/ops-consulting'
     | '/privacy'
     | '/private-ai'
     | '/resources'
+    | '/schedule'
     | '/terms'
+    | '/thanks'
+    | '/trust'
     | '/blog/$slug'
     | '/case-studies/$slug'
-    | '/podcast/$slug'
+    | '/industries/$slug'
     | '/case-studies/'
+    | '/industries/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about-us'
     | '/ai-agents'
-    | '/ai-enablement'
     | '/ai-implementation'
+    | '/ai-workshops'
     | '/audit'
-    | '/book-a-call'
-    | '/business-systems-development'
-    | '/cyber-security'
+    | '/brand-kit'
+    | '/confirmed'
+    | '/contact'
     | '/how-we-work'
-    | '/industries'
     | '/industry-automotive'
     | '/industry-contracting'
     | '/industry-electrical'
-    | '/industry-financial-services'
     | '/industry-home-services'
     | '/industry-hvac'
-    | '/industry-logistics'
-    | '/industry-manufacturing'
-    | '/industry-marketing'
     | '/industry-pest-control'
     | '/industry-plumbing'
-    | '/industry-professional-services'
-    | '/industry-recruiting'
     | '/industry-roofing'
     | '/industry-smart-home'
     | '/industry-windows'
+    | '/integrations'
     | '/managed-ai'
-    | '/ops-consulting'
     | '/privacy'
     | '/private-ai'
     | '/resources'
+    | '/schedule'
     | '/terms'
+    | '/thanks'
+    | '/trust'
     | '/blog/$slug'
     | '/case-studies/$slug'
-    | '/podcast/$slug'
+    | '/industries/$slug'
     | '/case-studies'
+    | '/industries'
   id:
     | '__root__'
     | '/'
     | '/about-us'
     | '/ai-agents'
-    | '/ai-enablement'
     | '/ai-implementation'
+    | '/ai-workshops'
     | '/audit'
-    | '/book-a-call'
-    | '/business-systems-development'
+    | '/brand-kit'
     | '/case-studies'
-    | '/cyber-security'
+    | '/confirmed'
+    | '/contact'
     | '/how-we-work'
     | '/industries'
     | '/industry-automotive'
     | '/industry-contracting'
     | '/industry-electrical'
-    | '/industry-financial-services'
     | '/industry-home-services'
     | '/industry-hvac'
-    | '/industry-logistics'
-    | '/industry-manufacturing'
-    | '/industry-marketing'
     | '/industry-pest-control'
     | '/industry-plumbing'
-    | '/industry-professional-services'
-    | '/industry-recruiting'
     | '/industry-roofing'
     | '/industry-smart-home'
     | '/industry-windows'
+    | '/integrations'
     | '/managed-ai'
-    | '/ops-consulting'
     | '/privacy'
     | '/private-ai'
     | '/resources'
+    | '/schedule'
     | '/terms'
+    | '/thanks'
+    | '/trust'
     | '/blog/$slug'
     | '/case-studies/$slug'
-    | '/podcast/$slug'
+    | '/industries/$slug'
     | '/case-studies/'
+    | '/industries/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutUsRoute: typeof AboutUsRoute
   AiAgentsRoute: typeof AiAgentsRoute
-  AiEnablementRoute: typeof AiEnablementRoute
   AiImplementationRoute: typeof AiImplementationRoute
+  AiWorkshopsRoute: typeof AiWorkshopsRoute
   AuditRoute: typeof AuditRoute
-  BookACallRoute: typeof BookACallRoute
-  BusinessSystemsDevelopmentRoute: typeof BusinessSystemsDevelopmentRoute
+  BrandKitRoute: typeof BrandKitRoute
   CaseStudiesRoute: typeof CaseStudiesRouteWithChildren
-  CyberSecurityRoute: typeof CyberSecurityRoute
+  ConfirmedRoute: typeof ConfirmedRoute
+  ContactRoute: typeof ContactRoute
   HowWeWorkRoute: typeof HowWeWorkRoute
-  IndustriesRoute: typeof IndustriesRoute
+  IndustriesRoute: typeof IndustriesRouteWithChildren
   IndustryAutomotiveRoute: typeof IndustryAutomotiveRoute
   IndustryContractingRoute: typeof IndustryContractingRoute
   IndustryElectricalRoute: typeof IndustryElectricalRoute
-  IndustryFinancialServicesRoute: typeof IndustryFinancialServicesRoute
   IndustryHomeServicesRoute: typeof IndustryHomeServicesRoute
   IndustryHvacRoute: typeof IndustryHvacRoute
-  IndustryLogisticsRoute: typeof IndustryLogisticsRoute
-  IndustryManufacturingRoute: typeof IndustryManufacturingRoute
-  IndustryMarketingRoute: typeof IndustryMarketingRoute
   IndustryPestControlRoute: typeof IndustryPestControlRoute
   IndustryPlumbingRoute: typeof IndustryPlumbingRoute
-  IndustryProfessionalServicesRoute: typeof IndustryProfessionalServicesRoute
-  IndustryRecruitingRoute: typeof IndustryRecruitingRoute
   IndustryRoofingRoute: typeof IndustryRoofingRoute
   IndustrySmartHomeRoute: typeof IndustrySmartHomeRoute
   IndustryWindowsRoute: typeof IndustryWindowsRoute
+  IntegrationsRoute: typeof IntegrationsRoute
   ManagedAiRoute: typeof ManagedAiRoute
-  OpsConsultingRoute: typeof OpsConsultingRoute
   PrivacyRoute: typeof PrivacyRoute
   PrivateAiRoute: typeof PrivateAiRoute
   ResourcesRoute: typeof ResourcesRoute
+  ScheduleRoute: typeof ScheduleRoute
   TermsRoute: typeof TermsRoute
+  ThanksRoute: typeof ThanksRoute
+  TrustRoute: typeof TrustRoute
   BlogSlugRoute: typeof BlogSlugRoute
-  PodcastSlugRoute: typeof PodcastSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -546,18 +513,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AiAgentsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/ai-enablement': {
-      id: '/ai-enablement'
-      path: '/ai-enablement'
-      fullPath: '/ai-enablement'
-      preLoaderRoute: typeof AiEnablementRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/ai-implementation': {
       id: '/ai-implementation'
       path: '/ai-implementation'
       fullPath: '/ai-implementation'
       preLoaderRoute: typeof AiImplementationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-workshops': {
+      id: '/ai-workshops'
+      path: '/ai-workshops'
+      fullPath: '/ai-workshops'
+      preLoaderRoute: typeof AiWorkshopsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/audit': {
@@ -567,18 +534,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuditRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/book-a-call': {
-      id: '/book-a-call'
-      path: '/book-a-call'
-      fullPath: '/book-a-call'
-      preLoaderRoute: typeof BookACallRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/business-systems-development': {
-      id: '/business-systems-development'
-      path: '/business-systems-development'
-      fullPath: '/business-systems-development'
-      preLoaderRoute: typeof BusinessSystemsDevelopmentRouteImport
+    '/brand-kit': {
+      id: '/brand-kit'
+      path: '/brand-kit'
+      fullPath: '/brand-kit'
+      preLoaderRoute: typeof BrandKitRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/case-studies': {
@@ -588,11 +548,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaseStudiesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/cyber-security': {
-      id: '/cyber-security'
-      path: '/cyber-security'
-      fullPath: '/cyber-security'
-      preLoaderRoute: typeof CyberSecurityRouteImport
+    '/confirmed': {
+      id: '/confirmed'
+      path: '/confirmed'
+      fullPath: '/confirmed'
+      preLoaderRoute: typeof ConfirmedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-we-work': {
@@ -630,13 +597,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndustryElectricalRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/industry-financial-services': {
-      id: '/industry-financial-services'
-      path: '/industry-financial-services'
-      fullPath: '/industry-financial-services'
-      preLoaderRoute: typeof IndustryFinancialServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/industry-home-services': {
       id: '/industry-home-services'
       path: '/industry-home-services'
@@ -651,27 +611,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndustryHvacRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/industry-logistics': {
-      id: '/industry-logistics'
-      path: '/industry-logistics'
-      fullPath: '/industry-logistics'
-      preLoaderRoute: typeof IndustryLogisticsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/industry-manufacturing': {
-      id: '/industry-manufacturing'
-      path: '/industry-manufacturing'
-      fullPath: '/industry-manufacturing'
-      preLoaderRoute: typeof IndustryManufacturingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/industry-marketing': {
-      id: '/industry-marketing'
-      path: '/industry-marketing'
-      fullPath: '/industry-marketing'
-      preLoaderRoute: typeof IndustryMarketingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/industry-pest-control': {
       id: '/industry-pest-control'
       path: '/industry-pest-control'
@@ -684,20 +623,6 @@ declare module '@tanstack/react-router' {
       path: '/industry-plumbing'
       fullPath: '/industry-plumbing'
       preLoaderRoute: typeof IndustryPlumbingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/industry-professional-services': {
-      id: '/industry-professional-services'
-      path: '/industry-professional-services'
-      fullPath: '/industry-professional-services'
-      preLoaderRoute: typeof IndustryProfessionalServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/industry-recruiting': {
-      id: '/industry-recruiting'
-      path: '/industry-recruiting'
-      fullPath: '/industry-recruiting'
-      preLoaderRoute: typeof IndustryRecruitingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/industry-roofing': {
@@ -721,18 +646,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndustryWindowsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/integrations': {
+      id: '/integrations'
+      path: '/integrations'
+      fullPath: '/integrations'
+      preLoaderRoute: typeof IntegrationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/managed-ai': {
       id: '/managed-ai'
       path: '/managed-ai'
       fullPath: '/managed-ai'
       preLoaderRoute: typeof ManagedAiRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ops-consulting': {
-      id: '/ops-consulting'
-      path: '/ops-consulting'
-      fullPath: '/ops-consulting'
-      preLoaderRoute: typeof OpsConsultingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -756,11 +681,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thanks': {
+      id: '/thanks'
+      path: '/thanks'
+      fullPath: '/thanks'
+      preLoaderRoute: typeof ThanksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust': {
+      id: '/trust'
+      path: '/trust'
+      fullPath: '/trust'
+      preLoaderRoute: typeof TrustRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/$slug': {
@@ -784,12 +730,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaseStudiesSlugRouteImport
       parentRoute: typeof CaseStudiesRoute
     }
-    '/podcast/$slug': {
-      id: '/podcast/$slug'
-      path: '/podcast/$slug'
-      fullPath: '/podcast/$slug'
-      preLoaderRoute: typeof PodcastSlugRouteImport
-      parentRoute: typeof rootRouteImport
+    '/industries/': {
+      id: '/industries/'
+      path: '/'
+      fullPath: '/industries/'
+      preLoaderRoute: typeof IndustriesIndexRouteImport
+      parentRoute: typeof IndustriesRoute
+    }
+    '/industries/$slug': {
+      id: '/industries/$slug'
+      path: '/$slug'
+      fullPath: '/industries/$slug'
+      preLoaderRoute: typeof IndustriesSlugRouteImport
+      parentRoute: typeof IndustriesRoute
     }
   }
 }
@@ -808,43 +761,53 @@ const CaseStudiesRouteWithChildren = CaseStudiesRoute._addFileChildren(
   CaseStudiesRouteChildren,
 )
 
+interface IndustriesRouteChildren {
+  IndustriesSlugRoute: typeof IndustriesSlugRoute
+  IndustriesIndexRoute: typeof IndustriesIndexRoute
+}
+
+const IndustriesRouteChildren: IndustriesRouteChildren = {
+  IndustriesSlugRoute: IndustriesSlugRoute,
+  IndustriesIndexRoute: IndustriesIndexRoute,
+}
+
+const IndustriesRouteWithChildren = IndustriesRoute._addFileChildren(
+  IndustriesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutUsRoute: AboutUsRoute,
   AiAgentsRoute: AiAgentsRoute,
-  AiEnablementRoute: AiEnablementRoute,
   AiImplementationRoute: AiImplementationRoute,
+  AiWorkshopsRoute: AiWorkshopsRoute,
   AuditRoute: AuditRoute,
-  BookACallRoute: BookACallRoute,
-  BusinessSystemsDevelopmentRoute: BusinessSystemsDevelopmentRoute,
+  BrandKitRoute: BrandKitRoute,
   CaseStudiesRoute: CaseStudiesRouteWithChildren,
-  CyberSecurityRoute: CyberSecurityRoute,
+  ConfirmedRoute: ConfirmedRoute,
+  ContactRoute: ContactRoute,
   HowWeWorkRoute: HowWeWorkRoute,
-  IndustriesRoute: IndustriesRoute,
+  IndustriesRoute: IndustriesRouteWithChildren,
   IndustryAutomotiveRoute: IndustryAutomotiveRoute,
   IndustryContractingRoute: IndustryContractingRoute,
   IndustryElectricalRoute: IndustryElectricalRoute,
-  IndustryFinancialServicesRoute: IndustryFinancialServicesRoute,
   IndustryHomeServicesRoute: IndustryHomeServicesRoute,
   IndustryHvacRoute: IndustryHvacRoute,
-  IndustryLogisticsRoute: IndustryLogisticsRoute,
-  IndustryManufacturingRoute: IndustryManufacturingRoute,
-  IndustryMarketingRoute: IndustryMarketingRoute,
   IndustryPestControlRoute: IndustryPestControlRoute,
   IndustryPlumbingRoute: IndustryPlumbingRoute,
-  IndustryProfessionalServicesRoute: IndustryProfessionalServicesRoute,
-  IndustryRecruitingRoute: IndustryRecruitingRoute,
   IndustryRoofingRoute: IndustryRoofingRoute,
   IndustrySmartHomeRoute: IndustrySmartHomeRoute,
   IndustryWindowsRoute: IndustryWindowsRoute,
+  IntegrationsRoute: IntegrationsRoute,
   ManagedAiRoute: ManagedAiRoute,
-  OpsConsultingRoute: OpsConsultingRoute,
   PrivacyRoute: PrivacyRoute,
   PrivateAiRoute: PrivateAiRoute,
   ResourcesRoute: ResourcesRoute,
+  ScheduleRoute: ScheduleRoute,
   TermsRoute: TermsRoute,
+  ThanksRoute: ThanksRoute,
+  TrustRoute: TrustRoute,
   BlogSlugRoute: BlogSlugRoute,
-  PodcastSlugRoute: PodcastSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

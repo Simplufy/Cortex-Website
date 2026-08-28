@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-BkSabwWG.js";import{o as t}from"./site-BFPSyynb.js";import{r as n}from"./inner-BjcbSBFV.js";var r=e(),i=()=>(0,r.jsx)(n,{industry:t[6]});export{i as component};

@@ -1,55 +1,53 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, SectionHead } from "@/components/ui/page-hero";
+import { PageHero } from "@/components/ui/page-hero";
 import { FinalCtaBlock } from "@/components/pages/inner";
-import { LetterMark } from "@/components/logo";
 import { CASE_STUDIES } from "@/data/site";
+import { pageHead } from "@/lib/seo";
+import { RevealSection } from "@/components/reveal";
 
-export const Route = createFileRoute("/case-studies/")({ component: Listing });
+export const Route = createFileRoute("/case-studies/")({
+  head: () =>
+    pageHead({
+      title: "Case Study: Detail Driven Automotive AI Workforce",
+      description:
+        "Detail Driven Enterprises in Jackson Hole. Repair, collision, detailing, and glass. Agents on the leftover work. The build included a secure dashboard for operations, marketing, finance, and the shops.",
+      path: "/case-studies",
+    }),
+  component: Listing,
+});
 
 function Listing() {
+  const study = CASE_STUDIES[0];
   return (
     <>
       <PageHero
-        eyebrow="Case Studies"
-        title="Example deployments"
-        body="Architecture examples across field service. Verified results go here when we have them. Named quotes are not published customer testimonials."
-        primary={{ to: "/audit", label: "Get a Free Audit" }}
+        eyebrow="Case Study"
+        title="One real deployment. Not a gallery of examples."
+        body="Detail Driven Enterprises in Jackson Hole. Repair, collision, detailing, and glass. Agents on the leftover work. The build included a secure dashboard for operations, marketing, finance, and the shops — on the software they already ran."
+        primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
       />
-      <section className="pb-24">
-        <div className="mx-auto grid max-w-6xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-3">
-          {CASE_STUDIES.map((c) => (
-            <Link
-              key={c.slug}
-              to="/case-studies/$slug"
-              params={{ slug: c.slug }}
-              className="case-card group relative flex flex-col overflow-hidden rounded-xl border border-fg/10 bg-surface transition-all hover:-translate-y-1 hover:border-gold/40"
-            >
-              <div className="flex aspect-16/10 items-center justify-center bg-bg p-8">
-                <LetterMark letters={c.mark} className="size-20 text-xl" />
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <div className="text-[10px] font-bold tracking-widest text-gold uppercase">{c.industry}</div>
-                <h2 className="mt-2 text-lg font-medium text-fg">{c.name}</h2>
-                <p className="mt-2 text-sm font-light text-fg/55">{c.result}</p>
-              </div>
-            </Link>
-          ))}
+      <RevealSection className="pb-24">
+        <div className="mx-auto max-w-3xl px-6">
+          <Link
+            to="/case-studies/$slug"
+            params={{ slug: study.slug }}
+            className="block rounded-2xl border border-fg/10 bg-surface p-8 transition-colors hover:border-gold/40 md:p-10"
+          >
+            <div className="text-[10px] font-bold tracking-widest text-gold uppercase">{study.industry}</div>
+            <h2 className="mt-2 text-3xl font-medium tracking-tight text-fg">{study.name}</h2>
+            <p className="mt-3 text-fg/60">{study.result}</p>
+            <ul className="mt-6 grid gap-2 text-sm text-fg/70 sm:grid-cols-2">
+              {study.facts.map((f) => (
+                <li key={f} className="flex gap-2">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </Link>
         </div>
-      </section>
-      <section className="border-t border-fg/5 pt-24 pb-24">
-        <SectionHead title="What owners say once the board is the system" />
-        <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-3">
-          {CASE_STUDIES.slice(0, 3).map((c) => (
-            <blockquote key={c.slug} className="rounded-2xl border border-fg/10 bg-surface p-8">
-              <p className="text-lg font-light text-fg/80">“{c.quote}”</p>
-              <footer className="mt-6 text-sm text-fg/50">
-                {c.person}, {c.role}
-              </footer>
-            </blockquote>
-          ))}
-        </div>
-      </section>
-      <FinalCtaBlock title="Want this for your operation?" />
+      </RevealSection>
+      <FinalCtaBlock title="Want this shape inside your operation?" />
     </>
   );
 }

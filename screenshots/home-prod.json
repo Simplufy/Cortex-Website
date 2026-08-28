@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Cortex: Put your software to work",
+      "hasCanvas": false,
+      "bodyTextLen": 11447,
+      "bodyTextHash": "851d2d73692d6ea35af58b2ff6f8d07f3add6ab4005fa3c7ac5c5592fb89ba65",
+      "bodyTextPrefix": "CORTEX Put your software to work. How It Works Industries Servic",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/home-prod.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Cortex: Put your software to work",
+      "hasCanvas": false,
+      "bodyTextLen": 11325,
+      "bodyTextHash": "38aeb9ef4cfdbe6f968d724b01a57fd2ac1d9bf1d01c2a49e12e4ab09d38f128",
+      "bodyTextPrefix": "CORTEX Menu How It Works Industries Services Case Study Resource",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/home-prod-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/home-prod.json"
+}

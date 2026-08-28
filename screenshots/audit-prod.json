@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8081/audit",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Free AI Operations Audit | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 5906,
+      "bodyTextHash": "02bc4d79b477710a7791959a50a4f4e87301e3073ccd6666d70508adc64c91b9",
+      "bodyTextPrefix": "CORTEX FREE AUDIT CUSTOM AI SYSTEMS FOR SERVICE BUSINESSES Find ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/audit-prod.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Free AI Operations Audit | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 6005,
+      "bodyTextHash": "a41cf5fdee3f1a227f632cba7feedfa51cc16485304c67b08dba98904c76d348",
+      "bodyTextPrefix": "CORTEX FREE AUDIT CUSTOM AI SYSTEMS FOR SERVICE BUSINESSES Find ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/audit-prod-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/audit-prod.json"
+}

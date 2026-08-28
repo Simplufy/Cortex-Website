@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Cortex">
+  <rect width="32" height="32" rx="7.1" fill="#050505"/>
+  <circle cx="16" cy="7.5" r="3.1" fill="#ff571f"/>
+  <circle cx="7.2" cy="22.5" r="3.1" fill="#ff571f"/>
+  <circle cx="24.8" cy="22.5" r="3.1" fill="#ff571f"/>
+  <circle cx="16" cy="16.5" r="2.15" fill="#ff571f"/>
+  <path d="M16 10.6 L16 14.35 M13.85 15.55 L9.55 20.55 M18.15 15.55 L22.45 20.55" stroke="#ff571f" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+</svg>

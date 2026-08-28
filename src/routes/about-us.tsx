@@ -1,80 +1,111 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail } from "lucide-react";
 import { PageHero, SectionHead } from "@/components/ui/page-hero";
 import { FinalCtaBlock } from "@/components/pages/inner";
 import { FounderPhoto } from "@/components/logo";
 import { BRAND } from "@/data/brand";
+import { CASE_STUDIES } from "@/data/site";
+import { pageHead } from "@/lib/seo";
+import { RevealSection } from "@/components/reveal";
 
-export const Route = createFileRoute("/about-us")({ component: AboutPage });
+export const Route = createFileRoute("/about-us")({
+  head: () =>
+    pageHead({
+      title: `About ${BRAND.name}`,
+      description: BRAND.description,
+      path: "/about-us",
+    }),
+  component: AboutPage,
+});
 
 function AboutPage() {
+  const study = CASE_STUDIES[0];
   return (
     <>
       <PageHero
         eyebrow="About"
-        title={`${BRAND.name}. ${BRAND.tagline.replace(/\.$/, "")}`}
-        body="McGuire Flanigan started Cortex to install AI agents inside the software service businesses already run. Not another chatbot. Not a rip-and-replace of the shop system."
+        title="We believe the next major productivity leap won't come from adding more software."
+        body="It will come from giving the software businesses already use the ability to monitor, reason, coordinate, and act."
+        primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
       />
-      <section className="border-t border-fg/5 pt-24 pb-24">
-        <SectionHead
-          title="Too small for a lab. Too real for a chatbot agency."
-          body="Established service companies have three bad options when the leftover admin will not quit."
-        />
-        <div className="mx-auto grid max-w-5xl gap-4 px-6 md:grid-cols-3">
-          {[
-            ["Chatbots and receptionist widgets", "One narrow tool. Another login. The board still needs a person staring at it."],
-            ["Zapier plus ChatGPT", "Glue can move a field. It will not watch a shop, respect permissions, or stay current."],
-            ["Hire an internal AI team", "Most operators need the implementation and the upkeep, not a department."],
-          ].map(([t, b]) => (
-            <article key={t} className="rounded-2xl border border-fg/10 bg-surface p-8">
-              <h3 className="text-lg font-medium text-fg">{t}</h3>
-              <p className="mt-3 text-sm font-light text-fg/60">{b}</p>
-            </article>
-          ))}
+      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+        <div className="mx-auto max-w-3xl px-6">
+          <p className="text-lg leading-relaxed font-light text-fg/70">
+            Service businesses have spent the last decade digitizing their operations. They have CRMs, field-service
+            platforms, accounting systems, ad platforms, communication tools, and industry-specific software.
+          </p>
+          <p className="mt-5 text-lg leading-relaxed font-light text-fg/70">
+            Yet people still perform much of the work between those systems manually.
+          </p>
+          <p className="mt-5 text-lg leading-relaxed font-medium text-fg">Cortex was built to solve that layer.</p>
+          <p className="mt-5 text-lg leading-relaxed font-light text-fg/70">
+            We design custom AI systems that work across a company's existing operation — helping teams follow up
+            faster, catch problems earlier, reduce repetitive administrative work, and make better use of the software
+            they already own.
+          </p>
         </div>
-        <p className="mx-auto mt-12 max-w-3xl px-6 text-center text-lg font-light text-fg/70">
-          Cortex is the fourth option. Audit the work. Connect agents to the software you already pay for. Manage them
-          after they go live. Field service and the trades first.
-        </p>
-      </section>
-      <section className="border-t border-fg/5 pt-24 pb-24">
-        <SectionHead title="Founder" body="One person who sits with the operation and stays on the build." />
+      </RevealSection>
+      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+        <SectionHead
+          title={`${BRAND.founder}`}
+          body={`${BRAND.founderRole}, ${BRAND.name}`}
+        />
         <div className="mx-auto max-w-3xl px-6">
           <article className="rounded-2xl border border-fg/10 bg-surface p-8 md:p-10">
             <FounderPhoto className="size-24 ring-gold/40" />
-            <h3 className="mt-5 text-2xl font-medium text-fg">{BRAND.founder}</h3>
-            <p className="text-sm text-gold">{BRAND.founderRole}</p>
-            <p className="mt-4 text-sm leading-relaxed font-light text-fg/60">
-              Most companies do not have a software shortage. They have a people-operating-the-software problem. McGuire
-              started Cortex to install agents inside the tools those operators already pay for. Based in the Midwest.
-              Works with auto shops, HVAC, pest, roofing, and home services first.
-            </p>
-            <a href={`mailto:${BRAND.email}`} className="mt-5 inline-flex text-fg/40 hover:text-gold" aria-label="Email">
-              <Mail className="size-4" />
-            </a>
+            <div className="mt-5 space-y-4 text-sm leading-relaxed font-light text-fg/60">
+              <p>
+                McGuire's background spans digital marketing, CRM architecture, automation, software integration, and
+                applied AI systems for service businesses.
+              </p>
+              <p>
+                Cortex grew out of working directly inside operational businesses and seeing the same problem
+                repeatedly: companies had plenty of software, but their people were still manually coordinating
+                everything between it.
+              </p>
+              <p>
+                Today the focus is building practical AI infrastructure around real business workflows — including
+                private local AI systems, cloud models, specialized agents, and integrations with the software
+                companies already depend on.
+              </p>
+              <p>
+                One of Cortex's earliest deployments connects AI agents across multiple automotive service businesses,
+                including shop-management, CRM, advertising, reputation, and internal operating systems.
+              </p>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <a href={`mailto:${BRAND.email}`} className="inline-flex items-center gap-2 text-sm text-fg/70 hover:text-gold">
+                <Mail className="size-4" />
+                {BRAND.email}
+              </a>
+              <Link to="/case-studies/$slug" params={{ slug: study.slug }} className="text-sm font-medium text-gold hover:text-gold-light">
+                View the deployment
+              </Link>
+            </div>
           </article>
         </div>
-      </section>
-      <section className="border-t border-fg/5 pt-24 pb-24">
+      </RevealSection>
+      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead
           kicker="How we work"
-          title="AI operations, without the theater."
-          body="Audit first. Keep their software. Agents for the repetitive path. People keep the judgment."
+          title="Audit. Design. Build. Deploy. Manage."
+          body="Understand the operation first. Then automate it."
         />
-        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 px-6 md:grid-cols-4">
+        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 px-6 md:grid-cols-5">
           {[
             ["Audit", "Before we build"],
-            ["Connect", "Existing software"],
+            ["Design", "The system"],
+            ["Build", "Existing software"],
             ["Deploy", "Approvals included"],
             ["Manage", "After it is live"],
           ].map(([n, l]) => (
-            <div key={l} className="text-center">
+            <div key={n} className="text-center">
               <div className="text-3xl font-medium text-gold">{n}</div>
               <div className="mt-2 text-xs tracking-wide text-fg/50 uppercase">{l}</div>
             </div>
           ))}
         </div>
-      </section>
+      </RevealSection>
       <FinalCtaBlock />
     </>
   );

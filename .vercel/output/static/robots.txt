@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /schedule
+Disallow: /confirmed
+Disallow: /thanks
+Disallow: /brand-kit
+
+Sitemap: https://buildcortex.dev/sitemap.xml

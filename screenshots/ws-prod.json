@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8081/ai-workshops",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "AI Workshops for Service Businesses | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 3048,
+      "bodyTextHash": "67a0203bd383b96c9e6779027a09e2b13fc8af8763301d041540c1136cd2e559",
+      "bodyTextPrefix": "CORTEX Put your software to work. How It Works Industries Servic",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/ws-prod.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "AI Workshops for Service Businesses | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 2926,
+      "bodyTextHash": "8e0644392e75c11bbab741d1797ccbeae30753203daed7972ede1e264cea86c3",
+      "bodyTextPrefix": "CORTEX Menu How It Works Industries Services Case Study Resource",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/ws-prod-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/ws-prod.json"
+}

@@ -2,25 +2,26 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { PageHero, SectionHead, Eyebrow } from "@/components/ui/page-hero";
 import { BeamButton } from "@/components/ui/beam-button";
-import { INDUSTRIES, type Industry } from "@/data/site";
+import { RevealSection } from "@/components/reveal";
+import { INDUSTRIES, type Industry, industryParam } from "@/data/site";
 
 export function FinalCtaBlock({
-  title = "See where AI makes sense inside your operation.",
-  body = "A Free AI Operations Audit. Software, repetitive work, stalls. You leave with a practical list, not a pitch deck.",
+  title = "Find the highest-value work AI can take off your team.",
+  body = "Start with a Free AI Operations Audit. We'll show you what is worth automating, what isn't, and what a practical first deployment could look like.",
 }: {
   title?: string;
   body?: string;
 }) {
   return (
-    <section className="relative py-32">
+    <RevealSection className="relative py-32">
       <div className="mx-auto max-w-3xl px-6 text-center">
         <h2 className="text-balance text-3xl font-medium tracking-tight text-fg md:text-5xl">{title}</h2>
         <p className="mt-6 text-lg font-light text-fg/60">{body}</p>
         <div className="mt-10">
-          <BeamButton to="/audit">Get a Free AI Operations Audit</BeamButton>
+          <BeamButton to="/audit">Get Your Free AI Operations Audit</BeamButton>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }
 
@@ -37,15 +38,15 @@ export function IndustryPage({ industry }: { industry: Industry }) {
           </h1>
         }
         body={industry.intro}
-        primary={{ to: "/audit", label: "Get a Free Audit" }}
+        primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
       />
-      <section className="border-t border-fg/5 py-16">
+      <RevealSection className="border-t border-fg/5 py-16">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <Eyebrow>Industry Snapshot</Eyebrow>
-          <p className="text-2xl font-medium tracking-tight text-fg md:text-3xl">“{industry.quote}”</p>
+          <Eyebrow>The operating reality</Eyebrow>
+          <p className="text-2xl font-medium tracking-tight text-fg md:text-3xl">{industry.quote}</p>
         </div>
-      </section>
-      <section className="pt-24 pb-24">
+      </RevealSection>
+      <RevealSection className="pt-24 pb-24">
         <SectionHead title="Does this sound familiar?" body="The stalls we hear in this trade every week." />
         <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-2">
           {industry.symptoms.map((s) => (
@@ -55,8 +56,8 @@ export function IndustryPage({ industry }: { industry: Industry }) {
             </article>
           ))}
         </div>
-      </section>
-      <section className="border-t border-fg/5 pt-24 pb-24">
+      </RevealSection>
+      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead title="What agents can watch" body="Examples. Your list comes from the audit, not a template." />
         <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-2">
           {industry.systems.map((s) => (
@@ -74,11 +75,11 @@ export function IndustryPage({ industry }: { industry: Industry }) {
             </article>
           ))}
         </div>
-      </section>
-      <section className="border-t border-fg/5 pt-24 pb-24">
+      </RevealSection>
+      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead
-          title={`Software we connect in ${industry.name.toLowerCase()}`}
-          body={industry.software.intro}
+          title="Built to work with the software your industry already uses."
+          body={`Examples of systems we commonly evaluate for integration. ${industry.software.intro}`}
         />
         <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-2">
           {industry.software.groups.map((g) => (
@@ -98,15 +99,16 @@ export function IndustryPage({ industry }: { industry: Industry }) {
           Named tools are examples we see in this trade, not a certified integration list. What we can connect depends
           on APIs, vendor access, and the audit. We do not replace these systems.
         </p>
-      </section>
-      <section className="border-t border-fg/5 pt-24 pb-24">
-        <SectionHead title="How we install it" body="Audit. Build. Deploy. Manage. Software you already run stays in place." />
-        <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-4">
+      </RevealSection>
+      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+        <SectionHead title="How we install it" body="Audit. Design. Build. Deploy. Manage. Your existing software stays in place." />
+        <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-2 lg:grid-cols-5">
           {[
-            ["01 / AUDIT", "Find the work", "Software stack, repetitive paths, follow-up that depends on memory."],
-            ["02 / BUILD", "Design the workforce", "Agents around those paths, connected to the tools you already pay for."],
-            ["03 / DEPLOY", "Install and train", "Permissions, approvals, testing. People keep the judgment."],
-            ["04 / MANAGE", "Keep it current", "Monitoring, connectors, improvements. Not a handoff that goes cold."],
+            ["01 / AUDIT", "Understand the operation", "Software stack, repetitive paths, follow-up that depends on memory."],
+            ["02 / DESIGN", "Design the system", "Which agents, which systems, what they may do, and what requires a person."],
+            ["03 / BUILD", "Connect and build", "Agents around those paths, connected to the tools you already use."],
+            ["04 / DEPLOY", "Test with your team", "Permissions, approvals, testing."],
+            ["05 / MANAGE", "Keep it reliable", "Monitoring, connectors, improvements."],
           ].map(([k, t, b]) => (
             <article key={k} className="rounded-2xl border border-fg/10 bg-surface p-6">
               <div className="mb-3 text-[10px] font-bold tracking-widest text-gold">{k}</div>
@@ -115,7 +117,7 @@ export function IndustryPage({ industry }: { industry: Industry }) {
             </article>
           ))}
         </div>
-      </section>
+      </RevealSection>
       <OtherIndustries current={industry.slug} />
       <FinalCtaBlock />
     </>
@@ -124,20 +126,21 @@ export function IndustryPage({ industry }: { industry: Industry }) {
 
 function OtherIndustries({ current }: { current: string }) {
   return (
-    <section className="border-t border-fg/5 pt-24 pb-16">
+    <RevealSection className="border-t border-fg/5 pt-24 pb-16">
       <SectionHead title="Other industries we serve" />
       <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-3 px-6">
         {INDUSTRIES.filter((i) => i.slug !== current).map((i) => (
           <Link
             key={i.slug}
-            to={i.href}
+            to="/industries/$slug"
+            params={{ slug: industryParam(i) }}
             className="rounded-full border border-fg/10 bg-surface px-4 py-2 text-sm text-fg/70 hover:border-gold/40 hover:text-fg"
           >
             {i.name}
           </Link>
         ))}
       </div>
-    </section>
+    </RevealSection>
   );
 }
 

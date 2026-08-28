@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8081/how-we-work",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "How We Work | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 4430,
+      "bodyTextHash": "8363f893b4e27d416a6f6626b180b0eec0310f9a78189299da4e956b8363170d",
+      "bodyTextPrefix": "CORTEX An AI workforce inside the software you already run. How ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/hww-included.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "How We Work | Cortex",
+      "hasCanvas": false,
+      "bodyTextLen": 4259,
+      "bodyTextHash": "8a06602796500927bc988e944a44893bc71a668e9f664abe4c8356ef1056374b",
+      "bodyTextPrefix": "CORTEX Menu How It Works Industries Services Case Study Resource",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/hww-included-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/hww-included.json"
+}
