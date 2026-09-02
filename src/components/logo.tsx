@@ -5,18 +5,17 @@ import { BRAND } from "@/data/brand";
 export function CortexMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={cn("text-gold", className)} aria-hidden>
+      <path
+        d="M16 7.5 L16 16.5 M7.2 22.5 L16 16.5 M24.8 22.5 L16 16.5"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        fill="none"
+      />
       <circle cx="16" cy="7.5" r="3.1" fill="currentColor" />
       <circle cx="7.2" cy="22.5" r="3.1" fill="currentColor" />
       <circle cx="24.8" cy="22.5" r="3.1" fill="currentColor" />
-      <circle cx="16" cy="16.5" r="2.1" fill="currentColor" />
-      <path
-        d="M16 10.6v3.6M13.9 15.4 9.6 20.3M18.1 15.4l4.3 4.9M8.8 20.1l5.4-2.6M23.2 20.1l-5.4-2.6"
-        stroke="currentColor"
-        strokeWidth="1.35"
-        strokeLinecap="round"
-        fill="none"
-        opacity="0.85"
-      />
+      <circle cx="16" cy="16.5" r="2.15" fill="currentColor" />
     </svg>
   );
 }

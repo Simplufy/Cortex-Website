@@ -52,7 +52,7 @@ export function OperatorBoard({ variant = "detail-driven" }: { variant?: keyof t
     <div className="overflow-hidden rounded-2xl border border-fg/10 bg-elevated">
       <div className="flex items-center justify-between gap-3 border-b border-fg/10 px-4 py-3 sm:px-5">
         <div className="flex min-w-0 items-center gap-2">
-          <span className="size-1.5 shrink-0 rounded-full bg-gold" />
+          <span className="size-1.5 shrink-0 rounded-full bg-gold shadow-[0_0_12px_rgb(var(--gold-rgb))] animate-pulse" />
           <p className="truncate text-xs font-medium tracking-wide text-fg">
             Cortex <span className="text-fg/35">/</span> {v.operation}
           </p>
@@ -113,9 +113,9 @@ export function DashboardShowcase() {
   return (
     <div className="mx-auto max-w-6xl px-6">
       <OperatorBoard variant="operator" />
-      <ul className="mt-6 grid gap-3 sm:grid-cols-3">
+      <ul className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-3">
         {POINTS.map((row) => (
-          <li key={row.title} className="rounded-xl border border-fg/10 bg-surface p-5">
+          <li key={row.title} className="border-t border-gold/45 pt-5">
             <div className="text-sm font-medium text-fg">{row.title}</div>
             <p className="mt-2 text-sm leading-relaxed font-light text-fg/60">{row.body}</p>
           </li>

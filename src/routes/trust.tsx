@@ -103,9 +103,9 @@ function Page() {
           title="The short version"
           body="Least privilege. Human approval on anything that matters. Logs. Your systems of record stay yours."
         />
-        <div className="mx-auto grid max-w-5xl gap-4 px-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-5xl gap-x-10 gap-y-12 px-6 md:grid-cols-2">
           {SECTIONS.map((row) => (
-            <article key={row.title} className="rounded-2xl border border-fg/10 bg-surface p-8">
+            <article key={row.title} className="border-t border-gold/45 pt-5">
               <h2 className="text-lg font-medium text-fg">{row.title}</h2>
               <p className="mt-3 text-sm leading-relaxed font-light text-fg/60">{row.body}</p>
             </article>

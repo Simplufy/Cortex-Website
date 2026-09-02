@@ -8,6 +8,7 @@ import { CortexLogo } from "@/components/logo";
 import { RevealRoot } from "@/components/reveal";
 import { BRAND } from "@/data/brand";
 import { openCookieManager } from "@/components/cookie-banner";
+import { PointerGlow } from "@/components/constellation-field";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -17,6 +18,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     <AuditProvider>
       <div className="relative min-h-screen bg-bg text-fg">
         <NetBackground />
+        <PointerGlow className="fixed inset-0 z-[15] mix-blend-screen" />
         <div className="relative z-10 flex min-h-screen flex-col">
           {landing ? <LandingHeader /> : <SiteHeader />}
           <div className="flex-1">

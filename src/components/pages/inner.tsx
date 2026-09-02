@@ -48,20 +48,25 @@ export function IndustryPage({ industry }: { industry: Industry }) {
       </RevealSection>
       <RevealSection className="pt-24 pb-24">
         <SectionHead title="Does this sound familiar?" body="The stalls we hear in this trade every week." />
-        <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-2">
-          {industry.symptoms.map((s) => (
-            <article key={s.title} className="rounded-2xl border border-fg/10 bg-surface p-8">
-              <h3 className="text-xl font-medium text-fg">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed font-light text-fg/60">{s.body}</p>
+        <div className="mx-auto max-w-3xl divide-y divide-fg/10 px-6">
+          {industry.symptoms.map((s, i) => (
+            <article key={s.title} className="grid gap-3 py-8 sm:grid-cols-[3.5rem_1fr] sm:gap-6">
+              <span className="text-sm font-medium tracking-widest text-gold">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="text-xl font-medium text-fg">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed font-light text-fg/60">{s.body}</p>
+              </div>
             </article>
           ))}
         </div>
       </RevealSection>
       <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead title="What agents can watch" body="Examples. Your list comes from the audit, not a template." />
-        <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-x-10 gap-y-12 px-6 md:grid-cols-2">
           {industry.systems.map((s) => (
-            <article key={s.title} className="rounded-2xl border border-fg/10 bg-surface p-8">
+            <article key={s.title} className="border-t border-gold/45 pt-5">
               <h3 className="text-xl font-medium text-fg">{s.title}</h3>
               <p className="mt-3 text-sm leading-relaxed font-light text-fg/60">{s.body}</p>
               <ul className="mt-5 space-y-2 text-sm text-fg/70">
@@ -81,13 +86,13 @@ export function IndustryPage({ industry }: { industry: Industry }) {
           title="Built to work with the software your industry already uses."
           body={`Examples of systems we commonly evaluate for integration. ${industry.software.intro}`}
         />
-        <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-x-10 gap-y-10 px-6 md:grid-cols-2">
           {industry.software.groups.map((g) => (
-            <article key={g.title} className="rounded-2xl border border-fg/10 bg-surface p-8">
+            <article key={g.title} className="border-t border-gold/45 pt-5">
               <h3 className="text-lg font-medium text-fg">{g.title}</h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {g.tools.map((t) => (
-                  <span key={t} className="rounded-full border border-fg/10 bg-bg px-3 py-1 text-xs text-fg/70">
+                  <span key={t} className="rounded-full border border-fg/10 px-3 py-1 text-xs text-fg/70">
                     {t}
                   </span>
                 ))}
@@ -102,21 +107,15 @@ export function IndustryPage({ industry }: { industry: Industry }) {
       </RevealSection>
       <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead title="How we install it" body="Audit. Design. Build. Deploy. Manage. Your existing software stays in place." />
-        <div className="mx-auto grid max-w-6xl gap-4 px-6 md:grid-cols-2 lg:grid-cols-5">
-          {[
-            ["01 / AUDIT", "Understand the operation", "Software stack, repetitive paths, follow-up that depends on memory."],
-            ["02 / DESIGN", "Design the system", "Which agents, which systems, what they may do, and what requires a person."],
-            ["03 / BUILD", "Connect and build", "Agents around those paths, connected to the tools you already use."],
-            ["04 / DEPLOY", "Test with your team", "Permissions, approvals, testing."],
-            ["05 / MANAGE", "Keep it reliable", "Monitoring, connectors, improvements."],
-          ].map(([k, t, b]) => (
-            <article key={k} className="rounded-2xl border border-fg/10 bg-surface p-6">
-              <div className="mb-3 text-[10px] font-bold tracking-widest text-gold">{k}</div>
-              <h3 className="font-medium text-fg">{t}</h3>
-              <p className="mt-2 text-sm font-light text-fg/55">{b}</p>
-            </article>
-          ))}
-        </div>
+        <ProcessSteps
+          items={[
+            { num: "01", kicker: "Audit", title: "Understand the operation", body: "Software stack, repetitive paths, follow-up that depends on memory." },
+            { num: "02", kicker: "Design", title: "Design the system", body: "Which agents, which systems, what they may do, and what requires a person." },
+            { num: "03", kicker: "Build", title: "Connect and build", body: "Agents around those paths, connected to the tools you already use." },
+            { num: "04", kicker: "Deploy", title: "Test with your team", body: "Permissions, approvals, testing." },
+            { num: "05", kicker: "Manage", title: "Keep it reliable", body: "Monitoring, connectors, improvements." },
+          ]}
+        />
       </RevealSection>
       <OtherIndustries current={industry.slug} />
       <FinalCtaBlock />
@@ -155,14 +154,14 @@ export function CardGrid({
   children: React.ReactNode;
   cols?: string;
 }) {
-  return <div className={`mx-auto grid max-w-6xl gap-4 px-6 ${cols}`}>{children}</div>;
+  return <div className={`mx-auto grid max-w-6xl gap-x-10 gap-y-12 px-6 ${cols}`}>{children}</div>;
 }
 
 export function InfoCard({ kicker, title, body, to, extra }: { kicker?: string; title: string; body: string; to?: string; extra?: string }) {
   const inner = (
     <>
       {kicker && <div className="text-[10px] font-bold tracking-widest text-gold uppercase">{kicker}</div>}
-      <h3 className="mt-2 text-xl font-medium tracking-tight text-fg">{title}</h3>
+      <h3 className={`${kicker ? "mt-2" : ""} text-xl font-medium tracking-tight text-fg`}>{title}</h3>
       <p className="mt-3 text-sm leading-relaxed font-light text-fg/60">{body}</p>
       {extra && <p className="mt-4 text-xs text-fg/40">{extra}</p>}
       {to && (
@@ -172,13 +171,39 @@ export function InfoCard({ kicker, title, body, to, extra }: { kicker?: string; 
       )}
     </>
   );
-  const cls = "rounded-2xl border border-fg/10 bg-surface p-8 transition-colors hover:border-gold/30";
+  const cls = "block border-t border-gold/45 pt-5 transition-colors hover:border-gold";
   if (to) {
     return (
-      <Link to={to} className={`group block ${cls}`}>
+      <Link to={to} className={`group ${cls}`}>
         {inner}
       </Link>
     );
   }
   return <article className={cls}>{inner}</article>;
+}
+
+export function ProcessSteps({
+  items,
+}: {
+  items: readonly { num: string; kicker?: string; title: string; body: string }[];
+}) {
+  return (
+    <ol className="mx-auto grid max-w-6xl gap-10 px-6 sm:grid-cols-2 lg:grid-cols-5">
+      {items.map((p, i) => (
+        <li key={p.num} className="relative">
+          {i < items.length - 1 ? (
+            <span className="pointer-events-none absolute top-6 left-[3.25rem] hidden h-px w-[calc(100%+1.5rem)] bg-linear-to-r from-gold/50 to-gold/0 lg:block" />
+          ) : null}
+          <div className="flex size-12 items-center justify-center rounded-full border border-gold/35 bg-gold/10 text-sm font-medium tracking-widest text-gold">
+            {p.num}
+          </div>
+          {p.kicker ? (
+            <div className="mt-4 text-[10px] font-bold tracking-widest text-fg/40 uppercase">{p.kicker}</div>
+          ) : null}
+          <h3 className="mt-2 text-lg font-medium tracking-tight text-fg">{p.title}</h3>
+          <p className="mt-3 text-sm leading-relaxed font-light text-fg/55">{p.body}</p>
+        </li>
+      ))}
+    </ol>
+  );
 }

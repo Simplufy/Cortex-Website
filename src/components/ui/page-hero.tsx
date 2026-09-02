@@ -1,4 +1,5 @@
 import { BeamButton, GhostButton } from "@/components/ui/beam-button";
+import { ConstellationField } from "@/components/constellation-field";
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
@@ -22,8 +23,11 @@ export function PageHero({
   secondary?: { to: string; label: string };
 }) {
   return (
-    <main className="relative mx-auto max-w-7xl pt-24 pb-16 lg:pt-24 lg:pb-24">
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-6 text-center">
+    <main className="relative overflow-hidden pt-24 pb-16 lg:pt-28 lg:pb-24">
+      <div className="pointer-events-none absolute inset-0 opacity-50" aria-hidden>
+        <ConstellationField />
+      </div>
+      <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center px-6 text-center">
         {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
         {titleNode ?? (
           <h1 className="animate-fade-up delay-100 text-balance text-4xl leading-[1.1] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl lg:text-7xl">

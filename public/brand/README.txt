@@ -17,6 +17,9 @@ Where to use what
   LinkedIn banner ................. linkedin-banner-1584x396.jpg
   X header ........................ x-header-1500x500.jpg
   Facebook cover .................. facebook-cover-1640x624.jpg
+  YouTube banner .................. youtube-banner-2560x1440.jpg
+  YouTube video watermark ......... youtube-watermark-512.png
+                                    (150px min; transparent PNG)
   Link preview / OG ............... og-1200x630.jpg
   Instagram / GHL square post ..... instagram-1080.jpg
   Google / GHL calendar cover ..... calendar-cover-1920x1080.jpg

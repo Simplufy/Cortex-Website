@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, SectionHead } from "@/components/ui/page-hero";
-import { FinalCtaBlock, InfoCard, CardGrid } from "@/components/pages/inner";
+import { FinalCtaBlock, ProcessSteps } from "@/components/pages/inner";
 import { DashboardShowcase } from "@/components/pages/operator-board";
 import { PILLARS, WHAT_WE_DO } from "@/data/site";
 import { pageHead } from "@/lib/seo";
@@ -46,11 +46,7 @@ function HowWeWorkPage() {
           title="Audit. Design. Build. Deploy. Manage."
           body="We understand the operation before we automate it. Every deployment starts by finding the highest-value work AI can realistically handle."
         />
-        <CardGrid cols="md:grid-cols-2 lg:grid-cols-5">
-          {PILLARS.map((p) => (
-            <InfoCard key={p.num} kicker={`${p.num} · ${p.kicker}`} title={p.title} body={p.body} />
-          ))}
-        </CardGrid>
+        <ProcessSteps items={PILLARS} />
       </RevealSection>
       <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead
@@ -62,11 +58,7 @@ function HowWeWorkPage() {
       </RevealSection>
       <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead title="What you walk away with after the first project" />
-        <CardGrid cols="md:grid-cols-2 lg:grid-cols-5">
-          {WHAT_WE_DO.map((w) => (
-            <InfoCard key={w.num} title={w.title} body={w.body} />
-          ))}
-        </CardGrid>
+        <ProcessSteps items={WHAT_WE_DO} />
       </RevealSection>
       <FinalCtaBlock />
     </>

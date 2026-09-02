@@ -20,6 +20,8 @@ const IMAGES: { name: string; file: string }[] = [
   { name: "LinkedIn banner", file: "linkedin-banner-1584x396.jpg" },
   { name: "X header", file: "x-header-1500x500.jpg" },
   { name: "Facebook cover", file: "facebook-cover-1640x624.jpg" },
+  { name: "YouTube banner", file: "youtube-banner-2560x1440.jpg" },
+  { name: "YouTube watermark", file: "youtube-watermark-512.png" },
   { name: "Link preview / OG", file: "og-1200x630.jpg" },
   { name: "Instagram square", file: "instagram-1080.jpg" },
   { name: "Calendar cover", file: "calendar-cover-1920x1080.jpg" },

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useId, useRef, useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { INDUSTRIES } from "@/data/site";
 import { BeamButton } from "@/components/ui/beam-button";
@@ -320,8 +320,16 @@ export function AuditButton({
   size?: "sm" | "md";
 }) {
   const { openAudit } = useAudit();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  if (pathname === "/audit") {
+    return (
+      <BeamButton onClick={openAudit} className={className} size={size}>
+        {children}
+      </BeamButton>
+    );
+  }
   return (
-    <BeamButton onClick={openAudit} className={className} size={size}>
+    <BeamButton to="/audit" className={className} size={size}>
       {children}
     </BeamButton>
   );
