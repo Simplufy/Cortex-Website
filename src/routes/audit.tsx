@@ -38,25 +38,23 @@ function AuditLanding() {
 
 function Hero() {
   return (
-    <RevealSection className="mx-auto max-w-5xl px-6 pt-6 pb-12 text-center lg:pt-8 lg:pb-14">
-      <p className="mb-4 text-[10px] font-bold tracking-[0.22em] text-gold uppercase">{BRAND.legal}</p>
-      <h1 className="text-balance text-4xl leading-[1.08] font-medium tracking-tighter text-fg sm:text-5xl">
+    <RevealSection className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-5xl flex-col items-center justify-start px-6 pt-5 pb-6 text-center lg:justify-center lg:py-6">
+      <p className="mb-3 text-[10px] font-bold tracking-[0.22em] text-gold uppercase">{BRAND.legal}</p>
+      <h1 className="text-balance text-3xl leading-[1.08] font-medium tracking-tighter text-fg sm:text-4xl lg:text-[2.75rem]">
         Find out what AI could actually take off your team.
       </h1>
-      <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed font-light text-fg/60 sm:text-lg">
-        We'll review how work moves through your business, the software you already use, and where your people are
-        still doing repetitive work manually. You'll leave with a prioritized AI opportunity map — whether you hire
-        Cortex or not.
+      <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed font-light text-fg/60 sm:text-base">
+        We'll map the work between your systems. You leave with a prioritized AI opportunity map.
       </p>
-      <div className="mt-6 flex flex-col items-center justify-center">
-        <AuditButton>Get My Free AI Operations Audit</AuditButton>
-      </div>
-      <p className="mt-3 text-xs text-fg/50">For established service businesses. No obligation to implement anything.</p>
-      <div className="mx-auto mt-10 max-w-2xl overflow-visible">
-        <p className="mb-4 text-[10px] font-bold tracking-[0.22em] text-gold uppercase">
-          See what a real AI system looks like inside a service business
+      <div className="mx-auto mt-5 flex w-full max-w-lg flex-col items-center">
+        <p className="mb-2 text-[10px] font-bold tracking-[0.22em] text-gold uppercase">
+          See a real AI system inside a service business
         </p>
         <VslPlayer />
+        <div className="mt-5">
+          <AuditButton variant="solid">Get My Free AI Operations Audit</AuditButton>
+        </div>
+        <p className="mt-2 text-xs text-fg/50">For established service businesses. No obligation to implement anything.</p>
       </div>
     </RevealSection>
   );
@@ -151,7 +149,7 @@ function Problem() {
         ))}
       </div>
       <div className="mt-12 text-center">
-        <AuditButton>Get My Free AI Operations Audit</AuditButton>
+        <AuditButton variant="solid">Get My Free AI Operations Audit</AuditButton>
       </div>
     </RevealSection>
   );
@@ -199,7 +197,7 @@ function AuditWhat() {
         ))}
       </div>
       <div className="mt-12 text-center">
-        <AuditButton>Get My Free AI Operations Audit</AuditButton>
+        <AuditButton variant="solid">Get My Free AI Operations Audit</AuditButton>
       </div>
     </RevealSection>
   );
@@ -341,7 +339,7 @@ function Final() {
           A minute to apply. Thirty minutes on how work moves. You leave with a map.
         </p>
         <div className="mt-10">
-          <AuditButton>Get My Free AI Operations Audit</AuditButton>
+          <AuditButton variant="solid">Get My Free AI Operations Audit</AuditButton>
         </div>
       </div>
     </RevealSection>

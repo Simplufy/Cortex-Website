@@ -314,22 +314,24 @@ export function AuditButton({
   children,
   className,
   size,
+  variant,
 }: {
   children: React.ReactNode;
   className?: string;
   size?: "sm" | "md";
+  variant?: "beam" | "solid";
 }) {
   const { openAudit } = useAudit();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   if (pathname === "/audit") {
     return (
-      <BeamButton onClick={openAudit} className={className} size={size}>
+      <BeamButton onClick={openAudit} className={className} size={size} variant={variant}>
         {children}
       </BeamButton>
     );
   }
   return (
-    <BeamButton to="/audit" className={className} size={size}>
+    <BeamButton to="/audit" className={className} size={size} variant={variant}>
       {children}
     </BeamButton>
   );

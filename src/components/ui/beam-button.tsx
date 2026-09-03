@@ -11,16 +11,39 @@ type Props = {
   onClick?: () => void;
   type?: "button" | "submit";
   disabled?: boolean;
+  variant?: "beam" | "solid";
 };
 
-export function BeamButton({ to, href, children, size = "md", className, onClick, type = "button", disabled }: Props) {
+export function BeamButton({
+  to,
+  href,
+  children,
+  size = "md",
+  className,
+  onClick,
+  type = "button",
+  disabled,
+  variant = "beam",
+}: Props) {
   const pad = size === "sm" ? "px-5 py-2.5 text-[11px]" : "px-10 py-4 text-sm";
+  const solid = variant === "solid";
   const cls = cn(
-    "group inline-flex overflow-hidden uppercase transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgb(var(--gold-rgb)/0.35)] font-semibold text-fg tracking-widest rounded-full relative items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 disabled:pointer-events-none disabled:opacity-50",
+    "group inline-flex uppercase transition-all duration-500 hover:scale-[1.02] font-semibold tracking-widest rounded-full relative items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 disabled:pointer-events-none disabled:opacity-50",
+    solid
+      ? "bg-gold text-bg hover:bg-gold-light hover:shadow-[0_0_40px_-8px_rgb(var(--gold-rgb)/0.7)]"
+      : "overflow-hidden text-fg hover:shadow-[0_0_40px_-10px_rgb(var(--gold-rgb)/0.35)]",
     pad,
     className,
   );
-  const inner = (
+  const inner = solid ? (
+    <>
+      <span className="relative z-10">{children}</span>
+      <ArrowRight
+        className={cn("relative z-10 ml-2 transition-transform duration-300 group-hover:translate-x-1", size === "sm" ? "size-3" : "size-4")}
+        strokeWidth={2}
+      />
+    </>
+  ) : (
     <>
       <div className="absolute inset-0 -z-20 overflow-hidden rounded-full p-px">
         <div

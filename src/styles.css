@@ -633,12 +633,12 @@ body::after {
 }
 
 .holo-ring {
-  animation: brain-spin 28s linear infinite;
+  animation: holo-spin 28s linear infinite;
 }
 
 .holo-core-glow {
   background: radial-gradient(circle, rgb(255 87 31 / 0.45), transparent 68%);
-  animation: brain-pulse-ring 2.8s ease-out infinite;
+  animation: holo-pulse 2.8s ease-out infinite;
 }
 
 .holo-float {
@@ -652,6 +652,27 @@ body::after {
   }
   50% {
     transform: translateY(-7px);
+  }
+}
+
+@keyframes holo-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes holo-pulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.18);
   }
 }
 

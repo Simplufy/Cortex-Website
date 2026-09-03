@@ -13,6 +13,7 @@ import {
   AGENT_CATEGORIES,
   CASE_STUDIES,
   COMPARISON,
+  CONNECT_TOOLS,
   FAQS,
   INDUSTRIES,
   PILLARS,
@@ -43,29 +44,75 @@ export function HomePage() {
 
 function Hero() {
   return (
-    <main className="relative overflow-hidden pt-20 pb-12 lg:pt-24 lg:pb-16">
+    <main className="relative overflow-hidden pt-14 pb-8 lg:pt-16 lg:pb-10">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <ConstellationField className="opacity-70" />
       </div>
       <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center px-6 text-center">
-        <p className="animate-fade-up mb-6 text-[10px] font-bold tracking-[0.22em] text-gold uppercase">{BRAND.legal}</p>
-        <h1 className="animate-fade-up delay-100 text-balance text-4xl leading-[1.06] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl lg:text-7xl">
+        <p className="animate-fade-up mb-4 text-[10px] font-bold tracking-[0.22em] text-gold uppercase">{BRAND.legal}</p>
+        <h1 className="animate-fade-up delay-100 text-balance text-4xl leading-[1.06] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl">
           Custom AI systems built around{" "}
           <span className="text-gold">the way your business actually works.</span>
         </h1>
-        <p className="animate-fade-up delay-200 mt-6 max-w-2xl text-balance text-lg leading-relaxed font-light text-fg/60 md:text-xl">
+        <p className="animate-fade-up delay-200 mt-4 max-w-2xl text-balance text-base leading-relaxed font-light text-fg/60 md:text-lg">
           We connect AI agents to the software your team already uses so they can monitor work, follow up, build
           reports, catch problems, and handle repetitive tasks across your operation.
         </p>
-        <div className="animate-fade-up delay-300 mt-10 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
+        <div className="animate-fade-up delay-300 mt-7 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
           <AuditButton>Get Your Free AI Operations Audit</AuditButton>
           <GhostButton to="/how-we-work">See How It Works</GhostButton>
         </div>
-        <p className="animate-fade-up delay-300 mt-5 text-sm text-fg/45">
+        <p className="animate-fade-up delay-300 mt-4 text-sm text-fg/45">
           Keep your existing software. Cortex works across it.
         </p>
       </div>
+      <ToolMarquee />
     </main>
+  );
+}
+
+function ToolMarquee() {
+  const mid = Math.ceil(CONNECT_TOOLS.length / 2);
+  const rowA = CONNECT_TOOLS.slice(0, mid);
+  const rowB = CONNECT_TOOLS.slice(mid);
+  return (
+    <div className="animate-fade-up delay-300 relative z-10 mt-10">
+      <p className="mb-5 text-center text-[10px] font-bold tracking-[0.22em] text-gold uppercase">Connect your tools</p>
+      <div className="group/marquee flex flex-col gap-3">
+        <LogoRow tools={rowA} direction="rtl" />
+        <LogoRow tools={rowB} direction="ltr" />
+      </div>
+      <p className="mt-4 text-center text-[11px] text-fg/50">
+        Examples of software we commonly evaluate. What we can connect is confirmed in the audit.
+      </p>
+    </div>
+  );
+}
+
+function LogoRow({
+  tools,
+  direction,
+}: {
+  tools: readonly { name: string; file: string }[];
+  direction: "rtl" | "ltr";
+}) {
+  const loop = [...tools, ...tools];
+  return (
+    <div className="relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-linear-to-r from-bg to-transparent sm:w-28" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-bg to-transparent sm:w-28" />
+      <div className={direction === "rtl" ? "animate-marquee-rtl flex w-max gap-3 pr-3" : "animate-marquee-ltr flex w-max gap-3 pr-3"}>
+        {loop.map((t, i) => (
+          <div
+            key={`${t.name}-${i}`}
+            className="flex h-12 shrink-0 items-center gap-2.5 rounded-xl border border-fg/10 bg-surface/80 px-3.5"
+          >
+            <img src={`/images/logos/${t.file}`} alt="" width={28} height={28} className="size-7 object-contain" />
+            <span className="whitespace-nowrap text-sm font-medium text-fg/70">{t.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
