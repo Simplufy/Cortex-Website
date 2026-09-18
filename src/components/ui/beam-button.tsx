@@ -25,10 +25,13 @@ export function BeamButton({
   disabled,
   variant = "beam",
 }: Props) {
-  const pad = size === "sm" ? "px-5 py-2.5 text-[11px]" : "px-10 py-4 text-sm";
+  const pad =
+    size === "sm"
+      ? "min-h-11 px-4 py-2.5 text-[10px] tracking-[0.14em] sm:px-5 sm:text-[11px] sm:tracking-widest"
+      : "min-h-12 px-5 py-3.5 text-[10px] tracking-[0.12em] sm:min-h-14 sm:px-10 sm:py-4 sm:text-sm sm:tracking-widest";
   const solid = variant === "solid";
   const cls = cn(
-    "group inline-flex uppercase transition-all duration-500 hover:scale-[1.02] font-semibold tracking-widest rounded-full relative items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 disabled:pointer-events-none disabled:opacity-50",
+    "group relative inline-flex max-w-full touch-manipulation uppercase transition-all duration-500 hover:scale-[1.02] font-semibold rounded-full items-center justify-center text-center leading-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 disabled:pointer-events-none disabled:opacity-50",
     solid
       ? "bg-gold text-bg hover:bg-gold-light hover:shadow-[0_0_40px_-8px_rgb(var(--gold-rgb)/0.7)]"
       : "overflow-hidden text-fg hover:shadow-[0_0_40px_-10px_rgb(var(--gold-rgb)/0.35)]",
@@ -37,9 +40,12 @@ export function BeamButton({
   );
   const inner = solid ? (
     <>
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 text-balance">{children}</span>
       <ArrowRight
-        className={cn("relative z-10 ml-2 transition-transform duration-300 group-hover:translate-x-1", size === "sm" ? "size-3" : "size-4")}
+        className={cn(
+          "relative z-10 ml-2 shrink-0 transition-transform duration-300 group-hover:translate-x-1",
+          size === "sm" ? "size-3" : "size-3.5 sm:size-4",
+        )}
         strokeWidth={2}
       />
     </>
@@ -64,11 +70,11 @@ export function BeamButton({
         />
         <div className="pointer-events-none absolute bottom-0 left-1/2 h-1/2 w-2/3 -translate-x-1/2 rounded-full bg-gold/10 blur-2xl transition-colors duration-500 group-hover:bg-gold/30" />
       </div>
-      <span className="relative z-10 text-fg/90 transition-colors group-hover:text-fg">{children}</span>
+      <span className="relative z-10 text-balance text-fg/90 transition-colors group-hover:text-fg">{children}</span>
       <ArrowRight
         className={cn(
-          "relative z-10 ml-2 transition-transform duration-300 group-hover:translate-x-1",
-          size === "sm" ? "size-3" : "size-4",
+          "relative z-10 ml-2 shrink-0 transition-transform duration-300 group-hover:translate-x-1",
+          size === "sm" ? "size-3" : "size-3.5 sm:size-4",
         )}
         strokeWidth={2}
       />
@@ -109,7 +115,7 @@ export function GhostButton({
     <Link
       to={to}
       className={cn(
-        "inline-flex w-full items-center justify-center rounded-full border border-fg/5 px-8 py-4 text-sm font-medium text-fg/60 transition-all hover:bg-fg/5 hover:text-fg sm:w-auto",
+        "inline-flex min-h-12 w-full items-center justify-center rounded-full border border-fg/5 px-6 py-3.5 text-sm font-medium text-fg/60 transition-all hover:bg-fg/5 hover:text-fg sm:min-h-0 sm:w-auto sm:px-8 sm:py-4",
         className,
       )}
     >

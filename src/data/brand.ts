@@ -16,5 +16,11 @@ export const BRAND = {
   ogImage: "https://buildcortex.dev/og.jpg",
   vslSrc: "/videos/vsl.mp4",
   vslPoster: "/images/cortex/vsl-poster.jpg",
+  automotiveVslSrc: "/videos/automotive-vsl.mp4",
+  automotiveVslPoster: "/images/cortex/automotive-vsl-poster.jpg",
+  automotiveVslCover: "/images/cortex/automotive-vsl-cover.gif",
+  homeServicesVslSrc: "/videos/home-services-vsl.mp4",
+  homeServicesVslPoster: "/images/cortex/home-services-vsl-poster.jpg",
+  homeServicesVslCover: "/images/cortex/home-services-vsl-cover.jpg",
   founderPhoto: "/images/cortex/mcguire.jpg",
 } as const;

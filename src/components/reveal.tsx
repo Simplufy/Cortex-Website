@@ -24,6 +24,7 @@ export function RevealSection({ className, children, ...props }: ComponentProps<
       return;
     }
     el.classList.add("js-reveal");
+    revealIfVisible(el);
   }, []);
 
   useEffect(() => {
@@ -53,29 +54,16 @@ export function RevealRoot({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (reduced()) return;
-
-    const arm = (el: HTMLElement) => {
-      if (!el.classList.contains("js-reveal")) el.classList.add("js-reveal");
-    };
-
     const checkAll = () => {
-      document.querySelectorAll<HTMLElement>("section").forEach((el) => {
-        arm(el);
-        revealIfVisible(el);
-      });
+      document.querySelectorAll<HTMLElement>("section.js-reveal").forEach(revealIfVisible);
     };
-
     const a = requestAnimationFrame(() => requestAnimationFrame(checkAll));
     window.addEventListener("scroll", checkAll, { passive: true });
     window.addEventListener("resize", checkAll);
-    const mo = new MutationObserver(checkAll);
-    mo.observe(document.body, { childList: true, subtree: true });
-
     return () => {
       cancelAnimationFrame(a);
       window.removeEventListener("scroll", checkAll);
       window.removeEventListener("resize", checkAll);
-      mo.disconnect();
     };
   }, [pathname]);
 

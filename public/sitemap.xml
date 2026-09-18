@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://buildcortex.dev/</loc></url>
-  <url><loc>https://buildcortex.dev/audit</loc></url>
+  <url><loc>https://buildcortex.dev/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit/automotive</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit/hvac</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit/plumbing</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit/electrical</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit/roofing</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit/home-services</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit/pest-control</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit/contracting</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit/smart-home</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://buildcortex.dev/audit/windows</loc><lastmod>2026-09-17</lastmod></url>
   <url><loc>https://buildcortex.dev/how-we-work</loc></url>
   <url><loc>https://buildcortex.dev/about-us</loc></url>
   <url><loc>https://buildcortex.dev/contact</loc></url>
   <url><loc>https://buildcortex.dev/trust</loc></url>
   <url><loc>https://buildcortex.dev/privacy</loc></url>
   <url><loc>https://buildcortex.dev/terms</loc></url>
-  <url><loc>https://buildcortex.dev/resources</loc></url>
+  <url><loc>https://buildcortex.dev/resources</loc><lastmod>2026-09-10</lastmod></url>
   <url><loc>https://buildcortex.dev/case-studies</loc></url>
   <url><loc>https://buildcortex.dev/case-studies/detail-driven</loc></url>
   <url><loc>https://buildcortex.dev/industries</loc></url>
@@ -26,9 +36,17 @@
   <url><loc>https://buildcortex.dev/ai-agents</loc></url>
   <url><loc>https://buildcortex.dev/private-ai</loc></url>
   <url><loc>https://buildcortex.dev/managed-ai</loc></url>
-  <url><loc>https://buildcortex.dev/blog/private-ai-workforce-automotive</loc></url>
-  <url><loc>https://buildcortex.dev/blog/local-vs-cloud-ai-service-businesses</loc></url>
-  <url><loc>https://buildcortex.dev/blog/ai-agents-inside-an-auto-repair-shop</loc></url>
-  <url><loc>https://buildcortex.dev/blog/ai-agents-vs-automations</loc></url>
-  <url><loc>https://buildcortex.dev/blog/how-an-ai-operations-audit-works</loc></url>
+  <url><loc>https://buildcortex.dev/blog/private-ai-workforce-automotive</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/local-vs-cloud-ai-service-businesses</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/ai-agents-inside-an-auto-repair-shop</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/ai-agents-vs-automations</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/how-an-ai-operations-audit-works</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/declined-work-never-gets-a-second-call</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/collision-ai-ccc-one-what-exports</loc><lastmod>2026-09-02</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/shop-owner-report-five-dashboards</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/missed-calls-while-the-drive-is-slammed</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/crm-leads-sitting-four-days</loc><lastmod>2026-09-05</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/google-ads-spend-vs-cars-that-booked</loc><lastmod>2026-09-06</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/connecting-gohighlevel-to-tekmetric</loc><lastmod>2026-09-08</lastmod></url>
+  <url><loc>https://buildcortex.dev/blog/same-coordination-problem-in-hvac</loc><lastmod>2026-09-09</lastmod></url>
 </urlset>

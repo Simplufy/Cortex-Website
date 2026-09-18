@@ -91,11 +91,11 @@ export function NeuralScroll() {
   const spin = lerp(-6, 0, form);
 
   return (
-    <div ref={wrap} className="relative z-20" style={{ height: "220vh" }}>
+    <div ref={wrap} className="relative z-20 h-[170vh] md:h-[220vh]">
       <div className="sticky top-16 flex h-[calc(100dvh-4rem)] flex-col bg-bg">
         <div className="mx-auto w-full max-w-3xl shrink-0 px-6 pt-4 text-center md:pt-6">
           <p className="text-[10px] font-bold tracking-[0.22em] text-gold uppercase">Then we connect them</p>
-          <h2 className="mt-3 text-balance text-2xl font-medium tracking-tight text-fg md:text-4xl">
+          <h2 className="mt-3 text-balance text-xl font-medium tracking-tight text-fg sm:text-2xl md:text-4xl">
             {core > 0.55 ? "Cortex sits in the middle." : "Most operations look like this."}
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm font-light text-fg/60 md:text-base">

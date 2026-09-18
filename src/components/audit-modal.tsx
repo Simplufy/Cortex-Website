@@ -1,26 +1,59 @@
-import { createContext, useContext, useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { INDUSTRIES } from "@/data/site";
 import { BeamButton } from "@/components/ui/beam-button";
 import { qualifyAudit, REVENUE_OPTIONS, submitAudit } from "@/lib/submit-audit";
+import { auditPath } from "@/lib/audit-path";
 
-type AuditCtx = { open: boolean; openAudit: () => void; closeAudit: () => void };
-const Ctx = createContext<AuditCtx | null>(null);
+type AuditOpts = { industry?: string };
+type Snap = { open: boolean; preset: AuditOpts };
+
+const SERVER_SNAP: Snap = { open: false, preset: {} };
+let snap: Snap = SERVER_SNAP;
+const listeners = new Set<() => void>();
+
+function emit() {
+  listeners.forEach((l) => l());
+}
+
+export function openAudit(opts?: AuditOpts) {
+  snap = { open: true, preset: opts ?? {} };
+  emit();
+}
+
+export function closeAudit() {
+  snap = { open: false, preset: snap.preset };
+  emit();
+}
+
+function subscribe(cb: () => void) {
+  listeners.add(cb);
+  return () => {
+    listeners.delete(cb);
+  };
+}
+
+function getSnapshot() {
+  return snap;
+}
+
+function getServerSnapshot() {
+  return SERVER_SNAP;
+}
 
 export function useAudit() {
-  const ctx = useContext(Ctx);
-  if (!ctx) throw new Error("useAudit must be inside AuditProvider");
-  return ctx;
+  const state = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  return { open: state.open, preset: state.preset, openAudit, closeAudit };
 }
 
 export function AuditProvider({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
   return (
-    <Ctx.Provider value={{ open, openAudit: () => setOpen(true), closeAudit: () => setOpen(false) }}>
+    <>
       {children}
       <AuditModal />
-    </Ctx.Provider>
+    </>
   );
 }
 
@@ -31,7 +64,7 @@ const empty = {
   email: "",
   phone: "",
   company: "",
-  industry: "automotive",
+  industry: "",
   revenue: "",
   website: "",
   employees: "",
@@ -55,7 +88,7 @@ function utms() {
 }
 
 function AuditModal() {
-  const { open, closeAudit } = useAudit();
+  const { open, preset, closeAudit } = useAudit();
   const navigate = useNavigate();
   const titleId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -66,7 +99,13 @@ function AuditModal() {
   const [form, setForm] = useState(empty);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      setStep(1);
+      setBusy(false);
+      setError("");
+      return;
+    }
+    setForm({ ...empty, industry: preset.industry || "" });
     lastFocus.current = document.activeElement as HTMLElement | null;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeAudit();
@@ -96,15 +135,7 @@ function AuditModal() {
       window.clearTimeout(t);
       lastFocus.current?.focus();
     };
-  }, [open, closeAudit]);
-
-  useEffect(() => {
-    if (!open) {
-      setStep(1);
-      setBusy(false);
-      setError("");
-    }
-  }, [open]);
+  }, [open, preset.industry, closeAudit]);
 
   const field = (k: keyof typeof form) => ({
     value: form[k],
@@ -154,17 +185,17 @@ function AuditModal() {
     }
   };
 
-  if (!open) return null;
+  if (!open || typeof document === "undefined") return null;
 
-  return (
-    <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 sm:items-center sm:p-6">
+  const ui = (
+    <div className="fixed inset-0 z-[100] flex items-end justify-center p-0 sm:items-center sm:p-6">
       <button type="button" aria-label="Close" className="absolute inset-0 bg-bg/80 backdrop-blur-sm" onClick={closeAudit} />
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-10 w-full max-w-lg rounded-t-2xl border border-fg/10 bg-surface shadow-2xl sm:rounded-2xl"
+        className="relative z-10 max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl border border-fg/10 bg-surface shadow-2xl sm:rounded-2xl"
       >
         <button
           type="button"
@@ -174,16 +205,14 @@ function AuditModal() {
         >
           <X className="size-5" />
         </button>
-        <div className="p-6 sm:p-8">
+        <div className="p-5 sm:p-8">
           {step === 2 ? (
             <>
               <p className="text-[10px] font-bold tracking-widest text-gold uppercase">Step 2 of 2</p>
-              <h2 id={titleId} className="mt-2 text-2xl font-medium tracking-tight text-fg md:text-3xl">
+              <h2 id={titleId} className="mt-2 pr-8 text-2xl font-medium tracking-tight text-fg md:text-3xl">
                 Help us prepare.
               </h2>
-              <p className="mt-2 text-sm font-light text-fg/50">
-                A few facts so the walkthrough is about your operation.
-              </p>
+              <p className="mt-2 text-sm font-light text-fg/50">A few facts so the walkthrough is about your operation.</p>
               <form onSubmit={sendStep2} className="mt-6 space-y-3">
                 <div className="grid gap-3 sm:grid-cols-2">
                   <label className="block">
@@ -236,7 +265,7 @@ function AuditModal() {
           ) : (
             <>
               <p className="text-[10px] font-bold tracking-widest text-gold uppercase">Free AI Operations Audit · Step 1</p>
-              <h2 id={titleId} className="mt-2 text-2xl font-medium tracking-tight text-fg md:text-3xl">
+              <h2 id={titleId} className="mt-2 pr-8 text-2xl font-medium tracking-tight text-fg md:text-3xl">
                 See where AI could actually help.
               </h2>
               <p className="mt-2 text-sm font-light text-fg/50">
@@ -272,7 +301,10 @@ function AuditModal() {
                 <div className="grid gap-3 sm:grid-cols-2">
                   <label className="block">
                     <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Industry</span>
-                    <select {...field("industry")} className={inputCls}>
+                    <select required {...field("industry")} className={inputCls}>
+                      <option value="" disabled>
+                        Select
+                      </option>
                       {INDUSTRIES.map((i) => (
                         <option key={i.slug} value={i.slug}>
                           {i.name}
@@ -308,6 +340,8 @@ function AuditModal() {
       </div>
     </div>
   );
+
+  return createPortal(ui, document.body);
 }
 
 export function AuditButton({
@@ -315,23 +349,40 @@ export function AuditButton({
   className,
   size,
   variant,
+  industry,
 }: {
   children: React.ReactNode;
   className?: string;
   size?: "sm" | "md";
   variant?: "beam" | "solid";
+  industry?: string;
 }) {
-  const { openAudit } = useAudit();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  if (pathname === "/audit") {
+  const landerMatch = pathname.match(/^\/audit\/([^/]+)\/?$/);
+  const resolvedIndustry = industry || landerMatch?.[1];
+  const onLander = pathname === "/audit" || pathname.startsWith("/audit/");
+
+  if (!onLander) {
     return (
-      <BeamButton onClick={openAudit} className={className} size={size} variant={variant}>
+      <BeamButton
+        to={auditPath(resolvedIndustry)}
+        className={className}
+        size={size}
+        variant={variant}
+      >
         {children}
       </BeamButton>
     );
   }
+
   return (
-    <BeamButton to="/audit" className={className} size={size} variant={variant}>
+    <BeamButton
+      type="button"
+      className={className}
+      size={size}
+      variant={variant}
+      onClick={() => openAudit({ industry: resolvedIndustry })}
+    >
       {children}
     </BeamButton>
   );

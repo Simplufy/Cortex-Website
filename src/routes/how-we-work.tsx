@@ -5,6 +5,7 @@ import { DashboardShowcase } from "@/components/pages/operator-board";
 import { PILLARS, WHAT_WE_DO } from "@/data/site";
 import { pageHead } from "@/lib/seo";
 import { RevealSection } from "@/components/reveal";
+import { AgentTerminal, SERVICE_SESSIONS } from "@/components/fx/agent-terminal";
 
 export const Route = createFileRoute("/how-we-work")({
   head: () =>
@@ -48,6 +49,7 @@ function HowWeWorkPage() {
         />
         <ProcessSteps items={PILLARS} />
       </RevealSection>
+      <AgentTerminal session={SERVICE_SESSIONS["how-we-work"]} />
       <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead
           kicker="Included"

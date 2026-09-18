@@ -8,6 +8,7 @@ import { RevealSection } from "@/components/reveal";
 import { ProcessSteps } from "@/components/pages/inner";
 import { ConstellationField } from "@/components/constellation-field";
 import { NeuralScroll } from "@/components/neural-scroll";
+import { AgentTerminal } from "@/components/fx/agent-terminal";
 import { BRAND } from "@/data/brand";
 import {
   AGENT_CATEGORIES,
@@ -28,6 +29,7 @@ export function HomePage() {
       <NeuralScroll />
       <Problem />
       <Layer />
+      <AgentTerminal />
       <Departments />
       <Industries />
       <Integrations />
@@ -44,26 +46,31 @@ export function HomePage() {
 
 function Hero() {
   return (
-    <main className="relative overflow-hidden pt-14 pb-8 lg:pt-16 lg:pb-10">
+    <main className="relative overflow-hidden pt-8 pb-8 lg:pt-12 lg:pb-10">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <ConstellationField className="opacity-70" />
       </div>
-      <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center px-6 text-center">
-        <p className="animate-fade-up mb-4 text-[10px] font-bold tracking-[0.22em] text-gold uppercase">{BRAND.legal}</p>
-        <h1 className="animate-fade-up delay-100 text-balance text-4xl leading-[1.06] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl">
+      <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center px-4 text-center sm:px-6">
+        <p
+          className="animate-fade-up glitch-text mb-3 text-[10px] font-bold tracking-[0.22em] text-gold uppercase"
+          data-text={BRAND.legal}
+        >
+          {BRAND.legal}
+        </p>
+        <h1 className="animate-fade-up delay-100 text-balance text-[1.55rem] leading-[1.1] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl">
           Custom AI systems built around{" "}
           <span className="text-gold">the way your business actually works.</span>
         </h1>
-        <p className="animate-fade-up delay-200 mt-4 max-w-2xl text-balance text-base leading-relaxed font-light text-fg/60 md:text-lg">
+        <div className="animate-fade-up delay-200 mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
+          <AuditButton className="w-full sm:w-auto">Get Your Free AI Operations Audit</AuditButton>
+          <GhostButton className="w-full sm:w-auto" to="/how-we-work">See How It Works</GhostButton>
+        </div>
+        <p className="animate-fade-up delay-200 mt-3 text-sm text-fg/45">
+          Keep your existing software. Cortex works across it.
+        </p>
+        <p className="animate-fade-up delay-300 mt-5 max-w-2xl text-balance text-sm leading-relaxed font-light text-fg/60 md:text-lg">
           We connect AI agents to the software your team already uses so they can monitor work, follow up, build
           reports, catch problems, and handle repetitive tasks across your operation.
-        </p>
-        <div className="animate-fade-up delay-300 mt-7 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row">
-          <AuditButton>Get Your Free AI Operations Audit</AuditButton>
-          <GhostButton to="/how-we-work">See How It Works</GhostButton>
-        </div>
-        <p className="animate-fade-up delay-300 mt-4 text-sm text-fg/45">
-          Keep your existing software. Cortex works across it.
         </p>
       </div>
       <ToolMarquee />

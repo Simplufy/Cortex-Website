@@ -40,6 +40,8 @@ import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ThanksRouteImport } from './routes/thanks'
 import { Route as TrustRouteImport } from './routes/trust'
+import { Route as AuditIndexRouteImport } from './routes/audit.index'
+import { Route as AuditSlugRouteImport } from './routes/audit.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
@@ -201,6 +203,16 @@ const TrustRoute = TrustRouteImport.update({
   path: '/trust',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuditIndexRoute = AuditIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuditRoute,
+} as any)
+const AuditSlugRoute = AuditSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AuditRoute,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
@@ -233,7 +245,7 @@ export interface FileRoutesByFullPath {
   '/ai-agents': typeof AiAgentsRoute
   '/ai-implementation': typeof AiImplementationRoute
   '/ai-workshops': typeof AiWorkshopsRoute
-  '/audit': typeof AuditRoute
+  '/audit': typeof AuditRouteWithChildren
   '/brand-kit': typeof BrandKitRoute
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/confirmed': typeof ConfirmedRoute
@@ -259,9 +271,11 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/thanks': typeof ThanksRoute
   '/trust': typeof TrustRoute
+  '/audit/$slug': typeof AuditSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/audit/': typeof AuditIndexRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
   '/industries/': typeof IndustriesIndexRoute
 }
@@ -271,7 +285,6 @@ export interface FileRoutesByTo {
   '/ai-agents': typeof AiAgentsRoute
   '/ai-implementation': typeof AiImplementationRoute
   '/ai-workshops': typeof AiWorkshopsRoute
-  '/audit': typeof AuditRoute
   '/brand-kit': typeof BrandKitRoute
   '/confirmed': typeof ConfirmedRoute
   '/contact': typeof ContactRoute
@@ -295,9 +308,11 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/thanks': typeof ThanksRoute
   '/trust': typeof TrustRoute
+  '/audit/$slug': typeof AuditSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/audit': typeof AuditIndexRoute
   '/case-studies': typeof CaseStudiesIndexRoute
   '/industries': typeof IndustriesIndexRoute
 }
@@ -308,7 +323,7 @@ export interface FileRoutesById {
   '/ai-agents': typeof AiAgentsRoute
   '/ai-implementation': typeof AiImplementationRoute
   '/ai-workshops': typeof AiWorkshopsRoute
-  '/audit': typeof AuditRoute
+  '/audit': typeof AuditRouteWithChildren
   '/brand-kit': typeof BrandKitRoute
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/confirmed': typeof ConfirmedRoute
@@ -334,9 +349,11 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/thanks': typeof ThanksRoute
   '/trust': typeof TrustRoute
+  '/audit/$slug': typeof AuditSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
+  '/audit/': typeof AuditIndexRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
   '/industries/': typeof IndustriesIndexRoute
 }
@@ -374,9 +391,11 @@ export interface FileRouteTypes {
     | '/terms'
     | '/thanks'
     | '/trust'
+    | '/audit/$slug'
     | '/blog/$slug'
     | '/case-studies/$slug'
     | '/industries/$slug'
+    | '/audit/'
     | '/case-studies/'
     | '/industries/'
   fileRoutesByTo: FileRoutesByTo
@@ -386,7 +405,6 @@ export interface FileRouteTypes {
     | '/ai-agents'
     | '/ai-implementation'
     | '/ai-workshops'
-    | '/audit'
     | '/brand-kit'
     | '/confirmed'
     | '/contact'
@@ -410,9 +428,11 @@ export interface FileRouteTypes {
     | '/terms'
     | '/thanks'
     | '/trust'
+    | '/audit/$slug'
     | '/blog/$slug'
     | '/case-studies/$slug'
     | '/industries/$slug'
+    | '/audit'
     | '/case-studies'
     | '/industries'
   id:
@@ -448,9 +468,11 @@ export interface FileRouteTypes {
     | '/terms'
     | '/thanks'
     | '/trust'
+    | '/audit/$slug'
     | '/blog/$slug'
     | '/case-studies/$slug'
     | '/industries/$slug'
+    | '/audit/'
     | '/case-studies/'
     | '/industries/'
   fileRoutesById: FileRoutesById
@@ -461,7 +483,7 @@ export interface RootRouteChildren {
   AiAgentsRoute: typeof AiAgentsRoute
   AiImplementationRoute: typeof AiImplementationRoute
   AiWorkshopsRoute: typeof AiWorkshopsRoute
-  AuditRoute: typeof AuditRoute
+  AuditRoute: typeof AuditRouteWithChildren
   BrandKitRoute: typeof BrandKitRoute
   CaseStudiesRoute: typeof CaseStudiesRouteWithChildren
   ConfirmedRoute: typeof ConfirmedRoute
@@ -709,6 +731,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrustRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/audit/': {
+      id: '/audit/'
+      path: '/'
+      fullPath: '/audit/'
+      preLoaderRoute: typeof AuditIndexRouteImport
+      parentRoute: typeof AuditRoute
+    }
+    '/audit/$slug': {
+      id: '/audit/$slug'
+      path: '/$slug'
+      fullPath: '/audit/$slug'
+      preLoaderRoute: typeof AuditSlugRouteImport
+      parentRoute: typeof AuditRoute
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/blog/$slug'
@@ -747,6 +783,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuditRouteChildren {
+  AuditSlugRoute: typeof AuditSlugRoute
+  AuditIndexRoute: typeof AuditIndexRoute
+}
+
+const AuditRouteChildren: AuditRouteChildren = {
+  AuditSlugRoute: AuditSlugRoute,
+  AuditIndexRoute: AuditIndexRoute,
+}
+
+const AuditRouteWithChildren = AuditRoute._addFileChildren(AuditRouteChildren)
+
 interface CaseStudiesRouteChildren {
   CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
   CaseStudiesIndexRoute: typeof CaseStudiesIndexRoute
@@ -781,7 +829,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiAgentsRoute: AiAgentsRoute,
   AiImplementationRoute: AiImplementationRoute,
   AiWorkshopsRoute: AiWorkshopsRoute,
-  AuditRoute: AuditRoute,
+  AuditRoute: AuditRouteWithChildren,
   BrandKitRoute: BrandKitRoute,
   CaseStudiesRoute: CaseStudiesRouteWithChildren,
   ConfirmedRoute: ConfirmedRoute,

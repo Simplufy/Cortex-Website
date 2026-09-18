@@ -36,7 +36,7 @@ export function SiteFooter() {
             <div className="max-w-md">
               <h3 className="text-2xl font-medium tracking-tight text-fg">See where AI could actually help.</h3>
               <p className="mt-3 mb-6 font-light text-fg/60">A Free AI Operations Audit. Practical, specific, no obligation to build.</p>
-              <BeamButton to="/audit">Get Your Free AI Operations Audit</BeamButton>
+              <BeamButton className="w-full sm:w-auto" to="/audit">Get Your Free AI Operations Audit</BeamButton>
             </div>
           </div>
         </div>

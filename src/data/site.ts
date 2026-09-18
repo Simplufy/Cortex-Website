@@ -4,7 +4,7 @@ export const INDUSTRIES = [
 		href: "/industries/automotive-service",
 		name: "Automotive Service",
 		blurb: "Agents that watch ROs, declined work, and the daily owner report.",
-		hero: ["The shop software already knows.", "Your people still chase it."],
+		hero: ["Your shop is losing work Tekmetric already has.", "We’ll map estimates, missed calls, and the owner report."],
 		intro: "Your shop-management software already knows which ROs are aging, which work was declined, which customers haven't received an update, and how the day is loading up. The problem is that someone still has to remember to look. Cortex connects AI agents to your existing shop systems so they can continuously watch those workflows, prepare the next action, and alert your team when human judgment is needed.",
 		quote: "If the writer is out, the follow-up is out.",
 		symptoms: [
@@ -115,7 +115,7 @@ export const INDUSTRIES = [
 		href: "/industries/hvac",
 		name: "HVAC",
 		blurb: "Agents for unsold estimates, memberships, and callbacks.",
-		hero: ["The estimate went out.", "Nobody owns the follow-up."],
+		hero: ["Unsold HVAC installs are sitting in ServiceTitan.", "We’ll map estimates, memberships, and callbacks."],
 		intro: "Dispatch software has the schedule. Memberships live in a spreadsheet. Unsold installs sit in inboxes. We connect agents to your FSM, CRM, and ads so estimates, membership visits, and callbacks get watched without adding another coordinator.",
 		quote: "July is a different company. The follow-up never noticed.",
 		symptoms: [
@@ -222,7 +222,7 @@ export const INDUSTRIES = [
 		href: "/industries/plumbing",
 		name: "Plumbing",
 		blurb: "Missed-call recovery, estimate follow-up, and the Monday catch-up.",
-		hero: ["The phone never stops.", "Neither does the leftover admin."],
+		hero: ["Missed plumbing calls are jobs down the street.", "We’ll map voicemail, bumps, and unbilled after-hours."],
 		intro: "Emergency work blows up the day. Booked jobs slide. After-hours invoices wait until Monday. We connect agents to dispatch, CRM, and the phone so missed calls, bumped jobs, and follow-up are watched while techs stay on the wrench.",
 		quote: "A burst pipe should not erase three booked water heaters.",
 		symptoms: [
@@ -327,7 +327,7 @@ export const INDUSTRIES = [
 		href: "/industries/electrical",
 		name: "Electrical",
 		blurb: "Agents on estimates, permits, and change orders that never hit the file.",
-		hero: ["The bid went out.", "The file did not keep up."],
+		hero: ["Electrical bids stall the minute the estimator is on a job.", "We’ll map permits, extras, and unbilled work."],
 		intro: "Estimating, permits, and change orders live in inboxes. We connect agents to estimating tools, job files, and email so stalled bids, inspection dates, and verbal extras get caught before they become margin problems.",
 		quote: "The inspector is on site and we are still hunting the permit.",
 		symptoms: [
@@ -428,7 +428,7 @@ export const INDUSTRIES = [
 		href: "/industries/roofing",
 		name: "Roofing",
 		blurb: "Aged leads, supplements, and collections watched across the storm file.",
-		hero: ["Storm season hits.", "Follow-up drowns first."],
+		hero: ["Storm leads go cold while the file sits in AccuLynx.", "We’ll map supplements, production, and collections."],
 		intro: "Leads, insurance files, production, and collections are four stories. We connect agents to CRM, estimating, and the job file so aged estimates, supplement status, and jobs that are on the roof but not collected get watched.",
 		quote: "We sold the work. The file is still named after the storm.",
 		symptoms: [
@@ -534,7 +534,7 @@ export const INDUSTRIES = [
 		href: "/industries/home-services",
 		name: "Home Services",
 		blurb: "Follow-up, dispatch exceptions, and the daily summary off the owner's phone.",
-		hero: ["Jobs by phone. Dispatch by text.", "The owner is the software."],
+		hero: ["Your home service company still runs on the owner’s phone.", "We’ll map inbox leads, dispatch, and unsent invoices."],
 		intro: "Garage, lawn, restoration, multi-trade. The day runs on calls and one person's memory. We connect agents to CRM, scheduling, and the phone so leads, job status, and invoices are watched without making the owner the integration.",
 		quote: "If the owner's phone dies, the follow-up dies with it.",
 		symptoms: [
@@ -639,7 +639,7 @@ export const INDUSTRIES = [
 		href: "/industries/pest-control",
 		name: "Pest Control",
 		blurb: "Overdue stops, cancelled accounts, and route exceptions on a queue.",
-		hero: ["The route is full.", "Renewals still depend on memory."],
+		hero: ["Skipped pest stops walk while the route looks full.", "We’ll map skips, cancellations, and lapsed renewals."],
 		intro: "Recurring services, one-time jobs, and callbacks compete for the same trucks. We connect agents to routing, CRM, and billing so overdue customers, cancelled accounts, and missed stops are caught before the ants come back.",
 		quote: "The tech knows the house. The office finds out when they cancel.",
 		symptoms: [
@@ -738,7 +738,7 @@ export const INDUSTRIES = [
 		href: "/industries/contracting",
 		name: "Contracting",
 		blurb: "Bid follow-up, job-file gaps, and closeout that is still a scavenger hunt.",
-		hero: ["The job is sold.", "The file is still a thread."],
+		hero: ["Yes on site is still not a change order.", "We’ll map bids, extras, and closeout."],
 		intro: "Estimating, production, subs, and billing do not share a picture. We connect agents to the job file, email, and accounting so aged bids, missing change orders, and closeout paperwork get watched.",
 		quote: "The superintendent knows. The office finds out when the customer calls.",
 		symptoms: [
@@ -838,7 +838,7 @@ export const INDUSTRIES = [
 		href: "/industries/smart-home",
 		name: "Smart Home",
 		blurb: "Quote follow-up, equipment status, and installs that look done in the field only.",
-		hero: ["The install looks done.", "The file still thinks we are waiting on a switch."],
+		hero: ["The house looks finished. The file still thinks you’re waiting on a switch.", "We’ll map quotes, backorders, and programming."],
 		intro: "Surveys, equipment orders, programming, and service calls are four pipelines. We connect agents to CRM, purchasing, and the job file so quotes, backorders, and half-programmed houses get watched.",
 		quote: "The house is programmed. The file still thinks we are waiting on a switch.",
 		symptoms: [
@@ -936,7 +936,7 @@ export const INDUSTRIES = [
 		href: "/industries/windows",
 		name: "Windows & Doors",
 		blurb: "Measure-to-order gaps, slipped installs, and finals that never get asked for.",
-		hero: ["The order is in.", "The job still is not a job."],
+		hero: ["Install day is when you find out the order never went in.", "We’ll map factory dates, slips, and unsigned finals."],
 		intro: "Lead, measure, factory, install, and final collection do not share a picture. We connect agents to CRM, ordering, and the schedule so stale quotes, factory slips, and unsigned completions get watched.",
 		quote: "The windows are on a truck. We still do not know which house they are for.",
 		symptoms: [
@@ -1530,53 +1530,7 @@ export const DETAIL_DRIVEN_WORKFORCE = {
 	]
 } as const;
 
-export const BLOG_POSTS = [
-	{
-		slug: "private-ai-workforce-automotive",
-		category: "Automotive",
-		title: "How we installed a private AI workforce inside a real automotive business",
-		author: "McGuire",
-		minutes: 9,
-		date: "August 2026",
-		excerpt: "Jackson Hole. Repair, collision, detailing, glass. Local hardware, an operator OS, a CCC EMS bridge, and the software the shops already ran."
-	},
-	{
-		slug: "local-vs-cloud-ai-service-businesses",
-		category: "Infrastructure",
-		title: "Local AI vs cloud AI for service businesses: what actually belongs on each",
-		author: "McGuire",
-		minutes: 8,
-		date: "August 2026",
-		excerpt: "Some jobs should never leave the building. Some need a frontier model. Most companies need both, routed on purpose."
-	},
-	{
-		slug: "ai-agents-inside-an-auto-repair-shop",
-		category: "Automotive",
-		title: "What AI agents can actually do inside an auto repair shop",
-		author: "McGuire",
-		minutes: 8,
-		date: "August 2026",
-		excerpt: "Open ROs, declined work, the morning report, ads vs cars booked. Not a chatbot on the website."
-	},
-	{
-		slug: "ai-agents-vs-automations",
-		category: "Operations",
-		title: "AI agents vs automations: the difference for a service business",
-		author: "McGuire",
-		minutes: 7,
-		date: "August 2026",
-		excerpt: "Zapier moves a field. An agent watches a queue. Mixing them up is how operators buy the wrong thing."
-	},
-	{
-		slug: "how-an-ai-operations-audit-works",
-		category: "Audit",
-		title: "How an AI Operations Audit works",
-		author: "McGuire",
-		minutes: 6,
-		date: "August 2026",
-		excerpt: "Apply, walk the work for 30 minutes, leave with an opportunity map. What you get even if we never build."
-	}
-] as const;
+export { BLOG_POSTS } from "./articles";
 
 export const WHAT_WE_DO = [
 	{

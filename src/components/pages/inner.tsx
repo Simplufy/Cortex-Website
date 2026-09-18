@@ -1,24 +1,30 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { PageHero, SectionHead, Eyebrow } from "@/components/ui/page-hero";
+import { PageHero, SectionHead } from "@/components/ui/page-hero";
 import { BeamButton } from "@/components/ui/beam-button";
 import { RevealSection } from "@/components/reveal";
 import { INDUSTRIES, type Industry, industryParam } from "@/data/site";
+import { AgentTerminal, sessionFromIndustry } from "@/components/fx/agent-terminal";
+import { auditPath } from "@/lib/audit-path";
 
 export function FinalCtaBlock({
   title = "Find the highest-value work AI can take off your team.",
   body = "Start with a Free AI Operations Audit. We'll show you what is worth automating, what isn't, and what a practical first deployment could look like.",
+  ctaTo = "/audit",
 }: {
   title?: string;
   body?: string;
+  ctaTo?: string;
 }) {
   return (
-    <RevealSection className="relative py-32">
-      <div className="mx-auto max-w-3xl px-6 text-center">
-        <h2 className="text-balance text-3xl font-medium tracking-tight text-fg md:text-5xl">{title}</h2>
-        <p className="mt-6 text-lg font-light text-fg/60">{body}</p>
-        <div className="mt-10">
-          <BeamButton to="/audit">Get Your Free AI Operations Audit</BeamButton>
+    <RevealSection className="relative py-20 sm:py-32">
+      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+        <h2 className="text-balance text-2xl font-medium tracking-tight text-fg sm:text-3xl md:text-5xl">{title}</h2>
+        <p className="mt-5 text-sm font-light text-fg/60 sm:mt-6 sm:text-lg">{body}</p>
+        <div className="mt-8 sm:mt-10">
+          <BeamButton className="w-full sm:w-auto" to={ctaTo}>
+            Get Your Free AI Operations Audit
+          </BeamButton>
         </div>
       </div>
     </RevealSection>
@@ -31,22 +37,19 @@ export function IndustryPage({ industry }: { industry: Industry }) {
       <PageHero
         eyebrow={industry.name}
         titleNode={
-          <h1 className="text-balance text-4xl leading-[1.1] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="text-balance text-[1.65rem] leading-[1.12] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl lg:text-7xl">
             {industry.hero[0]}
             <br />
             <span className="text-gold">{industry.hero[1]}</span>
           </h1>
         }
         body={industry.intro}
-        primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
+        primary={{
+          to: auditPath(industry.slug),
+          label: "Get Your Free AI Operations Audit",
+        }}
       />
-      <RevealSection className="border-t border-fg/5 py-16">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <Eyebrow>The operating reality</Eyebrow>
-          <p className="text-2xl font-medium tracking-tight text-fg md:text-3xl">{industry.quote}</p>
-        </div>
-      </RevealSection>
-      <RevealSection className="pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead title="Does this sound familiar?" body="The stalls we hear in this trade every week." />
         <div className="mx-auto max-w-3xl divide-y divide-fg/10 px-6">
           {industry.symptoms.map((s, i) => (
@@ -81,6 +84,7 @@ export function IndustryPage({ industry }: { industry: Industry }) {
           ))}
         </div>
       </RevealSection>
+      <AgentTerminal key={industry.slug} session={sessionFromIndustry(industry)} />
       <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead
           title="Built to work with the software your industry already uses."
@@ -118,7 +122,7 @@ export function IndustryPage({ industry }: { industry: Industry }) {
         />
       </RevealSection>
       <OtherIndustries current={industry.slug} />
-      <FinalCtaBlock />
+      <FinalCtaBlock ctaTo={auditPath(industry.slug)} />
     </>
   );
 }
@@ -180,6 +184,113 @@ export function InfoCard({ kicker, title, body, to, extra }: { kicker?: string; 
     );
   }
   return <article className={cls}>{inner}</article>;
+}
+
+export function NumberedBlocks({
+  items,
+}: {
+  items: readonly { title: string; body: string }[];
+}) {
+  return (
+    <ol className="mx-auto max-w-3xl divide-y divide-fg/10 px-6">
+      {items.map((item, i) => (
+        <li key={item.title} className="grid gap-3 py-8 sm:grid-cols-[3.5rem_1fr] sm:gap-6">
+          <span className="text-sm font-medium tracking-widest text-gold">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <div>
+            <h3 className="text-xl font-medium text-fg">{item.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed font-light text-fg/60">{item.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+export function ExamplePanel({
+  kicker,
+  title,
+  leftover,
+  install,
+  why,
+}: {
+  kicker: string;
+  title: string;
+  leftover: string;
+  install: string;
+  why: string;
+}) {
+  return (
+    <article className="rounded-2xl border border-fg/10 bg-surface p-6 sm:p-8">
+      <p className="text-[10px] font-bold tracking-widest text-gold uppercase">{kicker}</p>
+      <h3 className="mt-3 text-xl font-medium tracking-tight text-fg">{title}</h3>
+      <dl className="mt-6 space-y-5">
+        {[
+          ["The leftover", leftover],
+          ["What we install", install],
+          ["Why this way", why],
+        ].map(([dt, dd]) => (
+          <div key={dt}>
+            <dt className="text-[10px] font-bold tracking-widest text-fg/40 uppercase">{dt}</dt>
+            <dd className="mt-1.5 text-sm leading-relaxed font-light text-fg/70">{dd}</dd>
+          </div>
+        ))}
+      </dl>
+    </article>
+  );
+}
+
+export function ProofCallout({
+  kicker,
+  title,
+  body,
+  facts,
+  slug,
+}: {
+  kicker: string;
+  title: string;
+  body: string;
+  facts: readonly string[];
+  slug: string;
+}) {
+  return (
+    <aside className="mx-auto max-w-3xl px-6">
+      <div className="rounded-2xl border border-fg/10 bg-surface p-6 sm:p-8">
+        <p className="text-[10px] font-bold tracking-widest text-gold uppercase">{kicker}</p>
+        <h3 className="mt-3 text-2xl font-medium tracking-tight text-fg">{title}</h3>
+        <p className="mt-4 text-sm leading-relaxed font-light text-fg/70">{body}</p>
+        <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+          {facts.map((f) => (
+            <li key={f} className="flex gap-2 text-sm text-fg/80">
+              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />
+              {f}
+            </li>
+          ))}
+        </ul>
+        <Link
+          to="/case-studies/$slug"
+          params={{ slug }}
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-gold hover:text-gold-light"
+        >
+          Read the deployment <ArrowRight className="size-4" />
+        </Link>
+      </div>
+    </aside>
+  );
+}
+
+export function FaqList({ items }: { items: readonly { q: string; a: string }[] }) {
+  return (
+    <div className="mx-auto max-w-3xl divide-y divide-fg/10 px-6">
+      {items.map((item) => (
+        <article key={item.q} className="py-6">
+          <h3 className="text-lg font-medium text-fg">{item.q}</h3>
+          <p className="mt-2 text-sm leading-relaxed font-light text-fg/60">{item.a}</p>
+        </article>
+      ))}
+    </div>
+  );
 }
 
 export function ProcessSteps({

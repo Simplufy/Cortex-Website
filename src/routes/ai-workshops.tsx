@@ -1,11 +1,13 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHero, SectionHead } from "@/components/ui/page-hero";
-import { CardGrid, InfoCard } from "@/components/pages/inner";
+import { CardGrid, ExamplePanel, InfoCard, NumberedBlocks, ProofCallout } from "@/components/pages/inner";
 import { BeamButton } from "@/components/ui/beam-button";
 import { RevealSection } from "@/components/reveal";
 import { pageHead } from "@/lib/seo";
+import { AgentTerminal, SERVICE_SESSIONS } from "@/components/fx/agent-terminal";
 import { submitWorkshop, WORKSHOP_AUDIENCES } from "@/lib/submit-audit";
+import { DETAIL_DRIVEN_PROOF, WORKSHOPS_PAGE } from "@/data/service-pages";
 
 export const Route = createFileRoute("/ai-workshops")({
   head: () =>
@@ -27,30 +29,48 @@ function Page() {
       <PageHero
         eyebrow="AI Workshops"
         title="A practical AI workshop for service-business owners and leadership teams."
-        body="How to put AI to work inside the software a business already runs. For trade associations, franchise groups, PE portfolios, chambers, peer groups, and software user groups."
+        body="How to put AI to work inside the software a business already runs. For trade associations, franchise groups, PE portfolios, chambers, peer groups, and software user groups. A working session, not a product pitch."
         primary={{ href: "#request", label: "Request a Free Workshop" }}
       />
       <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead
-          title="How to build an AI system inside your business"
-          body="A working session, not a product pitch. The goal is that the room leaves knowing what is worth automating, what is not, and what the first ninety days could look like."
+          title="What we actually cover"
+          body="The room leaves knowing what is worth automating, what is not, and what the first ninety days could look like. We walk leftover work and a real deployment — not a chatbot demo."
         />
-        <CardGrid cols="md:grid-cols-2 lg:grid-cols-4">
-          <InfoCard title="Agents vs chatbots" body="What continuously watches a workflow versus what waits for a prompt." />
-          <InfoCard title="What you can automate now" body="Follow-up, monitoring, reporting, exceptions. The leftover work between systems." />
-          <InfoCard title="Local vs cloud" body="When work should stay on hardware you control, and when a cloud model is the right tool." />
-          <InfoCard title="Connecting existing software" body="APIs, webhooks, and what to do when a vendor has no usable interface." />
-          <InfoCard title="Security and permissions" body="Least privilege, approval, logs, and who owns the credentials." />
-          <InfoCard title="Hardware options" body="Cloud, dedicated local, or hybrid — designed around the workload, not a vendor story." />
-          <InfoCard title="A real deployment" body="What this looks like inside a multi-business automotive operation." />
-          <InfoCard title="What should stay human" body="Judgment, money, and customer promises. The work you would not hand a new hire on day one." />
+        <CardGrid cols="md:grid-cols-2">
+          {WORKSHOPS_PAGE.agenda.map((item) => (
+            <InfoCard key={item.title} title={item.title} body={item.body} />
+          ))}
         </CardGrid>
-        <p className="mt-10 text-center">
-          <Link to="/case-studies/$slug" params={{ slug: "detail-driven" }} className="text-sm font-medium text-gold hover:text-gold-light">
-            View the Detail Driven deployment
-          </Link>
-        </p>
       </RevealSection>
+      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+        <SectionHead
+          title="How a session runs"
+          body="Operators, not an IT conference. Format follows the room. They leave with a map, not a recap deck."
+        />
+        <NumberedBlocks items={WORKSHOPS_PAGE.how} />
+      </RevealSection>
+      <RevealSection className="border-t border-fg/5 pt-24 pb-16">
+        <SectionHead
+          title="The file we will walk"
+          body="Leadership rooms ask for proof. We will not invent a recovered-revenue number. We will walk Detail Driven."
+        />
+        <ProofCallout
+          kicker={DETAIL_DRIVEN_PROOF.kicker}
+          title={DETAIL_DRIVEN_PROOF.title}
+          body={DETAIL_DRIVEN_PROOF.body}
+          facts={DETAIL_DRIVEN_PROOF.facts}
+          slug="detail-driven"
+        />
+      </RevealSection>
+      <RevealSection className="pb-24">
+        <div className="mx-auto grid max-w-6xl gap-6 px-6 lg:grid-cols-2">
+          {WORKSHOPS_PAGE.examples.map((ex) => (
+            <ExamplePanel key={ex.title} {...ex} />
+          ))}
+        </div>
+      </RevealSection>
+      <AgentTerminal session={SERVICE_SESSIONS.workshops} />
       <RevealSection className="border-t border-fg/5 pt-24 pb-24">
         <SectionHead
           title="Who this is for"
