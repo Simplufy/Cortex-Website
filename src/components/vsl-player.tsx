@@ -27,19 +27,26 @@ export function VslPlayer({
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [started, setStarted] = useState(false);
+  const [live, setLive] = useState(false);
+  const [armed, setArmed] = useState(false);
   const [progress, setProgress] = useState(0);
+  const thumb = cover || poster;
 
   const toggle = () => {
     const v = videoRef.current;
     if (!v) return;
+    if (!armed) {
+      setArmed(true);
+      return;
+    }
     if (v.paused) {
       v.muted = false;
       const play = v.play();
       if (play && typeof play.then === "function") {
         void play.catch(() => {
           setPlaying(false);
-          setStarted(false);
+          setLive(false);
+          setArmed(false);
         });
       }
     } else {
@@ -48,31 +55,51 @@ export function VslPlayer({
   };
 
   useEffect(() => {
+    if (!armed) return;
+    const v = videoRef.current;
+    if (!v) return;
+    const start = () => {
+      v.muted = false;
+      void v.play().catch(() => {
+        setPlaying(false);
+        setLive(false);
+        setArmed(false);
+      });
+    };
+    if (v.readyState >= 2) start();
+    else v.addEventListener("canplay", start, { once: true });
+    return () => v.removeEventListener("canplay", start);
+  }, [armed]);
+
+  useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
 
-    const onPlay = () => {
+    const onPlaying = () => {
       setPlaying(true);
-      setStarted(true);
+      setLive(true);
     };
     const onPause = () => setPlaying(false);
     const onEnded = () => {
       setPlaying(false);
-      setStarted(false);
+      setLive(false);
+      setArmed(false);
       setProgress(0);
-      v.currentTime = 0;
+      v.removeAttribute("src");
+      v.load();
     };
     const onError = () => {
       setPlaying(false);
-      setStarted(false);
+      setLive(false);
+      setArmed(false);
     };
 
-    v.addEventListener("play", onPlay);
+    v.addEventListener("playing", onPlaying);
     v.addEventListener("pause", onPause);
     v.addEventListener("ended", onEnded);
     v.addEventListener("error", onError);
     return () => {
-      v.removeEventListener("play", onPlay);
+      v.removeEventListener("playing", onPlaying);
       v.removeEventListener("pause", onPause);
       v.removeEventListener("ended", onEnded);
       v.removeEventListener("error", onError);
@@ -92,34 +119,36 @@ export function VslPlayer({
   }, [playing]);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-xl sm:rounded-2xl">
+    <div className="relative w-full overflow-hidden rounded-xl bg-bg sm:rounded-2xl">
       <div className="relative aspect-video bg-bg">
         <video
           ref={videoRef}
-          className="vsl-video absolute inset-0 h-full w-full bg-bg object-cover"
-          poster={poster}
-          src={src}
+          className={`vsl-video absolute inset-0 h-full w-full bg-bg object-cover transition-opacity duration-200 ${live ? "opacity-100" : "opacity-0"}`}
+          src={armed ? src : undefined}
           playsInline
-          preload="metadata"
+          preload="none"
           disablePictureInPicture
           controlsList="nodownload nofullscreen noremoteplayback"
         />
-        {!started && (
+        {!live && (
           <button
             type="button"
             onClick={toggle}
-            className="absolute inset-0 z-10 flex items-center justify-center focus-visible:ring-2 focus-visible:ring-gold/60"
+            className="absolute inset-0 z-10 flex items-center justify-center bg-bg focus-visible:ring-2 focus-visible:ring-gold/60"
             aria-label={label}
           >
-            {cover ? (
-              <img src={cover} alt="" className="absolute inset-0 h-full w-full object-cover" />
-            ) : (
-              <span className="absolute inset-0 bg-bg/25" />
-            )}
+            <img
+              src={thumb}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+              decoding="async"
+              fetchPriority="high"
+              draggable={false}
+            />
             <PlayPulse />
           </button>
         )}
-        {started && (
+        {live && (
           <button
             type="button"
             onClick={toggle}
@@ -129,7 +158,7 @@ export function VslPlayer({
             {!playing && <PlayPulse />}
           </button>
         )}
-        {started && (
+        {live && (
           <div
             className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-1 bg-gold/20"
             role="progressbar"

@@ -3,6 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { SiteShell } from "@/components/layout/site-shell";
 import { BRAND } from "@/data/brand";
+import { BOOT_SCRIPT } from "@/components/fx/boot-screen";
 import { orgJsonLd, pageHead } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
@@ -34,7 +35,10 @@ export const Route = createRootRoute({
       },
       ...home.links,
     ],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(orgJsonLd()) }],
+    scripts: [
+      { children: BOOT_SCRIPT },
+      { type: "application/ld+json", children: JSON.stringify(orgJsonLd()) },
+    ],
   }),
   component: () => (
     <html lang="en" suppressHydrationWarning>
@@ -42,6 +46,18 @@ export const Route = createRootRoute({
         <HeadContent />
       </head>
       <body className="bg-bg text-fg antialiased">
+        <div
+          id="cortex-boot-static"
+          className="boot-screen fixed inset-0 z-[90] flex flex-col items-center justify-center bg-bg text-gold"
+          aria-hidden
+        >
+          <div className="boot-scan" />
+          <p className="mb-8 font-mono text-[10px] tracking-[0.28em] uppercase opacity-70">cortex // initialize</p>
+          <p className="text-4xl font-medium tracking-tighter text-fg sm:text-7xl">CORTEX</p>
+          <div className="mt-8 h-px w-56 overflow-hidden bg-fg/10">
+            <div className="boot-bar h-full bg-gold" />
+          </div>
+        </div>
         <PreviewHostBridge />
         <AuthProvider>
           <SiteShell>

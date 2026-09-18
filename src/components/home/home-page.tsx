@@ -57,21 +57,23 @@ function Hero() {
         >
           {BRAND.legal}
         </p>
-        <h1 className="animate-fade-up delay-100 text-balance text-[1.55rem] leading-[1.1] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl">
-          Custom AI systems built around{" "}
-          <span className="text-gold">the way your business actually works.</span>
+        <h1 className="animate-fade-up delay-100 text-balance text-[1.35rem] leading-[1.12] font-medium tracking-tighter text-fg sm:text-4xl md:text-5xl lg:text-[3.15rem]">
+          Connect Your Existing Software Together with Intelligent AI Agents.
+          <span className="mt-2 block text-gold sm:mt-3">
+            Decrease Missed Opportunities & Increase Capacity in Your Business
+          </span>
         </h1>
-        <div className="animate-fade-up delay-200 mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
-          <AuditButton className="w-full sm:w-auto">Get Your Free AI Operations Audit</AuditButton>
-          <GhostButton className="w-full sm:w-auto" to="/how-we-work">See How It Works</GhostButton>
-        </div>
-        <p className="animate-fade-up delay-200 mt-3 text-sm text-fg/45">
+        <p className="animate-fade-up delay-200 mt-5 text-sm text-fg/45">
           Keep your existing software. Cortex works across it.
         </p>
-        <p className="animate-fade-up delay-300 mt-5 max-w-2xl text-balance text-sm leading-relaxed font-light text-fg/60 md:text-lg">
+        <p className="animate-fade-up delay-300 mt-4 max-w-2xl text-balance text-sm leading-relaxed font-light text-fg/60 md:text-lg">
           We connect AI agents to the software your team already uses so they can monitor work, follow up, build
           reports, catch problems, and handle repetitive tasks across your operation.
         </p>
+        <div className="animate-fade-up delay-300 mt-7 flex w-full flex-col items-stretch gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
+          <AuditButton className="w-full sm:w-auto">Get Your Free AI Operations Audit</AuditButton>
+          <GhostButton className="w-full sm:w-auto" to="/how-we-work">See How It Works</GhostButton>
+        </div>
       </div>
       <ToolMarquee />
     </main>

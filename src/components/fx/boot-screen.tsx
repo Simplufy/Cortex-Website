@@ -8,29 +8,47 @@ const LINES = [
   "linking QuickBooks … ok",
 ];
 
-const KEY = "cortex-boot-v1";
+export const BOOT_KEY = "cortex-boot-v2";
+
+export const BOOT_SCRIPT = `(function(){try{if(sessionStorage.getItem(${JSON.stringify(BOOT_KEY)})||window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("cortex-ready")}else{document.documentElement.classList.add("cortex-booting")}}catch(e){document.documentElement.classList.add("cortex-booting")}})();`;
+
+function finishBoot() {
+  try {
+    sessionStorage.setItem(BOOT_KEY, "1");
+  } catch {
+    /* ignore */
+  }
+  document.documentElement.classList.remove("cortex-booting");
+  document.documentElement.classList.add("cortex-ready");
+}
 
 export function BootScreen() {
-  const [on, setOn] = useState(false);
+  const [on, setOn] = useState(true);
   const [step, setStep] = useState(0);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (sessionStorage.getItem(KEY)) return;
-    setOn(true);
+    if (document.documentElement.classList.contains("cortex-ready")) {
+      setOn(false);
+      return;
+    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      finishBoot();
+      setOn(false);
+      return;
+    }
     const timers: number[] = [];
     LINES.forEach((_, i) => {
       timers.push(window.setTimeout(() => setStep(i + 1), 160 + i * 200));
     });
     timers.push(
       window.setTimeout(() => {
-        sessionStorage.setItem(KEY, "1");
+        finishBoot();
         setOn(false);
       }, 160 + LINES.length * 200 + 480),
     );
     const skip = () => {
       timers.forEach((id) => window.clearTimeout(id));
-      sessionStorage.setItem(KEY, "1");
+      finishBoot();
       setOn(false);
     };
     window.addEventListener("keydown", skip);
@@ -46,15 +64,24 @@ export function BootScreen() {
 
   return (
     <div
-      className="boot-screen fixed inset-0 z-[80] flex flex-col items-center justify-center bg-bg text-gold"
+      className="boot-screen fixed inset-0 z-[90] flex flex-col items-center justify-center bg-bg text-gold"
       role="dialog"
       aria-label="System boot"
+      aria-live="polite"
     >
+      <BootMark step={step} />
+    </div>
+  );
+}
+
+export function BootMark({ step = 0 }: { step?: number }) {
+  return (
+    <>
       <div className="boot-scan" aria-hidden />
       <p className="mb-8 font-mono text-[10px] tracking-[0.28em] uppercase opacity-70">cortex // initialize</p>
-      <h1 className="glitch-text mb-8 text-4xl font-medium tracking-tighter text-fg sm:mb-10 sm:text-7xl" data-text="CORTEX">
+      <p className="glitch-text mb-8 text-4xl font-medium tracking-tighter text-fg sm:mb-10 sm:text-7xl" data-text="CORTEX">
         CORTEX
-      </h1>
+      </p>
       <ul className="w-72 font-mono text-[11px] leading-6 text-gold/80 sm:w-80">
         {LINES.slice(0, step).map((line) => (
           <li key={line}>{line}</li>
@@ -65,6 +92,6 @@ export function BootScreen() {
         <div className="boot-bar h-full bg-gold" />
       </div>
       <p className="mt-6 font-mono text-[10px] tracking-widest text-fg/35 uppercase">click to skip</p>
-    </div>
+    </>
   );
 }

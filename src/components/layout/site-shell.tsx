@@ -26,7 +26,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <div className="relative min-h-screen overflow-x-clip bg-bg text-fg">
         <NetBackground />
         <PointerGlow className="fixed inset-0 z-[5] mix-blend-screen" />
-        {!landing ? <BootScreen /> : null}
+        <BootScreen />
         <ScrollProgress />
         <div className="relative z-10 flex min-h-screen flex-col">
           {landing ? <LandingHeader /> : <SiteHeader />}

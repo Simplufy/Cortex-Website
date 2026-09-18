@@ -32,6 +32,16 @@
     scrollbar-color: var(--color-gold) #111111;
   }
 
+  html.cortex-booting,
+  html.cortex-booting body {
+    overflow: hidden;
+  }
+
+  html.cortex-ready #cortex-boot-static,
+  html.cortex-ready .boot-screen {
+    display: none !important;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
