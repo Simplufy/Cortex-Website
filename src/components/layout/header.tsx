@@ -85,7 +85,7 @@ export function SiteHeader() {
     <div className="h-16 sm:h-[81px]">
       <header
         ref={headerRef}
-        className="fixed top-0 right-0 left-0 z-50 w-full border-b border-fg/8 bg-bg/90 font-sans backdrop-blur-xl"
+        className="fixed top-0 right-0 left-0 z-50 w-full border-b border-fg/6 bg-bg/95 font-sans backdrop-blur-xl"
       >
         <nav className="relative z-50 mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6">
           <CortexLogo size="sm" withTagline={false} />

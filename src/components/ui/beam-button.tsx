@@ -31,7 +31,7 @@ export function BeamButton({
       : "min-h-11 px-5 py-2.5 text-[15px] sm:min-h-12 sm:px-5";
   const solid = variant === "solid";
   const cls = cn(
-    "group relative inline-flex max-w-full touch-manipulation font-medium rounded-lg items-center justify-center text-center leading-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 disabled:pointer-events-none disabled:opacity-50 transition-colors duration-200",
+    "group relative inline-flex max-w-full touch-manipulation font-medium rounded-full items-center justify-center text-center leading-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 disabled:pointer-events-none disabled:opacity-50 transition-colors duration-200",
     solid
       ? "bg-gold text-on-gold hover:bg-gold-light"
       : "overflow-hidden text-fg border border-fg/12 bg-elevated hover:border-gold/40",
@@ -115,7 +115,7 @@ export function GhostButton({
     <Link
       to={to}
       className={cn(
-        "inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-fg/15 bg-transparent px-5 py-2.5 text-[15px] font-medium text-fg/70 transition-colors hover:border-gold/40 hover:text-fg sm:w-auto",
+        "inline-flex min-h-11 w-full items-center justify-center rounded-full border border-fg/15 bg-transparent px-5 py-2.5 text-[15px] font-medium text-fg/70 transition-colors hover:border-gold/40 hover:text-fg sm:w-auto",
         className,
       )}
     >

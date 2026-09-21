@@ -6,14 +6,10 @@ import { RevealSection } from "@/components/reveal";
 import { AgentTerminal } from "@/components/fx/agent-terminal";
 import { BRAND } from "@/data/brand";
 import {
-  AGENT_CATEGORIES,
   CASE_STUDIES,
-  COMPARISON,
   CONNECT_TOOLS,
   FAQS,
   INDUSTRIES,
-  PILLARS,
-  SOFTWARE_CATEGORIES,
   industryParam,
 } from "@/data/site";
 
@@ -21,212 +17,237 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <Problem />
-      <Steps />
+      <ProofRow />
+      <Stats />
+      <Assistant />
       <AgentTerminal />
-      <Layers />
+      <Pillars />
       <Industries />
-      <Trust />
-      <Founder />
+      <Letter />
       <Faq />
       <FinalCta />
     </>
   );
 }
 
-function Kicker({ children }: { children: React.ReactNode }) {
-  return <p className="font-mono text-[11px] tracking-wide text-gold">{children}</p>;
-}
-
 function Hero() {
   return (
-    <>
-      <main className="px-4 pt-8 pb-8 sm:px-6 sm:pt-12 sm:pb-10 lg:pt-14">
-        <div className="hero-enter mx-auto flex w-full max-w-3xl flex-col items-center text-center">
-          <h1 className="text-[clamp(1.35rem,5.8vw,3.15rem)] leading-[1.15] font-medium tracking-tight text-fg">
-            <span className="block text-gold">Stop trying to learn AI.</span>
-            <span className="block">ChatGPT can't run a company.</span>
-            <span className="block">Agents inside your software can.</span>
-          </h1>
-          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-fg/55 sm:mt-5 sm:text-lg">
-            A chat window waits for a prompt. Cortex implements agents in the systems you already run so leftover work (follow-up, monitoring, reporting) gets done without you becoming the AI person.
-          </p>
-          <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:items-center">
-            <AuditButton variant="solid" className="w-full sm:w-auto">
-              Get your free audit
-            </AuditButton>
-            <GhostButton className="w-full sm:w-auto" to="/how-we-work">
-              See how it works
-            </GhostButton>
-          </div>
+    <main className="px-4 pt-10 pb-4 sm:px-6 sm:pt-16 lg:pt-20">
+      <div className="hero-enter mx-auto flex w-full max-w-5xl flex-col items-center text-center">
+        <p className="mb-5 text-[13px] font-medium tracking-[0.18em] text-gold uppercase">AI for service companies</p>
+        <h1 className="max-w-4xl text-[clamp(2rem,6.2vw,4.35rem)] leading-[1.04] font-medium tracking-[-0.04em] text-fg">
+          <span className="block text-gold">Stop trying to learn AI.</span>
+          <span className="block">ChatGPT can't run a company.</span>
+          <span className="block">Agents inside your software can.</span>
+        </h1>
+        <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-fg/55 sm:mt-7 sm:text-xl">
+          Get leftover work done, win more follow-up, and keep the tools you already pay for. Cortex implements agents in your CRM, field software, ads, and books.
+        </p>
+        <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:items-center">
+          <AuditButton variant="solid" className="w-full sm:w-auto">
+            Get your free audit
+          </AuditButton>
+          <GhostButton className="w-full sm:w-auto" to="/how-we-work">
+            See how it works
+          </GhostButton>
         </div>
-      </main>
-      <ToolStrip />
-    </>
+        <p className="mt-4 text-[13px] text-fg/40">No obligation to build. 30 minutes. You keep your software.</p>
+      </div>
+    </main>
   );
 }
 
-function ToolStrip() {
+const PROOF = [
+  { img: "/images/cortex/covers/automotive.jpg?v=10", kicker: "Live deployment", title: "Detail Driven", body: "Repair, collision, detailing, glass" },
+  { img: "/images/cortex/covers/plumbing.jpg?v=10", kicker: "Plumbing", title: "Agents in the shop software", body: "Follow-up isn't whoever is free" },
+  { img: "/images/cortex/covers/hvac.jpg?v=10", kicker: "HVAC", title: "Watch the leftover", body: "Memberships, stalled jobs, missed calls" },
+  { img: "/images/cortex/covers/electrical.jpg?v=10", kicker: "Electrical", title: "Implemented, not a chatbot", body: "CRM, dispatch, and books stay" },
+];
+
+function ProofRow() {
   return (
-    <div className="mx-auto max-w-4xl px-4 pb-6 sm:px-6 sm:pb-8">
-      <p className="mb-5 text-center font-mono text-[11px] tracking-wide text-fg/40">connect your tools</p>
-      <div className="flex flex-wrap justify-center gap-2">
-        {CONNECT_TOOLS.slice(0, 16).map((t) => (
-          <span
-            key={t.name}
-            className="inline-flex items-center gap-2 rounded-lg border border-fg/8 bg-elevated px-2.5 py-1.5"
-          >
-            <img src={`/images/logos/${t.file}`} alt="" width={16} height={16} className="size-4 object-contain" />
-            <span className="text-[12px] text-fg/70">{t.name}</span>
-          </span>
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+      <div className="flex gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-4 sm:overflow-visible">
+        {PROOF.map((p) => (
+          <article key={p.title} className="w-[220px] shrink-0 overflow-hidden rounded-2xl border border-fg/8 bg-elevated shadow-[0_12px_40px_rgba(17,17,17,0.06)] sm:w-auto">
+            <img src={p.img} alt="" className="h-28 w-full object-cover sm:h-32" />
+            <div className="p-4">
+              <p className="text-[11px] font-medium tracking-wide text-gold uppercase">{p.kicker}</p>
+              <p className="mt-1 text-sm font-medium text-fg">{p.title}</p>
+              <p className="mt-1 text-[13px] text-fg/50">{p.body}</p>
+            </div>
+          </article>
         ))}
       </div>
-      <p className="mt-4 text-center font-mono text-[11px] text-fg/35">confirmed in the audit · not a generic connector list</p>
     </div>
   );
 }
 
-function Problem() {
+function Stats() {
+  const items = [
+    ["Software you already run", "CRM, field, ads, books stay the system of record"],
+    ["30-minute audit", "A ranked map of what AI can actually take off your team"],
+    ["Human in the loop", "Agents draft. You approve anything that commits the company"],
+  ];
   return (
-    <RevealSection id="problem" className="px-4 py-12 sm:px-6 sm:py-16">
-      <div className="mx-auto max-w-2xl text-center">
-        <Kicker>the problem</Kicker>
-        <h2 className="mt-3 text-3xl font-medium tracking-tight text-fg sm:text-4xl">ChatGPT is not in your software.</h2>
-        <p className="mt-2 text-3xl font-medium tracking-tight text-fg/35 sm:text-4xl">Your leftover work still is.</p>
-        <p className="mt-6 text-[15px] leading-relaxed text-fg/55 sm:text-base">
-          Opening a chat tab is not implementing AI. CRM still knows the customer. Field software still knows the job. Nothing moves unless a person copies, checks, and follows up, or pastes it into ChatGPT and hopes.
-        </p>
-      </div>
-      <div className="mx-auto mt-8 grid max-w-4xl gap-3 md:grid-cols-2">
-        <article className="rounded-2xl border border-fg/10 bg-elevated p-6 sm:p-8">
-          <p className="font-mono text-[11px] text-fg/40">› TODAY</p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {["CRM", "Field software", "Inbox", "Ads", "QuickBooks"].map((n) => (
-              <span key={n} className="rounded-md border border-fg/10 bg-bg px-2.5 py-1 text-[13px] text-fg/70">
-                {n}
-              </span>
-            ))}
+    <section className="border-y border-fg/6 bg-surface">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 sm:py-16 md:grid-cols-3">
+        {items.map(([n, b]) => (
+          <div key={n}>
+            <p className="text-2xl font-medium tracking-tight text-fg sm:text-3xl">{n}</p>
+            <p className="mt-2 text-sm leading-relaxed text-fg/50">{b}</p>
           </div>
-          <p className="mt-8 text-sm leading-relaxed text-fg/40">Five logins. Follow-up lives in someone's head, or in a ChatGPT tab they forgot to open.</p>
-        </article>
-        <article className="rounded-2xl border border-gold/25 bg-elevated p-6 sm:p-8">
-          <p className="font-mono text-[11px] text-gold">› WITH CORTEX</p>
-          <ul className="mt-5 space-y-1 font-mono text-[13px] leading-6 text-fg/75">
-            <li>cortex/</li>
-            <li className="pl-4 text-fg/55">crm/</li>
-            <li className="pl-4 text-fg/55">field/</li>
-            <li className="pl-4 text-fg/55">inbox/</li>
-            <li className="pl-4 text-fg/55">ads/</li>
-            <li className="pl-4 text-fg/55">books/</li>
-            <li className="text-gold">one layer · everything connected</li>
-          </ul>
-          <p className="mt-8 text-sm leading-relaxed text-fg/55">We understand AI. We implement it in what you already pay for. Your team keeps the judgment.</p>
-        </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+const COMMANDS = [
+  "Follow up leftover estimates",
+  "Watch stalled jobs",
+  "Catch missed calls",
+  "Draft the invoice reminder",
+  "Flag unbilled work",
+  "Ask for the review",
+  "Summarize the day",
+  "Route the next lead",
+];
+
+function Assistant() {
+  return (
+    <RevealSection className="px-4 py-16 sm:px-6 sm:py-24">
+      <div className="mx-auto max-w-3xl text-center">
+        <p className="text-[13px] font-medium tracking-[0.18em] text-gold uppercase">Your always-on layer</p>
+        <h2 className="mt-4 text-[clamp(1.8rem,4.4vw,3.25rem)] leading-[1.08] font-medium tracking-tight text-fg">
+          Your own custom AI that works inside the software you already run.
+        </h2>
+        <p className="mt-5 text-[17px] leading-relaxed text-fg/55">
+          ChatGPT waits for a prompt. Cortex implements agents that watch leftover work across marketing, sales, and operations, and stop when a person is required.
+        </p>
+      </div>
+      <div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-2">
+        {COMMANDS.map((c) => (
+          <span key={c} className="rounded-full border border-fg/10 bg-elevated px-4 py-2 text-sm text-fg/70 shadow-sm">
+            {c}
+          </span>
+        ))}
+      </div>
+      <div className="mx-auto mt-6 flex max-w-sm items-center justify-center gap-2 text-[13px] text-fg/40">
+        <span className="rounded-full bg-gold/10 px-3 py-1 font-medium text-gold">In your software</span>
+        <span>Not another login to live in</span>
+      </div>
+      <div className="mx-auto mt-12 flex max-w-4xl flex-wrap justify-center gap-2">
+        {CONNECT_TOOLS.slice(0, 12).map((t) => (
+          <span key={t.name} className="inline-flex items-center gap-2 rounded-full border border-fg/8 bg-surface px-3 py-1.5">
+            <img src={`/images/logos/${t.file}`} alt="" width={16} height={16} className="size-4 object-contain" />
+            <span className="text-[12px] text-fg/65">{t.name}</span>
+          </span>
+        ))}
       </div>
     </RevealSection>
   );
 }
 
-function Steps() {
-  return (
-    <RevealSection className="px-4 py-12 sm:px-6 sm:py-16">
-      <div className="mx-auto max-w-2xl text-center">
-        <Kicker>the install</Kicker>
-        <h2 className="mt-3 text-3xl font-medium tracking-tight text-fg sm:text-4xl">You don't learn it. We implement it.</h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-fg/55">
-          We map the leftover work, connect the software you already run, and install agents that actually do the job. You don't become an AI team. You stay the operator.
-        </p>
-      </div>
-      <ol className="mx-auto mt-8 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-5">
-        {PILLARS.map((p) => (
-          <li key={p.num} className="rounded-2xl border border-fg/8 bg-elevated p-5 text-left">
-            <span className="font-mono text-[11px] text-gold">{p.num}</span>
-            <p className="mt-3 font-mono text-[11px] tracking-wide text-fg/40">{p.kicker}</p>
-            <h3 className="mt-1 text-[15px] font-medium leading-snug text-fg">{p.title}</h3>
-            <p className="mt-3 text-[13px] leading-relaxed text-fg/50">{p.body}</p>
-          </li>
-        ))}
-      </ol>
-    </RevealSection>
-  );
-}
+const PILLAR_BLOCKS = [
+  {
+    kicker: "Get work",
+    title: "Show up where customers are looking. Stand out when they find you.",
+    body: "Marketing leftover still sits in ads, GBP, and a review tab nobody opened. We implement agents that keep you visible in the channels you already pay for.",
+    img: "/images/cortex/covers/home-services.jpg?v=10",
+    points: [
+      ["Get discovered", "Keep Google, ads, and the site moving without a ChatGPT session."],
+      ["Stay active", "Job recaps and review asks go out from the software you already run."],
+      ["Boost trust", "The work you already did becomes the next job, automatically."],
+    ],
+  },
+  {
+    kicker: "Win work",
+    title: "Answer every leftover request and convert it before it goes cold.",
+    body: "Speed to lead is not a personality trait. It is a job. Agents watch the CRM and the phone so follow-up is not whoever happens to be free.",
+    img: "/images/cortex/covers/automotive.jpg?v=10",
+    points: [
+      ["Answer inbound", "Missed calls and web leads get a first response while you stay in the loop."],
+      ["Qualify the job", "Spam and tire-kickers get filtered. Real work gets to a person."],
+      ["Stand out", "Estimates and follow-ups leave your systems looking like you wrote them."],
+    ],
+  },
+  {
+    kicker: "Run the shop",
+    title: "Watch the queue in field software and books, not in a chat tab.",
+    body: "Reporting, stalled jobs, unbilled work. The leftover between systems is where shops leak. Agents sit on top of the stack you already bought.",
+    img: "/images/cortex/covers/plumbing.jpg?v=10",
+    points: [
+      ["See the leftover", "What did not move today, in the software the team already uses."],
+      ["Get paid", "Unbilled and unpaid work gets flagged instead of remembered."],
+      ["Keep the tools", "Tekmetric, Jobber, ServiceTitan, QuickBooks stay. We implement around them."],
+    ],
+  },
+];
 
-function Layers() {
+function Pillars() {
   return (
-    <RevealSection className="px-4 py-12 sm:px-6 sm:py-16">
-      <div className="mx-auto max-w-2xl text-center">
-        <Kicker>across the business</Kicker>
-        <h2 className="mt-3 text-3xl font-medium tracking-tight text-fg sm:text-4xl">Not a chatbot. Agents in your workflows.</h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-fg/55">
-          Each agent gets a job inside the software you already run. ChatGPT waits for a prompt. These watch leftover work, and stop when a person is required.
-        </p>
-      </div>
-      <div className="mx-auto mt-8 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-5">
-        {AGENT_CATEGORIES.map((c, i) => (
-          <article key={c.title} className="rounded-2xl border border-fg/8 bg-elevated p-5">
-            <p className="font-mono text-[11px] text-gold">{String(i + 1).padStart(2, "0")}</p>
-            <h3 className="mt-3 font-medium text-fg">{c.title}</h3>
-            <ul className="mt-4 space-y-2 text-[13px] text-fg/55">
-              {c.items.map((item) => (
-                <li key={item} className="flex gap-2">
-                  <span className="mt-[7px] size-1 shrink-0 rounded-full bg-gold/70" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
-      <div className="mx-auto mt-10 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {SOFTWARE_CATEGORIES.map((s) => (
-          <article key={s.title} className="rounded-2xl border border-fg/8 bg-bg px-5 py-4">
-            <h3 className="text-sm font-medium text-fg">{s.title}</h3>
-            <p className="mt-1 text-[13px] leading-relaxed text-fg/50">{s.body}</p>
-          </article>
-        ))}
-      </div>
-      <div className="mt-8 text-center">
-        <Link to="/integrations" className="text-sm text-gold hover:text-gold-light">
-          Browse systems we evaluate →
-        </Link>
-      </div>
-    </RevealSection>
+    <div className="space-y-4 px-4 pb-8 sm:px-6 sm:pb-12">
+      {PILLAR_BLOCKS.map((p, i) => (
+        <RevealSection key={p.kicker} className="mx-auto max-w-6xl overflow-hidden rounded-[28px] bg-surface">
+          <div className={`grid items-center gap-8 p-6 sm:p-10 lg:grid-cols-2 lg:gap-14 ${i % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""}`}>
+            <div>
+              <p className="text-[13px] font-medium tracking-[0.18em] text-gold uppercase">{p.kicker}</p>
+              <h2 className="mt-3 text-[clamp(1.6rem,3.2vw,2.5rem)] leading-[1.12] font-medium tracking-tight text-fg">{p.title}</h2>
+              <p className="mt-4 text-[15px] leading-relaxed text-fg/55">{p.body}</p>
+              <ul className="mt-8 space-y-5">
+                {p.points.map(([t, b]) => (
+                  <li key={t}>
+                    <p className="font-medium text-fg">{t}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-fg/50">{b}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="overflow-hidden rounded-[22px]">
+              <img src={p.img} alt="" className="aspect-[4/3] w-full object-cover" />
+            </div>
+          </div>
+        </RevealSection>
+      ))}
+    </div>
   );
 }
 
 function Industries() {
-  const featured = INDUSTRIES.filter((i) => ["automotive", "hvac", "plumbing", "electrical", "home-services"].includes(i.slug));
+  const featured = INDUSTRIES.filter((i) => ["automotive", "hvac", "plumbing", "electrical", "home-services", "roofing"].includes(i.slug));
   const rest = INDUSTRIES.filter((i) => !featured.some((f) => f.slug === i.slug));
   return (
-    <RevealSection className="px-4 py-12 sm:px-6 sm:py-16">
-      <div className="mx-auto max-w-2xl text-center">
-        <Kicker>your trade</Kicker>
-        <h2 className="mt-3 text-3xl font-medium tracking-tight text-fg sm:text-4xl">Same idea. Implemented in your trade.</h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-fg/55">
-          ChatGPT doesn't know HVAC from collision. We implement agents in the software your industry already runs.
-        </p>
+    <RevealSection className="px-4 py-16 sm:px-6 sm:py-24">
+      <div className="mx-auto max-w-3xl text-center">
+        <p className="text-[13px] font-medium tracking-[0.18em] text-gold uppercase">Built for the trades</p>
+        <h2 className="mt-4 text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] font-medium tracking-tight text-fg">
+          Powering service businesses that already have software.
+        </h2>
       </div>
-      <div className="mx-auto mt-8 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {featured.map((ind) => (
           <Link
             key={ind.slug}
             to="/industries/$slug"
             params={{ slug: industryParam(ind) }}
-            className="group rounded-2xl border border-fg/8 bg-elevated p-6 transition-colors hover:border-gold/30"
+            className="group overflow-hidden rounded-[22px] border border-fg/8 bg-elevated transition-shadow hover:shadow-[0_16px_50px_rgba(17,17,17,0.08)]"
           >
-            <h3 className="font-medium text-fg group-hover:text-gold">{ind.name}</h3>
-            <p className="mt-2 text-[13px] leading-relaxed text-fg/50">{ind.blurb}</p>
-            <span className="mt-4 inline-block font-mono text-[11px] text-gold">see the trade →</span>
+            <img src={`/images/cortex/covers/${ind.slug}.jpg?v=10`} alt="" className="h-40 w-full object-cover" />
+            <div className="p-5">
+              <h3 className="font-medium text-fg group-hover:text-gold">{ind.name}</h3>
+              <p className="mt-2 text-[13px] leading-relaxed text-fg/50">{ind.blurb}</p>
+            </div>
           </Link>
         ))}
       </div>
-      <div className="mx-auto mt-6 flex max-w-5xl flex-wrap justify-center gap-2">
+      <div className="mx-auto mt-8 flex max-w-6xl flex-wrap justify-center gap-2">
         {rest.map((i) => (
           <Link
             key={i.slug}
             to="/industries/$slug"
             params={{ slug: industryParam(i) }}
-            className="rounded-full border border-fg/8 bg-elevated px-3 py-1.5 text-[12px] text-fg/55 hover:border-gold/30 hover:text-fg"
+            className="rounded-full border border-fg/8 bg-surface px-4 py-2 text-[13px] text-fg/60 hover:border-gold/30 hover:text-fg"
           >
             {i.name}
           </Link>
@@ -236,80 +257,38 @@ function Industries() {
   );
 }
 
-function Trust() {
+function Letter() {
   const study = CASE_STUDIES[0];
   return (
-    <RevealSection className="px-4 py-12 sm:px-6 sm:py-16">
-      <div className="mx-auto max-w-2xl text-center">
-        <Kicker>trust</Kicker>
-        <h2 className="mt-3 text-3xl font-medium tracking-tight text-fg sm:text-4xl">You decide what agents can do.</h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-fg/55">
-          Permissions, logs, and a person in the loop. Cloud, private, or hybrid, routed per job.
-        </p>
-      </div>
-      <div className="mx-auto mt-8 grid max-w-5xl gap-3 md:grid-cols-3">
-        {[
-          ["01", "Least privilege", "Each agent gets the systems and records it needs. Nothing else."],
-          ["02", "Human approval", "Drafts first. Send, charge, or change a promise only when you say so."],
-          ["03", "Logged actions", "What ran, against which record, and who approved it."],
-        ].map(([n, t, b]) => (
-          <article key={t} className="rounded-2xl border border-fg/8 bg-elevated p-6">
-            <span className="font-mono text-[11px] text-gold">{n}</span>
-            <h3 className="mt-3 font-medium text-fg">{t}</h3>
-            <p className="mt-2 text-[13px] leading-relaxed text-fg/50">{b}</p>
-          </article>
-        ))}
-      </div>
-      <div className="mx-auto mt-6 grid max-w-5xl overflow-hidden rounded-2xl border border-fg/8 bg-elevated md:grid-cols-2">
-        <div className="border-b border-fg/8 p-6 md:border-r md:border-b-0">
-          <p className="font-mono text-[11px] text-fg/40">off-the-shelf AI</p>
-          <ul className="mt-4 space-y-2 text-[13px] text-fg/45">
-            {COMPARISON.map((row) => (
-              <li key={row.typical}>{row.typical}</li>
-            ))}
-          </ul>
+    <RevealSection className="px-4 py-16 sm:px-6 sm:py-24">
+      <div className="mx-auto max-w-3xl">
+        <p className="text-[13px] font-medium tracking-[0.18em] text-gold uppercase">Open letter from the founder</p>
+        <h2 className="mt-4 text-[clamp(1.8rem,3.6vw,2.75rem)] leading-[1.12] font-medium tracking-tight text-fg">
+          Cortex isn't another AI login. It's a promise you don't have to learn this yourself.
+        </h2>
+        <div className="mt-8 space-y-5 text-[17px] leading-relaxed text-fg/60">
+          <p>
+            Most owners have tried ChatGPT. That's not AI in the business. The leftover work still lives in the CRM, the field software, and whoever remembered to follow up.
+          </p>
+          <p>
+            Cortex implements agents in the software you already run. Follow-up, monitoring, and reporting become jobs with permissions, logs, and a person in the loop. You stay the operator.
+          </p>
+          <p>
+            One of the first deployments connects agents across repair, collision, detailing, and glass, including shop-management, CRM, ads, reputation, and the books.
+          </p>
         </div>
-        <div className="p-6">
-          <p className="font-mono text-[11px] text-gold">cortex</p>
-          <ul className="mt-4 space-y-2 text-[13px] text-fg">
-            {COMPARISON.map((row) => (
-              <li key={row.cortex}>{row.cortex}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <p className="mx-auto mt-8 max-w-2xl text-center text-[14px] text-fg/50">
-        Live in a real shop: {study.systems.length} systems across repair, collision, detailing, and glass. Private + cloud hybrid.
-      </p>
-      <div className="mt-3 text-center">
-        <Link to="/case-studies/$slug" params={{ slug: study.slug }} className="text-sm text-gold hover:text-gold-light">
-          View the deployment →
-        </Link>
-      </div>
-    </RevealSection>
-  );
-}
-
-function Founder() {
-  return (
-    <RevealSection className="px-4 py-12 sm:px-6 sm:py-16">
-      <div className="mx-auto grid max-w-4xl items-center gap-6 rounded-2xl border border-fg/8 bg-elevated p-6 sm:p-8 md:grid-cols-[auto_1fr] md:gap-10">
-        <div className="flex items-center gap-4 md:flex-col md:items-start">
-          <FounderPhoto className="size-16 ring-1 ring-fg/10 md:size-24" />
+        <div className="mt-10 flex items-center gap-4">
+          <FounderPhoto className="size-14 ring-1 ring-fg/10" />
           <div>
             <p className="font-medium text-fg">{BRAND.founder}</p>
-            <p className="font-mono text-[11px] text-fg/45">
-              {BRAND.founderRole} · {BRAND.name}
+            <p className="text-sm text-fg/45">
+              {BRAND.founderRole}, {BRAND.name}
             </p>
-            <Link to="/about-us" className="mt-3 inline-block text-sm text-gold hover:text-gold-light">
-              About McGuire →
-            </Link>
           </div>
         </div>
-        <blockquote className="text-xl leading-snug font-medium tracking-tight text-fg sm:text-2xl">
-          “Most companies don't have an AI shortage.{" "}
-          <span className="text-gold">They have a ChatGPT-in-a-tab problem.</span> Cortex implements agents in the software they already run so leftover work doesn't depend on someone who knows how to prompt.”
-        </blockquote>
+        <Link to="/case-studies/$slug" params={{ slug: study.slug }} className="mt-8 inline-block text-sm font-medium text-gold hover:text-gold-light">
+          See the live deployment →
+        </Link>
       </div>
     </RevealSection>
   );
@@ -317,16 +296,16 @@ function Founder() {
 
 function Faq() {
   return (
-    <RevealSection className="px-4 py-12 sm:px-6 sm:py-16">
+    <RevealSection className="border-t border-fg/6 px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-2xl">
-        <Kicker>faq</Kicker>
-        <h2 className="mt-3 text-3xl font-medium tracking-tight text-fg sm:text-4xl">Questions owners actually ask</h2>
+        <p className="text-[13px] font-medium tracking-[0.18em] text-gold uppercase">FAQ</p>
+        <h2 className="mt-4 text-[clamp(1.8rem,3.6vw,2.75rem)] font-medium tracking-tight text-fg">Questions owners actually ask</h2>
         <div className="mt-10">
           {FAQS.slice(0, 8).map((item) => (
             <details key={item.q} className="group border-b border-fg/10 py-5">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-fg marker:content-none [&::-webkit-details-marker]:hidden">
                 {item.q}
-                <span className="font-mono text-gold transition-transform group-open:rotate-45">+</span>
+                <span className="text-gold transition-transform group-open:rotate-45">+</span>
               </summary>
               <p className="mt-3 text-[15px] leading-relaxed text-fg/55">{item.a}</p>
             </details>
@@ -339,17 +318,18 @@ function Faq() {
 
 function FinalCta() {
   return (
-    <RevealSection className="px-4 py-14 sm:px-6 sm:py-16">
-      <div className="mx-auto max-w-xl text-center">
-        <Kicker>the audit</Kicker>
-        <h2 className="mt-3 text-3xl font-medium tracking-tight text-fg sm:text-4xl">See where AI belongs in your operation, without learning it.</h2>
-        <p className="mt-5 text-[15px] leading-relaxed text-fg/55">
-          The audit shows what is worth implementing in the software you already run, what isn't, and what a first set of agents could look like.
+    <RevealSection className="px-4 py-16 sm:px-6 sm:py-24">
+      <div className="mx-auto max-w-3xl rounded-[32px] bg-fg px-6 py-14 text-center text-white sm:px-12 sm:py-20">
+        <h2 className="text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] font-medium tracking-tight">
+          See where AI belongs in your operation, without learning it.
+        </h2>
+        <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-white/60">
+          A free 30-minute audit. You leave with a ranked map of what agents could take off your team in the software you already run.
         </p>
         <div className="mt-8">
           <AuditButton variant="solid">Get your free audit</AuditButton>
         </div>
-        <p className="mt-4 font-mono text-[11px] text-fg/35">no obligation to build · practical · specific</p>
+        <p className="mt-4 text-[13px] text-white/40">No credit card. No obligation to build.</p>
       </div>
     </RevealSection>
   );
