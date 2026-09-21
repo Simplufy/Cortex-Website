@@ -23,4 +23,12 @@ export const BRAND = {
   homeServicesVslPoster: "/images/cortex/home-services-vsl-poster.jpg",
   homeServicesVslCover: "/images/cortex/home-services-vsl-cover.jpg",
   founderPhoto: "/images/cortex/mcguire.jpg",
+  socials: [
+    { name: "Instagram", href: "https://www.instagram.com/buildcortex/" },
+    { name: "TikTok", href: "https://www.tiktok.com/@buildcortex" },
+    { name: "YouTube", href: "https://www.youtube.com/@buildcortex" },
+    { name: "X", href: "https://x.com/buildcortex" },
+    { name: "LinkedIn", href: "https://www.linkedin.com/company/buildcortex" },
+    { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61593890732597" },
+  ],
 } as const;

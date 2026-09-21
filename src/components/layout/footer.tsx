@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Mail, Phone } from "lucide-react";
 import { BeamButton } from "@/components/ui/beam-button";
 import { CortexLogo } from "@/components/logo";
+import { SocialLinks } from "@/components/social-links";
 import { openCookieManager } from "@/components/cookie-banner";
 import { BRAND } from "@/data/brand";
 import { INDUSTRIES, SERVICES, industryParam } from "@/data/site";
@@ -30,6 +31,7 @@ export function SiteFooter() {
                 {BRAND.email}
               </a>
             </div>
+            <SocialLinks className="mt-6" />
           </div>
           <div className="lg:col-span-7 lg:flex lg:items-end lg:justify-end">
             <div className="max-w-md">
@@ -142,6 +144,17 @@ export function SiteFooter() {
             © 2026 {BRAND.name}. {BRAND.legal}. {BRAND.city}.
           </p>
           <div className="flex flex-wrap items-center gap-4">
+            {BRAND.socials.map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs text-fg/50 hover:text-fg"
+              >
+                {s.name}
+              </a>
+            ))}
             <Link to="/audit" className="text-xs text-fg/50 hover:text-fg">
               Free audit
             </Link>

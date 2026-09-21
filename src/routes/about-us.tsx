@@ -3,6 +3,7 @@ import { Mail } from "lucide-react";
 import { PageHero, SectionHead } from "@/components/ui/page-hero";
 import { FinalCtaBlock } from "@/components/pages/inner";
 import { FounderPhoto } from "@/components/logo";
+import { SocialLinks } from "@/components/social-links";
 import { BRAND } from "@/data/brand";
 import { CASE_STUDIES } from "@/data/site";
 import { pageHead } from "@/lib/seo";
@@ -73,14 +74,17 @@ function AboutPage() {
                 including shop-management, CRM, advertising, reputation, and internal operating systems.
               </p>
             </div>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <a href={`mailto:${BRAND.email}`} className="inline-flex items-center gap-2 text-sm text-fg/70 hover:text-gold">
-                <Mail className="size-4" />
-                {BRAND.email}
-              </a>
-              <Link to="/case-studies/$slug" params={{ slug: study.slug }} className="text-sm font-medium text-gold hover:text-gold-light">
-                View the deployment
-              </Link>
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-wrap items-center gap-4">
+                <a href={`mailto:${BRAND.email}`} className="inline-flex items-center gap-2 text-sm text-fg/70 hover:text-gold">
+                  <Mail className="size-4" />
+                  {BRAND.email}
+                </a>
+                <Link to="/case-studies/$slug" params={{ slug: study.slug }} className="text-sm font-medium text-gold hover:text-gold-light">
+                  View the deployment
+                </Link>
+              </div>
+              <SocialLinks />
             </div>
           </article>
         </div>
