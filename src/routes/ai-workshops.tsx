@@ -28,14 +28,14 @@ function Page() {
     <>
       <PageHero
         eyebrow="AI Workshops"
-        title="A practical AI workshop for service-business owners and leadership teams."
-        body="How to put AI to work inside the software a business already runs. For trade associations, franchise groups, PE portfolios, chambers, peer groups, and software user groups. A working session, not a product pitch."
+        title="A practical AI workshop for owners who don't want to become AI people."
+        body="How to put AI to work inside the software a business already runs, not how to prompt ChatGPT. For trade associations, franchise groups, PE portfolios, chambers, peer groups, and software user groups."
         primary={{ href: "#request", label: "Request a Free Workshop" }}
       />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="What we actually cover"
-          body="The room leaves knowing what is worth automating, what is not, and what the first ninety days could look like. We walk leftover work and a real deployment — not a chatbot demo."
+          body="The room leaves knowing what is worth automating, what is not, and what the first ninety days could look like. We walk leftover work and a real deployment, not a chatbot demo."
         />
         <CardGrid cols="md:grid-cols-2">
           {WORKSHOPS_PAGE.agenda.map((item) => (
@@ -43,14 +43,14 @@ function Page() {
           ))}
         </CardGrid>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="How a session runs"
           body="Operators, not an IT conference. Format follows the room. They leave with a map, not a recap deck."
         />
         <NumberedBlocks items={WORKSHOPS_PAGE.how} />
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-16">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-14">
         <SectionHead
           title="The file we will walk"
           body="Leadership rooms ask for proof. We will not invent a recovered-revenue number. We will walk Detail Driven."
@@ -63,7 +63,7 @@ function Page() {
           slug="detail-driven"
         />
       </RevealSection>
-      <RevealSection className="pb-24">
+      <RevealSection className="pb-12">
         <div className="mx-auto grid max-w-6xl gap-6 px-6 lg:grid-cols-2">
           {WORKSHOPS_PAGE.examples.map((ex) => (
             <ExamplePanel key={ex.title} {...ex} />
@@ -71,7 +71,7 @@ function Page() {
         </div>
       </RevealSection>
       <AgentTerminal session={SERVICE_SESSIONS.workshops} />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="Who this is for"
           body="Leadership rooms that run service businesses. We speak to the operators, not an IT conference."
@@ -134,7 +134,7 @@ function WorkshopForm() {
   };
 
   return (
-    <RevealSection id="request" className="border-t border-fg/5 pt-24 pb-32">
+    <RevealSection id="request" className="border-t border-fg/5 py-12 sm:py-16">
       <SectionHead
         title="Request a free workshop"
         body="Tell us who the room is. We will follow up with format, timing, and whether we are the right fit."

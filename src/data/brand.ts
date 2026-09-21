@@ -1,9 +1,9 @@
 export const BRAND = {
   name: "Cortex",
-  legal: "Custom AI Systems for Service Businesses",
-  tagline: "Put your software to work.",
+  legal: "AI implemented in the software you already run",
+  tagline: "Don't learn AI. Have us implement it.",
   description:
-    "Cortex builds custom AI systems for established service businesses. We connect AI agents to the software your company already uses so they can monitor workflows, handle repetitive operational work, prepare follow-up, build reports, coordinate across systems, and escalate exceptions to your team.",
+    "Most owners have tried ChatGPT. That's not AI in your business. Cortex implements AI agents in the software service companies already use, so follow-up, monitoring, and reporting don't depend on someone who understands prompts.",
   founder: "McGuire Flanigan",
   founderRole: "Founder",
   domain: "buildcortex.dev",

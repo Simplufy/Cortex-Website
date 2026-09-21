@@ -1,9 +1,8 @@
 import { BeamButton, GhostButton } from "@/components/ui/beam-button";
-import { ConstellationField } from "@/components/constellation-field";
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mb-4 text-[10px] font-bold tracking-[0.18em] text-gold uppercase sm:mb-5">{children}</p>
+    <p className="mb-3 font-mono text-[11px] tracking-wide text-gold">{children}</p>
   );
 }
 
@@ -23,18 +22,18 @@ export function PageHero({
   secondary?: { to: string; label: string };
 }) {
   return (
-    <main className="relative overflow-hidden pt-8 pb-10 lg:pt-16 lg:pb-20">
-      <div className="pointer-events-none absolute inset-0 opacity-50" aria-hidden>
-        <ConstellationField />
-      </div>
-      <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center px-4 text-center sm:px-6">
+    <main className="relative overflow-hidden px-4 pt-6 pb-8 sm:px-6 sm:pt-10 sm:pb-12 lg:pt-12 lg:pb-14">
+      <div className="hero-enter relative mx-auto flex w-full max-w-3xl flex-col items-center text-center">
         {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
         {titleNode ?? (
-          <h1 className="animate-fade-up delay-100 text-balance text-3xl leading-[1.12] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="text-balance text-[1.75rem] leading-[1.12] font-medium tracking-tight text-fg sm:text-4xl md:text-5xl">
             {title}
           </h1>
         )}
-        <div className="animate-fade-up delay-200 mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:items-center sm:gap-6">
+        <p className="mt-4 max-w-2xl text-balance text-[15px] leading-relaxed text-fg/55 sm:mt-5 sm:text-lg">
+          {body}
+        </p>
+        <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
           <BeamButton className="w-full sm:w-auto" to={primary.to} href={primary.href}>
             {primary.label}
           </BeamButton>
@@ -44,9 +43,6 @@ export function PageHero({
             </GhostButton>
           )}
         </div>
-        <p className="animate-fade-up delay-300 mt-5 max-w-2xl text-balance text-sm leading-relaxed font-light text-fg/60 sm:mt-7 sm:text-lg md:text-xl">
-          {body}
-        </p>
       </div>
     </main>
   );
@@ -64,10 +60,10 @@ export function SectionHead({
   center?: boolean;
 }) {
   return (
-    <div className={center ? "mx-auto mb-8 max-w-3xl px-4 text-center sm:mb-14 sm:px-6" : "mb-8 max-w-3xl px-4 sm:mb-14 sm:px-6"}>
+    <div className={center ? "mx-auto mb-6 max-w-3xl px-4 text-center sm:mb-8 sm:px-6" : "mb-6 max-w-3xl px-4 sm:mb-8 sm:px-6"}>
       {kicker && <Eyebrow>{kicker}</Eyebrow>}
-      <h2 className="text-balance text-2xl font-medium tracking-tight text-fg sm:text-3xl md:text-4xl lg:text-5xl">{title}</h2>
-      {body && <p className="mt-4 text-sm leading-relaxed font-light text-fg/60 sm:mt-5 sm:text-lg">{body}</p>}
+      <h2 className="text-balance text-2xl font-medium tracking-tight text-fg sm:text-3xl md:text-[2.5rem]">{title}</h2>
+      {body && <p className="mt-4 text-[15px] leading-relaxed text-fg/55 sm:mt-5 sm:text-base">{body}</p>}
     </div>
   );
 }

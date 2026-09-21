@@ -47,7 +47,7 @@ export const ARTICLE_CATEGORY_BLURB: Record<ArticleCategory, string> = {
   Infrastructure:
     "Local hardware, cloud models, hybrid routing, and how two systems of record are supposed to talk.",
   Audit: "How the free AI operations audit actually works, what you leave with, and what we will not quote from a form.",
-  Trades: "The same coordination problem in HVAC and other field trades — named as a pattern, not as a fake case study.",
+  Trades: "The same coordination problem in HVAC and other field trades, named as a pattern, not as a fake case study.",
 };
 
 function wordsIn(blocks: ArticleBlock[]): number {
@@ -69,7 +69,7 @@ export const ARTICLES: Article[] = [
     category: "Automotive",
     title: "How we installed a private AI workforce inside a real automotive business",
     description:
-      "How Cortex installed a private AI workforce at Detail Driven in Jackson Hole — Tekmetric, CCC ONE, local hardware, and leftover work a person still owned.",
+      "How Cortex installed a private AI workforce at Detail Driven in Jackson Hole, Tekmetric, CCC ONE, local hardware, and leftover work a person still owned.",
     excerpt:
       "Jackson Hole. Repair, collision, detailing, glass. Local hardware, an operator OS, a CCC EMS bridge, and the software the shops already ran.",
     author: "McGuire",
@@ -137,11 +137,11 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "Private Linux hardware sits at the bottom. Collectors pull from the APIs Tekmetric, GoHighLevel, QuickBooks, Stripe, and the ad platforms already publish. Collision is the honest hard part: CCC Intelligent Solutions documents an EMS export — CIECA EMS 2.01 estimates, workfile copies, part price changes — written to a folder the shop already configured. The bridge reads that folder. It does not scrape DATA.DAT. It does not pretend CCC will hand us the schedule as a clean feed, because in this install it would not.",
+        text: "Private Linux hardware sits at the bottom. Collectors pull from the APIs Tekmetric, GoHighLevel, QuickBooks, Stripe, and the ad platforms already publish. Collision is the honest hard part: CCC Intelligent Solutions documents an EMS export (CIECA EMS 2.01 estimates, workfile copies, part price changes) written to a folder the shop already configured. The bridge reads that folder. It does not scrape DATA.DAT. It does not pretend CCC will hand us the schedule as a clean feed, because in this install it would not.",
       },
       {
         type: "p",
-        text: "In the middle sits an operator OS: command, inbox, quotes, bookings, shop views, money, demand, collision, and a knowledge map of how the place is wired. A manager — the orchestrator — assigns work. Specialized agents watch follow-up, monitoring, and reporting. None of them get a master login to the company. Least privilege is not a slogan we borrowed for a slide. It is how you keep an agent from becoming a new kind of office manager with the keys to payroll.",
+        text: "In the middle sits an operator OS: command, inbox, quotes, bookings, shop views, money, demand, collision, and a knowledge map of how the place is wired. A manager (the orchestrator) assigns work. Specialized agents watch follow-up, monitoring, and reporting. None of them get a master login to the company. Least privilege is not a slogan we borrowed for a slide. It is how you keep an agent from becoming a new kind of office manager with the keys to payroll.",
       },
       {
         type: "quote",
@@ -153,7 +153,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "Routine work stays local: overnight watches, ticket aging, assembling the morning briefing from records that already live in the building. When a job needs a stronger model — a messy email, a long estimate that does not match a template — it can go to the cloud. Operators care about the morning report landing, not about where the tokens ran. NIST’s AI Risk Management Framework is the language we use when an owner asks about risk: govern, map, measure, manage. Map the jobs. Measure whether the watcher is actually watching. Keep a person on the customer.",
+        text: "Routine work stays local: overnight watches, ticket aging, assembling the morning briefing from records that already live in the building. When a job needs a stronger model (a messy email, a long estimate that does not match a template) it can go to the cloud. Operators care about the morning report landing, not about where the tokens ran. NIST’s AI Risk Management Framework is the language we use when an owner asks about risk: govern, map, measure, manage. Map the jobs. Measure whether the watcher is actually watching. Keep a person on the customer.",
       },
       {
         type: "p",
@@ -257,7 +257,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "Cloud also wins when the system of record is already in the cloud and the vendor’s API is the only legal door. Tekmetric, GoHighLevel, Shopmonkey, ServiceTitan, Jobber — these are not files on a desktop. You are already trusting a vendor with the customer list. The question is not “does data leave the building.” The question is “what new inference are we adding, under whose keys, with what log.”",
+        text: "Cloud also wins when the system of record is already in the cloud and the vendor’s API is the only legal door. Tekmetric, GoHighLevel, Shopmonkey, ServiceTitan, Jobber, these are not files on a desktop. You are already trusting a vendor with the customer list. The question is not “does data leave the building.” The question is “what new inference are we adding, under whose keys, with what log.”",
       },
       {
         type: "h2",
@@ -308,7 +308,7 @@ export const ARTICLES: Article[] = [
     category: "Automotive",
     title: "What AI agents can actually do inside an auto repair shop",
     description:
-      "What AI agents can watch inside an auto repair shop: aging ROs, declined work, the owner report, and ads versus cars booked — without replacing Tekmetric or Shopmonkey.",
+      "What AI agents can watch inside an auto repair shop: aging ROs, declined work, the owner report, and ads versus cars booked, without replacing Tekmetric or Shopmonkey.",
     excerpt: "Open ROs, declined work, the morning report, ads vs cars booked. Not a chatbot on the website.",
     author: "McGuire",
     date: "August 2026",
@@ -337,7 +337,7 @@ export const ARTICLES: Article[] = [
     blocks: [
       {
         type: "p",
-        text: "An auto shop already has a system of record. Tekmetric, Shopmonkey, AutoLeap, Mitchell 1, Shop-Ware — whatever you bought. The leftover work is not a missing login. It is people still operating that software by hand. The advisor is on the drive. The owner is in a parts argument. The office manager is covering the phone. The software already knows the stall. Nobody is assigned to watch it.",
+        text: "An auto shop already has a system of record. Tekmetric, Shopmonkey, AutoLeap, Mitchell 1, Shop-Ware, whatever you bought. The leftover work is not a missing login. It is people still operating that software by hand. The advisor is on the drive. The owner is in a parts argument. The office manager is covering the phone. The software already knows the stall. Nobody is assigned to watch it.",
       },
       {
         type: "p",
@@ -399,7 +399,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "Money. Promises. The comeback conversation. Anything a customer will remember as “the shop said.” Agents draft, flag, assemble, and — where you approve it — take a small action and log it. Named tools on this page are examples, not a certified list. We confirm access in the audit. If a vendor will not let us in, we say so before anyone pays for a build.",
+        text: "Money. Promises. The comeback conversation. Anything a customer will remember as “the shop said.” Agents draft, flag, assemble, and (where you approve it) take a small action and log it. Named tools on this page are examples, not a certified list. We confirm access in the audit. If a vendor will not let us in, we say so before anyone pays for a build.",
       },
       {
         type: "quote",
@@ -466,7 +466,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "An automation is a trigger and an action. Lead arrives, create a contact. Invoice paid, send a receipt. Estimate locked in CCC, write an EMS file to a folder — CCC Intelligent Solutions documents that path in the CCC ONE help for File Export. Fine. Necessary, even. It does not notice that an estimate aged past the window, or that the same customer called twice and nobody called back. It will happily fire the same action a thousand times, including the times you wish it would not.",
+        text: "An automation is a trigger and an action. Lead arrives, create a contact. Invoice paid, send a receipt. Estimate locked in CCC, write an EMS file to a folder, CCC Intelligent Solutions documents that path in the CCC ONE help for File Export. Fine. Necessary, even. It does not notice that an estimate aged past the window, or that the same customer called twice and nobody called back. It will happily fire the same action a thousand times, including the times you wish it would not.",
       },
       {
         type: "p",
@@ -518,7 +518,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "Each stall gets a label: automation, agent, or person. Each agent path gets a system it must read, a permission, and a first deployment size of one or two jobs — not forty. If the leftover work is real and the door is not, the map says that too. You can hire us or not. You should not leave the call still thinking Zapier and a custom workforce are the same SKU.",
+        text: "Each stall gets a label: automation, agent, or person. Each agent path gets a system it must read, a permission, and a first deployment size of one or two jobs, not forty. If the leftover work is real and the door is not, the map says that too. You can hire us or not. You should not leave the call still thinking Zapier and a custom workforce are the same SKU.",
       },
       {
         type: "p",
@@ -593,7 +593,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "On automotive calls we usually end up in Tekmetric or Shopmonkey, GoHighLevel or a shared inbox, Google Ads, and QuickBooks. On collision we end up in CCC ONE, and we ask what is actually exported — estimates and Final Bills are documented EMS paths; the schedule, in our experience, is not. On HVAC we end up in ServiceTitan, Jobber, or FieldEdge. Named tools are examples. If we cannot reach a system, we say so on the call.",
+        text: "On automotive calls we usually end up in Tekmetric or Shopmonkey, GoHighLevel or a shared inbox, Google Ads, and QuickBooks. On collision we end up in CCC ONE, and we ask what is actually exported, estimates and Final Bills are documented EMS paths; the schedule, in our experience, is not. On HVAC we end up in ServiceTitan, Jobber, or FieldEdge. Named tools are examples. If we cannot reach a system, we say so on the call.",
       },
       {
         type: "h2",
@@ -611,7 +611,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "If we think we can materially help, we will also show you what a build would look like — agents, permissions, the dashboard that ships in the same build, and whether local hardware even belongs in the conversation. You can walk away with the map and never hire us. That is still useful. If we tell you the stack is too early, or the leftover work is not there, that is the audit doing its job.",
+        text: "If we think we can materially help, we will also show you what a build would look like, agents, permissions, the dashboard that ships in the same build, and whether local hardware even belongs in the conversation. You can walk away with the map and never hire us. That is still useful. If we tell you the stack is too early, or the leftover work is not there, that is the audit doing its job.",
       },
       {
         type: "h2",
@@ -635,7 +635,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "If you already know the stall — unanswered estimates, ads versus cars, five dashboards every morning — apply anyway. The audit is where we find out whether the stall is an automation, an agent, or a person you need to hire. Those are different products. They should not share a price.",
+        text: "If you already know the stall (unanswered estimates, ads versus cars, five dashboards every morning) apply anyway. The audit is where we find out whether the stall is an automation, an agent, or a person you need to hire. Those are different products. They should not share a price.",
       },
     ],
   }),
@@ -643,11 +643,11 @@ export const ARTICLES: Article[] = [
   article({
     slug: "declined-work-never-gets-a-second-call",
     category: "Automotive",
-    title: "Declined work never gets a second call — and the shop software already logged it",
+    title: "Declined work never gets a second call, and the shop software already logged it",
     description:
       "Declined work in auto repair is already in Tekmetric. The second call never happens. How AI agents keep a declined-line queue without replacing the advisor.",
     excerpt:
-      "The recommendation was logged. The follow-up was not. That revenue leaves with the car — and the ticket already knew.",
+      "The recommendation was logged. The follow-up was not. That revenue leaves with the car, and the ticket already knew.",
     author: "McGuire",
     date: "September 2026",
     dateIso: "2026-09-01",
@@ -675,11 +675,11 @@ export const ARTICLES: Article[] = [
     blocks: [
       {
         type: "p",
-        text: "Every independent shop we sit with already logs declined work. Brakes that were not this visit. Tires that will not last the season. A cooling system the advisor pointed at, politely, while the customer looked at the total. Tekmetric, Shopmonkey, Mitchell 1 — the ticket has a line, a status, often a reason. Then the car leaves. The second conversation depends on the advisor remembering after the drive is slammed.",
+        text: "Every independent shop we sit with already logs declined work. Brakes that were not this visit. Tires that will not last the season. A cooling system the advisor pointed at, politely, while the customer looked at the total. Tekmetric, Shopmonkey, Mitchell 1, the ticket has a line, a status, often a reason. Then the car leaves. The second conversation depends on the advisor remembering after the drive is slammed.",
       },
       {
         type: "p",
-        text: "The Auto Care Association has spent years documenting an aging light-vehicle fleet — more than twelve years on the road in the last Factbook cycle — and a service channel that has taken share from dealers. Older cars produce more recommended work per visit. That is the economic fact. The operations fact is that recommended work is only revenue if someone asks again, on a timeline a human being would consider decent. Most shops do not have that person. They have a hope.",
+        text: "The Auto Care Association has spent years documenting an aging light-vehicle fleet (more than twelve years on the road in the last Factbook cycle) and a service channel that has taken share from dealers. Older cars produce more recommended work per visit. That is the economic fact. The operations fact is that recommended work is only revenue if someone asks again, on a timeline a human being would consider decent. Most shops do not have that person. They have a hope.",
       },
       {
         type: "h2",
@@ -691,7 +691,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "At Detail Driven, repair declined work lives in Tekmetric. The watcher reads Tekmetric. It does not require the advisor to become a CRM admin after they just sold a $612 average repair order and walked back onto the drive. Numbers like that, when they appear in a film or a briefing, are illustrations of the stall — not published KPIs from the shop.",
+        text: "At Detail Driven, repair declined work lives in Tekmetric. The watcher reads Tekmetric. It does not require the advisor to become a CRM admin after they just sold a $612 average repair order and walked back onto the drive. Numbers like that, when they appear in a film or a briefing, are illustrations of the stall, not published KPIs from the shop.",
       },
       {
         type: "h2",
@@ -706,7 +706,7 @@ export const ARTICLES: Article[] = [
         items: [
           "The declined line is already coded in the shop system.",
           "The customer already heard the recommendation once, in person.",
-          "The second touch has a natural window — long enough to not feel like a hustle, short enough that the car is still the same car.",
+          "The second touch has a natural window, long enough to not feel like a hustle, short enough that the car is still the same car.",
           "The draft should quote the actual line, not a marketing paragraph about “vehicle health.”",
           "A person still sends until the path is trusted. Money and promises stay human.",
         ],
@@ -789,7 +789,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "CIECA — the Collision Industry Electronic Commerce Association — has spent decades making EMS a standard so estimating systems can hand a file to someone else without inventing a new language every year. EMS 2.01 is that language. It is an estimate file. It is not your schedule, your technician time clock, or your front-office chatter. Treating it as a complete picture of the body shop is how integrators get cute and then get stuck.",
+        text: "CIECA (the Collision Industry Electronic Commerce Association) has spent decades making EMS a standard so estimating systems can hand a file to someone else without inventing a new language every year. EMS 2.01 is that language. It is an estimate file. It is not your schedule, your technician time clock, or your front-office chatter. Treating it as a complete picture of the body shop is how integrators get cute and then get stuck.",
       },
       {
         type: "h2",
@@ -809,7 +809,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "The schedule. In this install, CCC would not give us the collision schedule as a clean feed. We did not scrape DATA.DAT to fake it. We did not sit a computer vision model on the planner wall. Quiet files — estimates and jobs that stopped moving — we can infer from the exports and from dates that stop changing. Who is painting what at 2 p.m. is still a person looking at the board. That constraint is in the case study because hiding it would be a lie.",
+        text: "The schedule. In this install, CCC would not give us the collision schedule as a clean feed. We did not scrape DATA.DAT to fake it. We did not sit a computer vision model on the planner wall. Quiet files (estimates and jobs that stopped moving) we can infer from the exports and from dates that stop changing. Who is painting what at 2 p.m. is still a person looking at the board. That constraint is in the case study because hiding it would be a lie.",
       },
       {
         type: "ul",
@@ -851,7 +851,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "Share the CCC export settings. Show us a locked estimate and whether a file landed. Show us a Final Bill that never got collected. Show us how the writer tells a vehicle owner the file moved. If EMS is not on, that is the first conversation — not an agent. If EMS is on and the folder is a junk drawer of ten years of estimates, that is a cleanup conversation. We would rather say that on minute twelve than discover it on day forty of a build.",
+        text: "Share the CCC export settings. Show us a locked estimate and whether a file landed. Show us a Final Bill that never got collected. Show us how the writer tells a vehicle owner the file moved. If EMS is not on, that is the first conversation, not an agent. If EMS is on and the folder is a junk drawer of ten years of estimates, that is a cleanup conversation. We would rather say that on minute twelve than discover it on day forty of a build.",
       },
       {
         type: "p",
@@ -911,7 +911,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "At Detail Driven we named this reporting, and we installed it as a job next to follow-up and monitoring. The briefing pulls from Tekmetric, CCC exports, ads, and the books. The dashboard is included in the same build — command, money, demand, collision, shop views — so the owner is not collecting five PDFs. We will not put a time-saved number on this page. The conservative estimate of leftover watch-and-chase work across those four shop types was a planning number, not a measured KPI.",
+        text: "At Detail Driven we named this reporting, and we installed it as a job next to follow-up and monitoring. The briefing pulls from Tekmetric, CCC exports, ads, and the books. The dashboard is included in the same build (command, money, demand, collision, shop views) so the owner is not collecting five PDFs. We will not put a time-saved number on this page. The conservative estimate of leftover watch-and-chase work across those four shop types was a planning number, not a measured KPI.",
       },
       {
         type: "h2",
@@ -937,7 +937,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "An overnight pass across the connected stack. A short exception list. Drafts attached where a next step is obvious — a follow-up on an aged estimate, a note that a campaign is spending with no bookings. A log of what it checked, so you can distrust it in a specific way instead of a general one. Cloud or local does not matter to the owner if the briefing is there when the lights come on. At Detail Driven, routine assembly stays on local hardware. A messy narrative can go to a stronger model. Routing, not religion.",
+        text: "An overnight pass across the connected stack. A short exception list. Drafts attached where a next step is obvious, a follow-up on an aged estimate, a note that a campaign is spending with no bookings. A log of what it checked, so you can distrust it in a specific way instead of a general one. Cloud or local does not matter to the owner if the briefing is there when the lights come on. At Detail Driven, routine assembly stays on local hardware. A messy narrative can go to a stronger model. Routing, not religion.",
       },
       {
         type: "h2",
@@ -1005,7 +1005,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "A widely cited Lead Response Management study from InsideSales.com and MIT, led by James Oldroyd in 2007, found that the odds of qualifying a lead drop sharply after the first few minutes — on the order of twenty times better inside five minutes than after thirty. That study was about web leads, not brake jobs. Shop owners still recognize the shape. Speed-to-lead is not a SaaS slogan when the caller is sitting on the shoulder with a battery light. It is whether anyone is assigned to notice the miss while the people who should notice are busy.",
+        text: "A widely cited Lead Response Management study from InsideSales.com and MIT, led by James Oldroyd in 2007, found that the odds of qualifying a lead drop sharply after the first few minutes, on the order of twenty times better inside five minutes than after thirty. That study was about web leads, not brake jobs. Shop owners still recognize the shape. Speed-to-lead is not a SaaS slogan when the caller is sitting on the shoulder with a battery light. It is whether anyone is assigned to notice the miss while the people who should notice are busy.",
       },
       {
         type: "h2",
@@ -1103,7 +1103,7 @@ export const ARTICLES: Article[] = [
     blocks: [
       {
         type: "p",
-        text: "A customer received an $1,800 estimate. Four days silent. In the film we use on the automotive page, that stall has a name on it so a shop owner can feel it. The CRM already had the record. GoHighLevel will watch an opportunity sit for as long as you let it. Watching is not following up. Following up is somebody’s job — the office manager, or you — and it loses to the drive every time.",
+        text: "A customer received an $1,800 estimate. Four days silent. In the film we use on the automotive page, that stall has a name on it so a shop owner can feel it. The CRM already had the record. GoHighLevel will watch an opportunity sit for as long as you let it. Watching is not following up. Following up is somebody’s job (the office manager, or you) and it loses to the drive every time.",
       },
       {
         type: "p",
@@ -1127,7 +1127,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "It checks history. It prepares the follow-up under your rules. It writes the attempt back to the CRM. It flags the record if a person still needs to take it. When a job later completes, a review request can go out because that is a different, dumber path — closer to an automation — and it should not depend on the same memory as the $1,800 stall. Completed job. Review request went out. Those can be checkboxes. Untouched estimates cannot.",
+        text: "It checks history. It prepares the follow-up under your rules. It writes the attempt back to the CRM. It flags the record if a person still needs to take it. When a job later completes, a review request can go out because that is a different, dumber path (closer to an automation) and it should not depend on the same memory as the $1,800 stall. Completed job. Review request went out. Those can be checkboxes. Untouched estimates cannot.",
       },
       {
         type: "ul",
@@ -1205,7 +1205,7 @@ export const ARTICLES: Article[] = [
     blocks: [
       {
         type: "p",
-        text: "Google Ads is watched continuously — by Google. Spend can go up while the campaign produces fewer leads. Search Console can show “brake repair near me” sliding from number four to number seven. Meta can spend on a lookalike that has never been to the shop. None of that is an automotive operations system until it sits next to the cars that actually booked in Tekmetric, Shopmonkey, or the detailing calendar. Platform conversions are a rumor. Repair orders are a fact.",
+        text: "Google Ads is watched continuously, by Google. Spend can go up while the campaign produces fewer leads. Search Console can show “brake repair near me” sliding from number four to number seven. Meta can spend on a lookalike that has never been to the shop. None of that is an automotive operations system until it sits next to the cars that actually booked in Tekmetric, Shopmonkey, or the detailing calendar. Platform conversions are a rumor. Repair orders are a fact.",
       },
       {
         type: "p",
@@ -1293,7 +1293,7 @@ export const ARTICLES: Article[] = [
     faqs: [
       {
         q: "Should we move the shop into GoHighLevel?",
-        a: "No. Tekmetric — or Shopmonkey, or Mitchell 1 — is the repair system of record. GHL is the conversation system. Making either pretend to be the other is how you get two truths.",
+        a: "No. Tekmetric (or Shopmonkey, or Mitchell 1) is the repair system of record. GHL is the conversation system. Making either pretend to be the other is how you get two truths.",
       },
       {
         q: "Is this a native integration?",
@@ -1399,7 +1399,7 @@ export const ARTICLES: Article[] = [
       },
       {
         q: "Is HVAC just a copy of the auto shop playbook?",
-        a: "No. Memberships, dispatch windows, and seasonal surge are different jobs. The pattern — software knows, people still chase — is the same.",
+        a: "No. Memberships, dispatch windows, and seasonal surge are different jobs. The pattern (software knows, people still chase) is the same.",
       },
     ],
     blocks: [
@@ -1409,7 +1409,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "The Bureau of Labor Statistics tracks heating, air conditioning, and refrigeration mechanics and installers as a large U.S. occupation with work that is seasonal, on-site, and interruption-heavy — the same shape as the drive at an auto shop. ServiceTitan, Jobber, Housecall Pro, FieldEdge, and Successware are the systems of record we see named on intake forms. We confirm access in the audit. Named tools on this page are examples, not a certified list.",
+        text: "The Bureau of Labor Statistics tracks heating, air conditioning, and refrigeration mechanics and installers as a large U.S. occupation with work that is seasonal, on-site, and interruption-heavy, the same shape as the drive at an auto shop. ServiceTitan, Jobber, Housecall Pro, FieldEdge, and Successware are the systems of record we see named on intake forms. We confirm access in the audit. Named tools on this page are examples, not a certified list.",
       },
       {
         type: "h2",
@@ -1417,7 +1417,7 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "Unanswered estimates. Missed calls while the board is slammed. Ads spend that never becomes a job in the field software. An owner report rebuilt from five dashboards. A CRM that “watches” opportunities and does not follow them. After-hours messages on Google Business Profile. Review requests that depend on a technician remembering. These are not automotive stalls. They are service-business stalls. Automotive is where we have a published install — Detail Driven, Jackson Hole, four shop types — so we write from that. HVAC readers should steal the pattern and ignore the car.",
+        text: "Unanswered estimates. Missed calls while the board is slammed. Ads spend that never becomes a job in the field software. An owner report rebuilt from five dashboards. A CRM that “watches” opportunities and does not follow them. After-hours messages on Google Business Profile. Review requests that depend on a technician remembering. These are not automotive stalls. They are service-business stalls. Automotive is where we have a published install (Detail Driven, Jackson Hole, four shop types) so we write from that. HVAC readers should steal the pattern and ignore the car.",
       },
       {
         type: "ul",
@@ -1459,11 +1459,11 @@ export const ARTICLES: Article[] = [
       },
       {
         type: "p",
-        text: "The same paragraph applies. Jobber, ServiceTitan, AccuLynx, PestPac — examples, not a certified list. We have a published automotive install and we write from it. We will not invent a roofing case study to make a page feel complete. If your leftover work is estimates, missed calls, ads versus jobs, and a Sunday report, you are in the right library. The industry field on the form is how we show up to the walkthrough speaking your software’s names.",
+        text: "The same paragraph applies. Jobber, ServiceTitan, AccuLynx, PestPac, examples, not a certified list. We have a published automotive install and we write from it. We will not invent a roofing case study to make a page feel complete. If your leftover work is estimates, missed calls, ads versus jobs, and a Sunday report, you are in the right library. The industry field on the form is how we show up to the walkthrough speaking your software’s names.",
       },
       {
         type: "p",
-        text: "If you want the automotive-shaped conversation for a field trade, start with the general audit and say HVAC — or plumbing, or electrical — in the industry field. Bring the dispatch screen, the CRM, and the ads account. We will look at leftover work, not at a template for a different trade.",
+        text: "If you want the automotive-shaped conversation for a field trade, start with the general audit and say HVAC (or plumbing, or electrical) in the industry field. Bring the dispatch screen, the CRM, and the ads account. We will look at leftover work, not at a template for a different trade.",
       },
     ],
   }),

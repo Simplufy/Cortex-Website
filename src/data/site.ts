@@ -4,8 +4,8 @@ export const INDUSTRIES = [
 		href: "/industries/automotive-service",
 		name: "Automotive Service",
 		blurb: "Agents that watch ROs, declined work, and the daily owner report.",
-		hero: ["Your shop is losing work Tekmetric already has.", "We’ll map estimates, missed calls, and the owner report."],
-		intro: "Your shop-management software already knows which ROs are aging, which work was declined, which customers haven't received an update, and how the day is loading up. The problem is that someone still has to remember to look. Cortex connects AI agents to your existing shop systems so they can continuously watch those workflows, prepare the next action, and alert your team when human judgment is needed.",
+		hero: ["You don't have to learn how to use AI in your auto shop.", "See how we implement it across operations, marketing, and sales."],
+		intro: "Most shop owners have tried ChatGPT. That's a tab you open, it doesn't watch aging ROs, declined work, or missed calls unless you paste them in. Cortex implements AI agents in the shop software you already run so those workflows get watched, drafted, and escalated without you becoming an AI person.",
 		quote: "If the writer is out, the follow-up is out.",
 		symptoms: [
 			{
@@ -115,8 +115,8 @@ export const INDUSTRIES = [
 		href: "/industries/hvac",
 		name: "HVAC",
 		blurb: "Agents for unsold estimates, memberships, and callbacks.",
-		hero: ["Unsold HVAC installs are sitting in ServiceTitan.", "We’ll map estimates, memberships, and callbacks."],
-		intro: "Dispatch software has the schedule. Memberships live in a spreadsheet. Unsold installs sit in inboxes. We connect agents to your FSM, CRM, and ads so estimates, membership visits, and callbacks get watched without adding another coordinator.",
+		hero: ["You don't have to learn how to use AI in your HVAC company.", "See how we implement it across operations, marketing, and sales."],
+		intro: "You might use ChatGPT to write an email. It still can't see the replacement quote aging in ServiceTitan. Cortex implements agents in your FSM, CRM, and ads so estimates, memberships, and callbacks get watched, without you having to learn AI.",
 		quote: "July is a different company. The follow-up never noticed.",
 		symptoms: [
 			{
@@ -222,8 +222,8 @@ export const INDUSTRIES = [
 		href: "/industries/plumbing",
 		name: "Plumbing",
 		blurb: "Missed-call recovery, estimate follow-up, and the Monday catch-up.",
-		hero: ["Missed plumbing calls are jobs down the street.", "We’ll map voicemail, bumps, and unbilled after-hours."],
-		intro: "Emergency work blows up the day. Booked jobs slide. After-hours invoices wait until Monday. We connect agents to dispatch, CRM, and the phone so missed calls, bumped jobs, and follow-up are watched while techs stay on the wrench.",
+		hero: ["You don't have to learn how to use AI in your plumbing company.", "See how we implement it across operations, marketing, and sales."],
+		intro: "You can paste a plumbing question into ChatGPT. It still won't see the voicemail, the bumped job, or the unbilled after-hours ticket. Cortex implements agents in dispatch, CRM, and the phone so leftover work is watched while techs stay on the wrench, without you learning AI.",
 		quote: "A burst pipe should not erase three booked water heaters.",
 		symptoms: [
 			{
@@ -327,8 +327,8 @@ export const INDUSTRIES = [
 		href: "/industries/electrical",
 		name: "Electrical",
 		blurb: "Agents on estimates, permits, and change orders that never hit the file.",
-		hero: ["Electrical bids stall the minute the estimator is on a job.", "We’ll map permits, extras, and unbilled work."],
-		intro: "Estimating, permits, and change orders live in inboxes. We connect agents to estimating tools, job files, and email so stalled bids, inspection dates, and verbal extras get caught before they become margin problems.",
+		hero: ["You don't have to learn how to use AI in your electrical company.", "See how we implement it across operations, marketing, and sales."],
+		intro: "You don't need to become an AI person to get bids, permits, and extras watched. ChatGPT can't see the estimate sitting in the job file. Cortex implements agents in the estimating tools, email, and books you already run.",
 		quote: "The inspector is on site and we are still hunting the permit.",
 		symptoms: [
 			{
@@ -428,8 +428,8 @@ export const INDUSTRIES = [
 		href: "/industries/roofing",
 		name: "Roofing",
 		blurb: "Aged leads, supplements, and collections watched across the storm file.",
-		hero: ["Storm leads go cold while the file sits in AccuLynx.", "We’ll map supplements, production, and collections."],
-		intro: "Leads, insurance files, production, and collections are four stories. We connect agents to CRM, estimating, and the job file so aged estimates, supplement status, and jobs that are on the roof but not collected get watched.",
+		hero: ["You don't have to learn how to use AI in your roofing company.", "See how we implement it across operations, marketing, and sales."],
+		intro: "ChatGPT doesn't open AccuLynx. Storm leads, supplements, and collections still sit in the file unless someone remembers. Cortex implements agents in the CRM and job software you already pay for so leftover work gets watched, without you learning AI.",
 		quote: "We sold the work. The file is still named after the storm.",
 		symptoms: [
 			{
@@ -534,8 +534,8 @@ export const INDUSTRIES = [
 		href: "/industries/home-services",
 		name: "Home Services",
 		blurb: "Follow-up, dispatch exceptions, and the daily summary off the owner's phone.",
-		hero: ["Your home service company still runs on the owner’s phone.", "We’ll map inbox leads, dispatch, and unsent invoices."],
-		intro: "Garage, lawn, restoration, multi-trade. The day runs on calls and one person's memory. We connect agents to CRM, scheduling, and the phone so leads, job status, and invoices are watched without making the owner the integration.",
+		hero: ["You don't have to learn how to use AI in your home service company.", "See how we implement it across operations, marketing, and sales."],
+		intro: "Using ChatGPT on your phone isn't AI in your dispatch. Cortex implements agents in the CRM, scheduling, and phone you already run so leads, job status, and invoices get watched without making the owner the integration.",
 		quote: "If the owner's phone dies, the follow-up dies with it.",
 		symptoms: [
 			{
@@ -639,8 +639,8 @@ export const INDUSTRIES = [
 		href: "/industries/pest-control",
 		name: "Pest Control",
 		blurb: "Overdue stops, cancelled accounts, and route exceptions on a queue.",
-		hero: ["Skipped pest stops walk while the route looks full.", "We’ll map skips, cancellations, and lapsed renewals."],
-		intro: "Recurring services, one-time jobs, and callbacks compete for the same trucks. We connect agents to routing, CRM, and billing so overdue customers, cancelled accounts, and missed stops are caught before the ants come back.",
+		hero: ["You don't have to learn how to use AI in your pest control company.", "See how we implement it across operations, marketing, and sales."],
+		intro: "ChatGPT can't see a skip-stop or a lapsed renewal. Cortex implements agents in the routing, CRM, and billing you already run so overdue customers, cancelled accounts, and missed stops are caught before the ants come back, without you having to understand AI.",
 		quote: "The tech knows the house. The office finds out when they cancel.",
 		symptoms: [
 			{
@@ -738,8 +738,8 @@ export const INDUSTRIES = [
 		href: "/industries/contracting",
 		name: "Contracting",
 		blurb: "Bid follow-up, job-file gaps, and closeout that is still a scavenger hunt.",
-		hero: ["Yes on site is still not a change order.", "We’ll map bids, extras, and closeout."],
-		intro: "Estimating, production, subs, and billing do not share a picture. We connect agents to the job file, email, and accounting so aged bids, missing change orders, and closeout paperwork get watched.",
+		hero: ["You don't have to learn how to use AI in your contracting business.", "See how we implement it across operations, marketing, and sales."],
+		intro: "You don't need to learn AI to get change orders, aged bids, and closeout out of the job file. ChatGPT doesn't live in your project software. Cortex implements agents in the systems you already use.",
 		quote: "The superintendent knows. The office finds out when the customer calls.",
 		symptoms: [
 			{
@@ -838,8 +838,8 @@ export const INDUSTRIES = [
 		href: "/industries/smart-home",
 		name: "Smart Home",
 		blurb: "Quote follow-up, equipment status, and installs that look done in the field only.",
-		hero: ["The house looks finished. The file still thinks you’re waiting on a switch.", "We’ll map quotes, backorders, and programming."],
-		intro: "Surveys, equipment orders, programming, and service calls are four pipelines. We connect agents to CRM, purchasing, and the job file so quotes, backorders, and half-programmed houses get watched.",
+		hero: ["You don't have to learn how to use AI in your smart home company.", "See how we implement it across operations, marketing, and sales."],
+		intro: "ChatGPT doesn't know the house is programmed and the file still thinks you're waiting on a switch. Cortex implements agents in CRM, purchasing, and the job file you already run so quotes, backorders, and half-finished jobs get watched.",
 		quote: "The house is programmed. The file still thinks we are waiting on a switch.",
 		symptoms: [
 			{
@@ -936,8 +936,8 @@ export const INDUSTRIES = [
 		href: "/industries/windows",
 		name: "Windows & Doors",
 		blurb: "Measure-to-order gaps, slipped installs, and finals that never get asked for.",
-		hero: ["Install day is when you find out the order never went in.", "We’ll map factory dates, slips, and unsigned finals."],
-		intro: "Lead, measure, factory, install, and final collection do not share a picture. We connect agents to CRM, ordering, and the schedule so stale quotes, factory slips, and unsigned completions get watched.",
+		hero: ["You don't have to learn how to use AI in your window and door company.", "See how we implement it across operations, marketing, and sales."],
+		intro: "You don't have to understand AI to stop finding out on install day that the order never went in. ChatGPT isn't in your factory queue. Cortex implements agents in CRM, ordering, and the schedule you already pay for.",
 		quote: "The windows are on a truck. We still do not know which house they are for.",
 		symptoms: [
 			{
@@ -1370,7 +1370,7 @@ export const DETAIL_DRIVEN_DASHBOARD = {
     },
     {
       title: "Systems stay",
-      body: "Tekmetric, CCC, QuickBooks, ads — still the systems of record. The dashboard reads them. It does not replace them.",
+      body: "Tekmetric, CCC, QuickBooks, ads, still the systems of record. The dashboard reads them. It does not replace them.",
     },
   ],
   views: [
@@ -1416,7 +1416,7 @@ export const DETAIL_DRIVEN_WORKFORCE = {
 				{
 					title: "Collision file watch",
 					meta: "CCC ONE · Collision",
-					body: "Files that went quiet after the estimate. The agent reads the EMS export CCC already writes — jobs, claims, totals, finals — and flags what stopped moving. Appointments and payments are not in that file. We do not pretend they are."
+					body: "Files that went quiet after the estimate. The agent reads the EMS export CCC already writes (jobs, claims, totals, finals) and flags what stopped moving. Appointments and payments are not in that file. We do not pretend they are."
 				},
 				{
 					title: "Booking and glass exceptions",
@@ -1564,8 +1564,8 @@ export const PILLARS = [
 	{
 		num: "01",
 		kicker: "Audit",
-		title: "Understand the operation.",
-		body: "We map how work moves through your company and where time, information, or opportunities get lost. High-value work first."
+		title: "Map where AI belongs.",
+		body: "We map leftover work in the software you already run, not a lesson in how AI works. High-value paths first. You don't have to understand the models."
 	},
 	{
 		num: "02",
@@ -1662,8 +1662,12 @@ export const SOFTWARE_CATEGORIES = [
 
 export const COMPARISON = [
 	{
-		typical: "Built for one use case",
-		cortex: "Built around your operation"
+		typical: "ChatGPT in a tab, waits for a prompt",
+		cortex: "Agents implemented in the software you already run"
+	},
+	{
+		typical: "You have to understand AI to use it",
+		cortex: "We understand it. You stay the operator."
 	},
 	{
 		typical: "Another tool to manage",
@@ -1671,11 +1675,7 @@ export const COMPARISON = [
 	},
 	{
 		typical: "Generic workflow",
-		cortex: "Designed around your workflows"
-	},
-	{
-		typical: "Waits for someone to use it",
-		cortex: "Continuously monitors assigned work"
+		cortex: "Designed around your leftover work"
 	},
 	{
 		typical: "Limited business context",
@@ -1734,12 +1734,12 @@ export const WORKFLOWS = [
 
 export const FAQS = [
 	{
-		q: "What exactly is an AI agent?",
-		a: "An AI agent is a software worker with a defined responsibility, access to specific systems, and rules governing what it can do automatically versus what requires approval. Follow-up, monitoring, reporting, coordination, and escalation."
+		q: "Do I need to understand AI for this to work?",
+		a: "No. That's the point. Most owners don't, and they shouldn't have to. We understand AI. We implement it in the software and workflows you already run. You stay the operator."
 	},
 	{
 		q: "How is this different from ChatGPT?",
-		a: "ChatGPT is primarily an interface you interact with. Cortex agents are connected to defined business systems and workflows. They can monitor for events, use company context, perform approved actions, and escalate exceptions without waiting for someone to initiate every task."
+		a: "ChatGPT is a tab you open. It waits for a prompt. It does not watch ServiceTitan, Tekmetric, Jobber, or the books unless you paste the job in. Cortex agents are implemented inside those systems. They monitor leftover work, draft the next step, and escalate, without you becoming someone who 'does AI.'"
 	},
 	{
 		q: "Do I need to replace my existing software?",
@@ -1819,7 +1819,7 @@ export const FAQS = [
 	},
 	{
 		q: "Is this a chatbot for the website?",
-		a: "Website chat is a narrow tool. Cortex agents work across operations software — monitoring, follow-up, reporting, and coordination."
+		a: "Website chat is a narrow tool. Cortex agents work across operations software, monitoring, follow-up, reporting, and coordination."
 	},
 	{
 		q: "Do you sell a SaaS product?",

@@ -16,7 +16,7 @@ export type Qa = { q: string; a: string };
 export const DETAIL_DRIVEN_PROOF = {
   kicker: "Named deployment",
   title: "Detail Driven · Jackson Hole",
-  body: "Four shop types — mechanical, collision, detailing, and glass — already ran Tekmetric, CCC ONE, HighLevel, QuickBooks, ads, and Slack. None of them shared a picture. We did not replace those systems. We installed collectors, agents on leftover work, and one secure operator dashboard in the same build. Dedicated Linux hardware on site. Hybrid local and cloud inference. A person still owns the customer.",
+  body: "Four shop types (mechanical, collision, detailing, and glass) already ran Tekmetric, CCC ONE, HighLevel, QuickBooks, ads, and Slack. None of them shared a picture. We did not replace those systems. We installed collectors, agents on leftover work, and one secure operator dashboard in the same build. Dedicated Linux hardware on site. Hybrid local and cloud inference. A person still owns the customer.",
   href: "/case-studies/detail-driven",
   facts: [
     "Tekmetric stays the repair system of record",
@@ -34,7 +34,7 @@ export const AGENTS_PAGE = {
     },
     {
       title: "Give it only the systems it needs",
-      body: "Scoped credentials. Least privilege. The estimate agent reads the FSM and the CRM. It does not get the books, the ads account, or a master login. Availability is confirmed in the audit — named tools are examples, not a promise.",
+      body: "Scoped credentials. Least privilege. The estimate agent reads the FSM and the CRM. It does not get the books, the ads account, or a master login. Availability is confirmed in the audit, named tools are examples, not a promise.",
     },
     {
       title: "Set what it may do without a person",
@@ -42,17 +42,17 @@ export const AGENTS_PAGE = {
     },
     {
       title: "Test against real files",
-      body: "We run the path on actual stalled ROs, quiet collision files, and aged quotes — not a vendor demo tenant. Evaluations check that the draft sounds like the company, that it does not invent a promise, and that it hands off when the file is messy.",
+      body: "We run the path on actual stalled ROs, quiet collision files, and aged quotes, not a vendor demo tenant. Evaluations check that the draft sounds like the company, that it does not invent a promise, and that it hands off when the file is messy.",
     },
     {
       title: "Give it an off switch",
-      body: "Logs, a kill for that path, and a person who can take the work back. If a vendor ships a breaking API change, managed operations is how the path stays alive. If the business changes the membership product, we change the job — we do not leave a zombie agent running last year’s rules.",
+      body: "Logs, a kill for that path, and a person who can take the work back. If a vendor ships a breaking API change, managed operations is how the path stays alive. If the business changes the membership product, we change the job, we do not leave a zombie agent running last year’s rules.",
     },
   ] satisfies NumberedItem[],
   why: [
     {
       title: "ChatGPT waits for a prompt",
-      body: "The leftover work happens when nobody is looking. An aging HVAC quote, a skip-stop on a pest route, a quiet collision file — those do not type themselves into a chat window. An agent watches the workflow it was hired for. A chatbot answers when someone remembers to ask.",
+      body: "The leftover work happens when nobody is looking. An aging HVAC quote, a skip-stop on a pest route, a quiet collision file, those do not type themselves into a chat window. An agent watches the workflow it was hired for. A chatbot answers when someone remembers to ask.",
     },
     {
       title: "Zapier is the wrong tool for leftover work",
@@ -60,7 +60,7 @@ export const AGENTS_PAGE = {
     },
     {
       title: "A pack of forty agents is a science fair",
-      body: "One path that watches unsold installs beats a wall of green lights. We start with the leftover that costs the most — usually follow-up or the morning report — and add the next job when the first one is trusted. Your team still keeps pricing judgment, angry customers, and anything you would not hand a new hire on day one.",
+      body: "One path that watches unsold installs beats a wall of green lights. We start with the leftover that costs the most (usually follow-up or the morning report) and add the next job when the first one is trusted. Your team still keeps pricing judgment, angry customers, and anything you would not hand a new hire on day one.",
     },
   ] satisfies NumberedItem[],
   examples: [
@@ -79,7 +79,7 @@ export const AGENTS_PAGE = {
       leftover:
         "A replacement estimate is sitting past the follow-up window. The salesperson is on installs. Membership visits that should have pulled themselves are still on a spreadsheet. July volume buried the callbacks.",
       install:
-        "First path is almost always unsold estimates: age the quote, pull context from the job file, put a queue in front of the salesperson instead of a scavenger hunt. Memberships and callbacks are the next jobs — not the first week.",
+        "First path is almost always unsold estimates: age the quote, pull context from the job file, put a queue in front of the salesperson instead of a scavenger hunt. Memberships and callbacks are the next jobs, not the first week.",
       why: "HVAC companies do not lose installs to the competitor who bid lower. They lose them because nobody owned the follow-up. We do not replace ServiceTitan. We put an agent on the leftover between the estimate and the booked install.",
     },
     {
@@ -88,7 +88,7 @@ export const AGENTS_PAGE = {
       leftover:
         "A callback ate three houses. Cancelled accounts sat in PestPac until someone exported a list. Renewals lived in a spreadsheet the owner opened on Sundays. The route was “full” and the recurring base was quietly shrinking.",
       install:
-        "An agent watches skip-stops, cancellations, and lapsed renewals against the route software you already run. The office gets a list of houses that need a person — not a reminder to “check the board.”",
+        "An agent watches skip-stops, cancellations, and lapsed renewals against the route software you already run. The office gets a list of houses that need a person, not a reminder to “check the board.”",
       why: "Pest is a retention business pretending it is a routing business. Optimizing the truck does not bring back a cancelled quarterly. The leftover is the account, not the drive time.",
     },
     {
@@ -108,7 +108,7 @@ export const AGENTS_PAGE = {
     },
     {
       q: "How is this different from the AI inside ServiceTitan or Tekmetric?",
-      a: "Platform AI is built for that vendor’s screen. The leftover work lives between systems — FSM, CRM, ads, inbox, books. Cortex agents are hired for those paths. They do not replace the software you already paid for.",
+      a: "Platform AI is built for that vendor’s screen. The leftover work lives between systems, FSM, CRM, ads, inbox, books. Cortex agents are hired for those paths. They do not replace the software you already paid for.",
     },
     {
       q: "What if the agent is wrong?",
@@ -122,22 +122,22 @@ export const IMPLEMENTATION_PAGE = {
     {
       kicker: "01",
       title: "Audit the leftover work",
-      body: "Thirty minutes on how work actually moves — not a six-week discovery. Software stack, repetitive paths, follow-up that depends on memory, reporting rebuilt by hand, stalls the board already knows about. You leave with a ranked map: what is worth automating, what is not, and what a first deployment could look like. No obligation to build.",
+      body: "Thirty minutes on how work actually moves, not a six-week discovery. Software stack, repetitive paths, follow-up that depends on memory, reporting rebuilt by hand, stalls the board already knows about. You leave with a ranked map: what is worth automating, what is not, and what a first deployment could look like. No obligation to build.",
     },
     {
       kicker: "02",
       title: "Design the architecture",
-      body: "Which agents, which systems, what they may do without a person, what needs approval. Cloud, private hardware, or hybrid — chosen around the workload, not a vendor story. A secure dashboard is part of the same design, not a later upsell.",
+      body: "Which agents, which systems, what they may do without a person, what needs approval. Cloud, private hardware, or hybrid, chosen around the workload, not a vendor story. A secure dashboard is part of the same design, not a later upsell.",
     },
     {
       kicker: "03",
       title: "Connect and build",
-      body: "Official APIs first. Then approved integrations, webhooks, and MCP where a vendor supports them. Controlled browser automation only when there is no usable API and the work still has to happen. Agents are built around the one or two paths we agreed — not a forty-agent pack.",
+      body: "Official APIs first. Then approved integrations, webhooks, and MCP where a vendor supports them. Controlled browser automation only when there is no usable API and the work still has to happen. Agents are built around the one or two paths we agreed, not a forty-agent pack.",
     },
     {
       kicker: "04",
       title: "Test, deploy, train",
-      body: "Permissions, evaluations against real files, and the people who will work next to the agents. We do not flip a switch on Friday and disappear. Managed AI Operations is optional after the system is live — monitoring, connector upkeep, and improvements as the business changes.",
+      body: "Permissions, evaluations against real files, and the people who will work next to the agents. We do not flip a switch on Friday and disappear. Managed AI Operations is optional after the system is live, monitoring, connector upkeep, and improvements as the business changes.",
     },
   ],
   how: [
@@ -147,7 +147,7 @@ export const IMPLEMENTATION_PAGE = {
     },
     {
       title: "Keep the systems of record",
-      body: "ServiceTitan, Tekmetric, Jobber, AccuLynx, PestPac, QuickBooks — whatever you already run stays. We connect to it. We do not migrate you onto a Cortex database and hope your techs follow.",
+      body: "ServiceTitan, Tekmetric, Jobber, AccuLynx, PestPac, QuickBooks, whatever you already run stays. We connect to it. We do not migrate you onto a Cortex database and hope your techs follow.",
     },
     {
       title: "Ship one or two paths, then the next",
@@ -155,7 +155,7 @@ export const IMPLEMENTATION_PAGE = {
     },
     {
       title: "Include the board in the same build",
-      body: "Agents watch queues. The dashboard is how the owner sees exceptions, the numbers, and which system they came from — without rebuilding the morning from five logins. It is not a separate product.",
+      body: "Agents watch queues. The dashboard is how the owner sees exceptions, the numbers, and which system they came from, without rebuilding the morning from five logins. It is not a separate product.",
     },
     {
       title: "Leave a person on the work that needs a person",
@@ -169,7 +169,7 @@ export const IMPLEMENTATION_PAGE = {
       leftover:
         "Repair in Tekmetric. Collision in CCC ONE. Detailing and glass on their own boards, books, and ads. Someone still walked each board, chased declined work, and hoped the ads had booked cars.",
       install:
-        "Collectors and bridges into the stack they already paid for. CCC through a local EMS export they already knew how to write — we do not scrape private databases. Agents on follow-up, monitoring, and reporting. One secure dashboard across operations, marketing, finance, and the shops. Dedicated Linux on site. Cloud when a job actually needs a stronger model.",
+        "Collectors and bridges into the stack they already paid for. CCC through a local EMS export they already knew how to write, we do not scrape private databases. Agents on follow-up, monitoring, and reporting. One secure dashboard across operations, marketing, finance, and the shops. Dedicated Linux on site. Cloud when a job actually needs a stronger model.",
       why: "A single SaaS login cannot be the system of record for four different trades. The honest build is: keep the software each shop already runs, put agents on the leftover, and give the owner one picture in the morning.",
     },
     {
@@ -178,7 +178,7 @@ export const IMPLEMENTATION_PAGE = {
       leftover:
         "Replacement quotes aging in ServiceTitan. The salesperson is on installs. Memberships are a later problem. Callbacks are a later problem. The first leak is the estimate that nobody owned.",
       install:
-        "Audit the quote-to-booked path. Connect to the FSM and CRM we can actually reach. Agent drafts follow-up from the job file. Salesperson gets a queue. Outcome is logged. Memberships and the morning report are the next scoped jobs — written down, not promised as a bundle.",
+        "Audit the quote-to-booked path. Connect to the FSM and CRM we can actually reach. Agent drafts follow-up from the job file. Salesperson gets a queue. Outcome is logged. Memberships and the morning report are the next scoped jobs, written down, not promised as a bundle.",
       why: "HVAC operators get sold “AI for the whole company.” The company does not have a whole-company problem on day one. It has an unsold-install problem. We implement that, then we talk about the rest.",
     },
     {
@@ -187,7 +187,7 @@ export const IMPLEMENTATION_PAGE = {
       leftover:
         "Leads, supplements, production, and collections are four stories. The storm window is short. Follow-up drowns first. Jobs that are done on the roof sit uncollected because the file is a scavenger hunt.",
       install:
-        "First path is usually aged leads and quiet files — not a new CRM. Agent watches AccuLynx or JobNimbus for estimates past the window and jobs that are produced but not collected. A person still talks to the adjuster.",
+        "First path is usually aged leads and quiet files, not a new CRM. Agent watches AccuLynx or JobNimbus for estimates past the window and jobs that are produced but not collected. A person still talks to the adjuster.",
       why: "Roofing software is already a project file. What it does not do is assign a human to the leftover when the crew is on a storm. We do not replace AccuLynx. We watch the file.",
     },
   ] satisfies ExampleStory[],
@@ -215,15 +215,15 @@ export const PRIVATE_PAGE = {
     },
     {
       title: "Put continuous work where the cost is stable",
-      body: "Overnight watches and morning briefings run whether anyone is in the building. That is a bad fit for metered cloud inference if it is the same job every night. Dedicated hardware you control makes that cost predictable. Burst work — a hard customer email at 2pm — can still call a capable cloud model.",
+      body: "Overnight watches and morning briefings run whether anyone is in the building. That is a bad fit for metered cloud inference if it is the same job every night. Dedicated hardware you control makes that cost predictable. Burst work (a hard customer email at 2pm) can still call a capable cloud model.",
     },
     {
       title: "Keep sensitive records closer to the shop when it matters",
-      body: "Customer names, RO notes, collision files, invoices. Some operators do not want that leaving the building for a routine watch. Private or hybrid setups keep more of that stack on infrastructure they own. Details are scoped per deployment — we do not pretend every company needs a rack.",
+      body: "Customer names, RO notes, collision files, invoices. Some operators do not want that leaving the building for a routine watch. Private or hybrid setups keep more of that stack on infrastructure they own. Details are scoped per deployment, we do not pretend every company needs a rack.",
     },
     {
       title: "Connect the same way we always connect",
-      body: "APIs, approved integrations, webhooks. For Detail Driven, collision came through a local CCC ONE EMS export — files CCC already knows how to write. We do not scrape private databases to make a privacy story true.",
+      body: "APIs, approved integrations, webhooks. For Detail Driven, collision came through a local CCC ONE EMS export, files CCC already knows how to write. We do not scrape private databases to make a privacy story true.",
     },
   ] satisfies NumberedItem[],
   why: [
@@ -248,7 +248,7 @@ export const PRIVATE_PAGE = {
         "Four shop types, customer files, collision estimates, ads, and books. A nightly watch and a morning briefing that should not depend on whether a cloud region is having a week. Collision files the operator did not want treated like a public demo.",
       install:
         "Dedicated Linux hardware they control. Local models for the overnight watch and the morning briefing. Cloud models when a job needs more. CCC via a local EMS export. The dashboard runs on that same environment. We do not publish a photograph of the rack. The point is ownership.",
-      why: "Routine inference does not have to leave the building. Burst reasoning can. That split is the whole private-AI argument — not “we are more secure because we said the word local.”",
+      why: "Routine inference does not have to leave the building. Burst reasoning can. That split is the whole private-AI argument, not “we are more secure because we said the word local.”",
     },
     {
       kicker: "When we tell you not to buy hardware",
@@ -256,7 +256,7 @@ export const PRIVATE_PAGE = {
       leftover:
         "A single HVAC or plumbing company, first implementation, two workflows, no collision files, no multi-entity reporting. The leftover is real. The volume is not a 24/7 inference plant.",
       install:
-        "Cloud to start. Same permissions, same logs, same off switch. If continuous load, privacy, or cost later say private hardware, we design it then — we do not sell you a box so the proposal looks heavier.",
+        "Cloud to start. Same permissions, same logs, same off switch. If continuous load, privacy, or cost later say private hardware, we design it then, we do not sell you a box so the proposal looks heavier.",
       why: "Hardware is a workload decision. Selling it on day one to every operator is how consultancies pad a statement of work.",
     },
   ] satisfies ExampleStory[],
@@ -271,7 +271,7 @@ export const PRIVATE_PAGE = {
     },
     {
       q: "Is my company data used to train a public model?",
-      a: "Agents only see the systems and records you approve. Private or hybrid setups keep more of the work on infrastructure you control. Training policy is scoped per deployment — we do not train a public model on your ROs as a default.",
+      a: "Agents only see the systems and records you approve. Private or hybrid setups keep more of the work on infrastructure you control. Training policy is scoped per deployment, we do not train a public model on your ROs as a default.",
     },
   ] satisfies Qa[],
 } as const;
@@ -280,11 +280,11 @@ export const MANAGED_PAGE = {
   week: [
     {
       title: "Watch the runs, not a vanity dashboard",
-      body: "Successful jobs, failures, latency, escalations. We care whether the estimate agent drafted, whether it handed off, and whether a connector 401’d at 2am — not whether a status page is green.",
+      body: "Successful jobs, failures, latency, escalations. We care whether the estimate agent drafted, whether it handed off, and whether a connector 401’d at 2am, not whether a status page is green.",
     },
     {
       title: "Keep the connectors current",
-      body: "Vendors ship API changes. ServiceTitan, Tekmetric, Google Ads, QuickBooks — all of them. Managed operations is how a Friday vendor update does not silently kill Monday’s follow-up.",
+      body: "Vendors ship API changes. ServiceTitan, Tekmetric, Google Ads, QuickBooks, all of them. Managed operations is how a Friday vendor update does not silently kill Monday’s follow-up.",
     },
     {
       title: "Evaluate the output against the standard you set",
@@ -296,7 +296,7 @@ export const MANAGED_PAGE = {
     },
     {
       title: "Add the next job when the last one is trusted",
-      body: "New membership product, second location, a reporting hole the owner just found. Continuous improvement is scoped to what is running — you do not pay for a forty-agent roadmap.",
+      body: "New membership product, second location, a reporting hole the owner just found. Continuous improvement is scoped to what is running, you do not pay for a forty-agent roadmap.",
     },
   ] satisfies NumberedItem[],
   why: [
@@ -310,7 +310,7 @@ export const MANAGED_PAGE = {
     },
     {
       title: "You pay for what is in production",
-      body: "Managed operations starts after a live deployment. Scope is the agents and workflows that are actually running — not a retainer for work we might someday do.",
+      body: "Managed operations starts after a live deployment. Scope is the agents and workflows that are actually running, not a retainer for work we might someday do.",
     },
   ] satisfies NumberedItem[],
   examples: [
@@ -330,7 +330,7 @@ export const MANAGED_PAGE = {
         "Repair exceptions were already landing. Collision files still lived in CCC. Quiet estimates and uncollected finals were a second scavenger hunt.",
       install:
         "Same environment. Additional collector on the CCC EMS export they already produced. Collision exceptions on the same morning board. No new SaaS. No master login.",
-      why: "Managed operations is how the system grows with the company — a new view, a tighter permission, a new path — without a second implementation circus.",
+      why: "Managed operations is how the system grows with the company (a new view, a tighter permission, a new path) without a second implementation circus.",
     },
     {
       kicker: "Example model change",
@@ -386,7 +386,7 @@ export const WORKSHOPS_PAGE = {
     },
     {
       title: "A real deployment",
-      body: "Detail Driven in Jackson Hole: four shop types, Tekmetric, CCC ONE, dedicated local hardware, hybrid inference, one operator dashboard. What we can stand behind — and what we will not invent numbers for.",
+      body: "Detail Driven in Jackson Hole: four shop types, Tekmetric, CCC ONE, dedicated local hardware, hybrid inference, one operator dashboard. What we can stand behind, and what we will not invent numbers for.",
     },
     {
       title: "The first ninety days",
@@ -414,11 +414,11 @@ export const WORKSHOPS_PAGE = {
   examples: [
     {
       kicker: "What we walk in the room",
-      title: "Detail Driven, end to end — without fake ROI.",
+      title: "Detail Driven, end to end, without fake ROI.",
       leftover:
         "Leadership rooms ask for proof. Most AI talks show a chatbot and a hockey-stick slide. Operators can smell it. We walk the actual leftover: stalled ROs, quiet collision files, ads spending with no operator, a morning rebuilt from five logins.",
       install:
-        "Four shop types. Systems that stayed. Agents installed as jobs. Dedicated Linux. One dashboard. What we can stand behind today is on the case study — four shop types, hybrid inference, Tekmetric and CCC still the systems of record. No recovered-revenue number we cannot defend.",
+        "Four shop types. Systems that stayed. Agents installed as jobs. Dedicated Linux. One dashboard. What we can stand behind today is on the case study, four shop types, hybrid inference, Tekmetric and CCC still the systems of record. No recovered-revenue number we cannot defend.",
       why: "A workshop that will not show a real file is a pitch. This is the file we will show. Everything else in the room is their leftover, named in their language.",
     },
     {

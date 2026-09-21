@@ -16,11 +16,11 @@ const RESOURCES_FAQS = [
   },
   {
     q: "Do you replace Tekmetric, CCC ONE, or ServiceTitan?",
-    a: "No. Systems of record stay. We connect collectors and agents to the leftover work — follow-up, monitoring, reporting — and the same build includes a secure dashboard.",
+    a: "No. Systems of record stay. We connect collectors and agents to the leftover work (follow-up, monitoring, reporting) and the same build includes a secure dashboard.",
   },
   {
     q: "Why don’t these articles link out to sources?",
-    a: "We name the sources — Bureau of Labor Statistics, Auto Care Association, CCC Intelligent Solutions help, NIST AI RMF, CIECA, I-CAR, ASA, the 2007 Lead Response Management study — so you can find them. The pages themselves stay on this site.",
+    a: "We name the sources, Bureau of Labor Statistics, Auto Care Association, CCC Intelligent Solutions help, NIST AI RMF, CIECA, I-CAR, ASA, the 2007 Lead Response Management study, so you can find them. The pages themselves stay on this site.",
   },
   {
     q: "How do I get this in my shop?",
@@ -61,19 +61,19 @@ function Page() {
     <>
       <PageHero
         eyebrow="Field notes"
-        title="Notes from shops, not from a prompt."
-        body="How leftover work actually moves in auto repair, collision, detailing, HVAC, and other service businesses — and what custom AI agents can watch without replacing the software you already run."
+        title="Notes from shops, not from a ChatGPT window."
+        body="How leftover work actually moves in auto repair, HVAC, and other service businesses, and how custom agents get implemented in the software you already run, without you having to learn AI."
         primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
         secondary={{ to: "/case-studies", label: "Read the case study" }}
       />
 
-      <RevealSection className="border-t border-fg/5 pt-16 pb-8 sm:pt-24">
+      <RevealSection className="border-t border-fg/5 pt-16 pb-8 sm:pt-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h2 className="text-2xl font-medium tracking-tight text-fg sm:text-3xl">What this library is</h2>
           <p className="mt-5 text-base leading-relaxed font-light text-fg/70 sm:text-lg">
             Cortex builds custom AI systems for established service businesses. These pages are the long form of that
-            work: field notes, not a blog about ChatGPT. We write from an install we can stand behind — Detail Driven
-            Enterprises in Jackson Hole, Wyoming, across mechanical repair, collision, detailing, and glass — and from
+            work: field notes, not a blog about ChatGPT. We write from an install we can stand behind, Detail Driven
+            Enterprises in Jackson Hole, Wyoming, across mechanical repair, collision, detailing, and glass, and from
             the stalls we hear every week on audit calls. Repair lives in Tekmetric. Collision lives in CCC ONE.
             Conversations live in GoHighLevel. Money lives in QuickBooks and Stripe. Demand lives in Google Ads, Meta,
             Google Business Profile, GA4, and Search Console. A person was still the integration. We installed
@@ -98,7 +98,7 @@ function Page() {
               Detail Driven case study
             </Link>
             . If you run HVAC, plumbing, electrical, roofing, pest, or another trade, start with the audit for your
-            industry —{" "}
+            industry , {" "}
             <Link to="/audit/$slug" params={{ slug: "hvac" }} className="text-gold hover:underline">
               HVAC
             </Link>
@@ -139,7 +139,7 @@ function Page() {
         </RevealSection>
       ))}
 
-      <RevealSection className="border-t border-fg/5 pt-16 pb-8 sm:pt-24">
+      <RevealSection className="border-t border-fg/5 pt-16 pb-8 sm:pt-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h2 className="text-2xl font-medium tracking-tight text-fg sm:text-3xl">How we write these</h2>
           <p className="mt-5 text-base leading-relaxed font-light text-fg/70 sm:text-lg">
@@ -150,15 +150,15 @@ function Page() {
             a vendor will not let us in, we say so before anyone pays.
           </p>
           <p className="mt-5 text-base leading-relaxed font-light text-fg/70 sm:text-lg">
-            Use the notes as a map of leftover work, not as a DIY install guide. The architecture at Detail Driven —
-            private Linux hardware, a CCC EMS folder bridge, hybrid inference, least privilege — is a shape, not a kit.
+            Use the notes as a map of leftover work, not as a DIY install guide. The architecture at Detail Driven , 
+            private Linux hardware, a CCC EMS folder bridge, hybrid inference, least privilege, is a shape, not a kit.
             Your first deployment is usually one or two paths. The rest is a conversation about whether the leftover
             work actually justifies a build.
           </p>
         </div>
       </RevealSection>
 
-      <RevealSection className="pt-12 pb-16 sm:pt-16 sm:pb-24">
+      <RevealSection className="pt-12 pb-16 sm:pt-16 sm:pb-12">
         <SectionHead
           kicker="FAQ"
           title="Questions operators ask before they book the audit"

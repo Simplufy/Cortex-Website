@@ -24,11 +24,11 @@ function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        title="We believe the next major productivity leap won't come from adding more software."
-        body="It will come from giving the software businesses already use the ability to monitor, reason, coordinate, and act."
+        title="Most owners have tried ChatGPT. That's not AI in the business."
+        body="The next leap isn't another login. It's implementing agents in the software companies already pay for, so leftover work doesn't depend on someone who understands prompts."
         primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
       />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <div className="mx-auto max-w-3xl px-6">
           <p className="text-lg leading-relaxed font-light text-fg/70">
             Service businesses have spent the last decade digitizing their operations. They have CRMs, field-service
@@ -39,13 +39,13 @@ function AboutPage() {
           </p>
           <p className="mt-5 text-lg leading-relaxed font-medium text-fg">Cortex was built to solve that layer.</p>
           <p className="mt-5 text-lg leading-relaxed font-light text-fg/70">
-            We design custom AI systems that work across a company's existing operation — helping teams follow up
+            We design custom AI systems that work across a company's existing operation, helping teams follow up
             faster, catch problems earlier, reduce repetitive administrative work, and make better use of the software
             they already own.
           </p>
         </div>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title={`${BRAND.founder}`}
           body={`${BRAND.founderRole}, ${BRAND.name}`}
@@ -64,7 +64,7 @@ function AboutPage() {
                 everything between it.
               </p>
               <p>
-                Today the focus is building practical AI infrastructure around real business workflows — including
+                Today the focus is building practical AI infrastructure around real business workflows, including
                 private local AI systems, cloud models, specialized agents, and integrations with the software
                 companies already depend on.
               </p>
@@ -85,7 +85,7 @@ function AboutPage() {
           </article>
         </div>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           kicker="How we work"
           title="Audit. Design. Build. Deploy. Manage."

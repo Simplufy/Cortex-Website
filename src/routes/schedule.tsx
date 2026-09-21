@@ -28,7 +28,7 @@ function Page() {
   }, []);
 
   return (
-    <article className="mx-auto max-w-4xl px-6 pt-14 pb-24">
+    <article className="mx-auto max-w-4xl px-6 pt-14 pb-12">
       <p className="text-center text-[10px] font-bold tracking-[0.22em] text-gold uppercase">{BRAND.legal}</p>
       <h1 className="mt-4 text-center text-4xl font-medium tracking-tight text-fg md:text-5xl">
         Pick a time for the walkthrough

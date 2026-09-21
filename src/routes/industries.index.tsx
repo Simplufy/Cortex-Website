@@ -22,10 +22,10 @@ function IndustriesPage() {
     <>
       <PageHero
         eyebrow="Industries"
-        title="Built for the software and workflows your industry actually uses."
-        body="Automotive shops don't operate like HVAC companies. HVAC companies don't operate like roofers. We build around the systems, workflows, and bottlenecks specific to your industry."
+        title="You don't have to learn AI to get it working in your trade."
+        body="ChatGPT doesn't know HVAC from collision. Cortex implements agents in the software and workflows your industry already uses (ServiceTitan, Tekmetric, AccuLynx, PestPac, Jobber) without making you the AI person."
       />
-      <RevealSection className="pt-8 pb-24">
+      <RevealSection className="pt-8 pb-12">
         <SectionHead title="Where we work" />
         <div className="mx-auto max-w-5xl space-y-16 px-6">
           {INDUSTRIES.map((ind) => (

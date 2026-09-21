@@ -18,9 +18,9 @@ import { AgentTerminal, SERVICE_SESSIONS } from "@/components/fx/agent-terminal"
 export const Route = createFileRoute("/ai-agents")({
   head: () =>
     pageHead({
-      title: "AI Agents for Follow-up, Monitoring, and Reporting",
+      title: "AI Agents Implemented in Your Existing Software",
       description:
-        "AI agents with actual jobs inside your business. Each one monitors information, follows up, prepares reports, coordinates across systems, or escalates exceptions to your team.",
+        "You don't have to learn AI or live in ChatGPT. Cortex implements agents with actual jobs inside the software you already run (follow-up, monitoring, reporting) so leftover work doesn't wait on a prompt.",
       path: "/ai-agents",
     }),
   component: Page,
@@ -31,11 +31,11 @@ function Page() {
     <>
       <PageHero
         eyebrow="AI Agents"
-        title="AI agents with actual jobs inside your business."
-        body="Each agent is hired for a specific leftover path — monitoring, follow-up, reporting, coordination, or escalation. They do not wait for a prompt. They work the process they are responsible for, on the software you already run, with a person on anything that needs judgment."
+        title="You don't need to learn AI. You need agents in your software."
+        body="ChatGPT waits for a prompt. Cortex implements agents inside the systems you already run (monitoring, follow-up, reporting) with a person on anything that needs judgment. You stay the operator."
         primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
       />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="What an agent is"
           body="A software worker with a defined responsibility, access to specific systems, and rules for what it can do automatically versus what requires approval. Not a chatbot. Not a pack of forty toys."
@@ -43,7 +43,7 @@ function Page() {
         <CardGrid cols="md:grid-cols-3">
           <InfoCard
             title="Reads your systems"
-            body="CRM, shop or field software, ads, inbox, calendar. Only the records you approve. Named tools are examples we evaluate — not a certified list we pretend already works."
+            body="CRM, shop or field software, ads, inbox, calendar. Only the records you approve. Named tools are examples we evaluate, not a certified list we pretend already works."
           />
           <InfoCard
             title="Does approved work"
@@ -55,14 +55,14 @@ function Page() {
           />
         </CardGrid>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="How we build one"
           body="The job is written before a model is chosen. Permissions are a design choice. The off switch ships with the path."
         />
         <NumberedBlocks items={AGENTS_PAGE.how} />
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="Why we build them this way"
           body="Most of what gets sold as AI to service businesses is a chat window or a zap with a sparkle on it. The leftover work does not live there."
@@ -70,10 +70,10 @@ function Page() {
         <NumberedBlocks items={AGENTS_PAGE.why} />
       </RevealSection>
       <AgentTerminal session={SERVICE_SESSIONS.agents} />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-16">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-14">
         <SectionHead
           title="What this looks like in the operation"
-          body="Detail Driven is the named deployment. The other three are leftover paths we map in audits — not invented case studies, not recovered-revenue slides."
+          body="Detail Driven is the named deployment. The other three are leftover paths we map in audits, not invented case studies, not recovered-revenue slides."
         />
         <ProofCallout
           kicker={DETAIL_DRIVEN_PROOF.kicker}
@@ -83,17 +83,17 @@ function Page() {
           slug="detail-driven"
         />
       </RevealSection>
-      <RevealSection className="pb-24">
+      <RevealSection className="pb-12">
         <div className="mx-auto grid max-w-6xl gap-6 px-6 lg:grid-cols-2">
           {AGENTS_PAGE.examples.map((ex) => (
             <ExamplePanel key={ex.title} {...ex} />
           ))}
         </div>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="Put AI to work across the business."
-          body="Agents can handle repetitive work across sales, operations, customer experience, marketing, and management — while your team keeps the decisions that require judgment. Yours will differ. That is the point."
+          body="Agents can handle repetitive work across sales, operations, customer experience, marketing, and management, while your team keeps the decisions that require judgment. Yours will differ. That is the point."
         />
         <CardGrid cols="md:grid-cols-2 lg:grid-cols-5">
           {AGENT_CATEGORIES.map((c) => (
@@ -101,7 +101,7 @@ function Page() {
           ))}
         </CardGrid>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-8">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-14">
         <SectionHead title="Questions operators actually ask" />
         <FaqList items={AGENTS_PAGE.faqs} />
       </RevealSection>

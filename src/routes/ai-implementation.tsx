@@ -31,12 +31,12 @@ function Page() {
     <>
       <PageHero
         eyebrow="AI Implementation"
-        title="Custom AI implementation, built around your existing operation."
-        body="From mapping leftover work and connecting the software you already run, to agents, permissions, testing, and a dashboard in the same build. You do not need an internal AI team. You do not need to replace ServiceTitan, Tekmetric, Jobber, or the books."
+        title="You don't need an AI team. You need it implemented."
+        body="From mapping leftover work and connecting the software you already run, to agents, permissions, testing, and a dashboard in the same build. You do not have to understand models. You do not replace ServiceTitan, Tekmetric, Jobber, or the books."
         primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
         secondary={{ to: "/how-we-work", label: "See How It Works" }}
       />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="What the project includes"
           body="A defined implementation. Then Managed AI Operations if you want us to keep the system reliable after it is live."
@@ -47,7 +47,7 @@ function Page() {
           ))}
         </CardGrid>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="How we actually do the work"
           body="Audit first. Keep the systems of record. Ship one or two paths. Include the board. Leave a person on the work that needs a person."
@@ -55,7 +55,7 @@ function Page() {
         <NumberedBlocks items={IMPLEMENTATION_PAGE.how} />
       </RevealSection>
       <AgentTerminal session={SERVICE_SESSIONS.implementation} />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead title="The sequence" body="Audit. Design. Build. Deploy. Manage." />
         <CardGrid cols="md:grid-cols-2 lg:grid-cols-5">
           {PILLARS.map((p) => (
@@ -63,10 +63,10 @@ function Page() {
           ))}
         </CardGrid>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-16">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-14">
         <SectionHead
           title="What this looks like when we install it"
-          body="Detail Driven is the named deployment. The HVAC and roofing paths are how we typically start in those trades — leftover work we map in audits, not invented ROI."
+          body="Detail Driven is the named deployment. The HVAC and roofing paths are how we typically start in those trades, leftover work we map in audits, not invented ROI."
         />
         <ProofCallout
           kicker={DETAIL_DRIVEN_PROOF.kicker}
@@ -76,14 +76,14 @@ function Page() {
           slug="detail-driven"
         />
       </RevealSection>
-      <RevealSection className="pb-24">
+      <RevealSection className="pb-12">
         <div className="mx-auto grid max-w-6xl gap-6 px-6 lg:grid-cols-2">
           {IMPLEMENTATION_PAGE.examples.map((ex) => (
             <ExamplePanel key={ex.title} {...ex} />
           ))}
         </div>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead title="How we scope the work" />
         <CardGrid cols="md:grid-cols-3">
           <InfoCard
@@ -100,7 +100,7 @@ function Page() {
           />
         </CardGrid>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-8">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-14">
         <SectionHead title="Questions operators actually ask" />
         <FaqList items={IMPLEMENTATION_PAGE.faqs} />
       </RevealSection>

@@ -95,7 +95,7 @@ function DetailDriven({ study }: { study: (typeof CASE_STUDIES)[number] }) {
           {[
             ["Private Linux AI infrastructure", "Dedicated hardware on site. Routine inference stays local. Cloud when a job actually needs a stronger model. The overnight watch and the morning briefing do not have to leave the building."],
             ["Collectors and bridges", "Tekmetric, ads, CRM, and books over their APIs. Collision through a local CCC ONE EMS export. We read the files CCC already knows how to write. We do not scrape private databases."],
-            ["Secure operator dashboard", "One board for operations, marketing, finance, and the four shops. Command, inbox, quotes, bookings, money, demand, collision, and a knowledge map. This is where department exceptions and the numbers land in the morning — without five logins."],
+            ["Secure operator dashboard", "One board for operations, marketing, finance, and the four shops. Command, inbox, quotes, bookings, money, demand, collision, and a knowledge map. This is where department exceptions and the numbers land in the morning, without five logins."],
             ["Orchestrator and agents", "A manager assigns follow-up, monitoring, and reporting. Agents watch the queues. A person still owns the customer."],
           ].map(([title, body], i) => (
             <li key={title} className="rounded-xl border border-fg/10 bg-surface px-5 py-4">
@@ -126,8 +126,8 @@ function DetailDriven({ study }: { study: (typeof CASE_STUDIES)[number] }) {
           company.
         </p>
         <p className="mt-4 text-lg leading-relaxed font-light text-fg/70">
-          Agents watch the queues. The dashboard is how the owner sees all of it — exceptions, the numbers, and which
-          system they came from — without rebuilding the morning from exports.
+          Agents watch the queues. The dashboard is how the owner sees all of it, exceptions, the numbers, and which
+          system they came from, without rebuilding the morning from exports.
         </p>
         <div className="mt-8">
           <OperatorBoard />

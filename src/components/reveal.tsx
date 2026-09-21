@@ -6,11 +6,16 @@ function reduced() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-function revealIfVisible(el: HTMLElement) {
-  if (el.classList.contains("is-on")) return;
-  const r = el.getBoundingClientRect();
-  if (r.height < 16) return;
-  if (r.top < window.innerHeight * 0.8) el.classList.add("is-on");
+function arm(el: HTMLElement) {
+  el.dataset.reveal = "up";
+  el.classList.add("js-reveal");
+  el.querySelectorAll<HTMLElement>(":scope .grid > *, :scope ol > *, :scope ul > *, :scope details").forEach((child, i) => {
+    child.dataset.revealItem = String(Math.min(i, 8));
+  });
+}
+
+function show(el: HTMLElement) {
+  el.classList.add("is-on");
 }
 
 export function RevealSection({ className, children, ...props }: ComponentProps<"section">) {
@@ -20,30 +25,32 @@ export function RevealSection({ className, children, ...props }: ComponentProps<
     const el = ref.current;
     if (!el) return;
     if (reduced()) {
-      el.classList.add("is-on");
+      show(el);
       return;
     }
-    el.classList.add("js-reveal");
-    revealIfVisible(el);
+    arm(el);
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.92) show(el);
   }, []);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    if (reduced()) return;
-    const check = () => revealIfVisible(el);
-    const a = requestAnimationFrame(() => requestAnimationFrame(check));
-    window.addEventListener("scroll", check, { passive: true });
-    window.addEventListener("resize", check);
-    return () => {
-      cancelAnimationFrame(a);
-      window.removeEventListener("scroll", check);
-      window.removeEventListener("resize", check);
-    };
+    if (!el || reduced()) return;
+    if (el.classList.contains("is-on")) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        show(el);
+        io.disconnect();
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
   return (
-    <section ref={ref} className={cn(className)} {...props}>
+    <section ref={ref} className={cn("reveal-section", className)} {...props}>
       {children}
     </section>
   );
@@ -53,18 +60,24 @@ export function RevealRoot({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
-    if (reduced()) return;
-    const checkAll = () => {
-      document.querySelectorAll<HTMLElement>("section.js-reveal").forEach(revealIfVisible);
-    };
-    const a = requestAnimationFrame(() => requestAnimationFrame(checkAll));
-    window.addEventListener("scroll", checkAll, { passive: true });
-    window.addEventListener("resize", checkAll);
-    return () => {
-      cancelAnimationFrame(a);
-      window.removeEventListener("scroll", checkAll);
-      window.removeEventListener("resize", checkAll);
-    };
+    if (reduced()) {
+      document.querySelectorAll<HTMLElement>("section.js-reveal").forEach(show);
+      return;
+    }
+    const nodes = [...document.querySelectorAll<HTMLElement>("section.js-reveal:not(.is-on)")];
+    if (!nodes.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          show(entry.target as HTMLElement);
+          io.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" },
+    );
+    nodes.forEach((n) => io.observe(n));
+    return () => io.disconnect();
   }, [pathname]);
 
   return <>{children}</>;

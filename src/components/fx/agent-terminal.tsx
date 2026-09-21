@@ -16,10 +16,10 @@ export type TerminalSession = {
 };
 
 const DEFAULT_SESSION: TerminalSession = {
-  kicker: "Session log",
-  title: "This is what an agent actually does.",
-  body: "Not a chatbot window. A job with access, a written log, and a human approval gate — running against the software you already have.",
-  host: "cortex@ops — live session",
+  kicker: "inside the os · live session",
+  title: "This is what implementing AI actually looks like.",
+  body: "Not a ChatGPT window. A job with access, a written log, and a human approval gate, running against the software you already have. You don't have to run it. We implement it.",
+  host: "cortex@ops · live session",
   files: [
     { path: "agents/ro-watch.md", tag: "watch" },
     { path: "agents/follow-up.md", tag: "queue" },
@@ -45,9 +45,9 @@ const DEFAULT_SESSION: TerminalSession = {
 export const SERVICE_SESSIONS: Record<string, TerminalSession> = {
   agents: {
     kicker: "Agent runtime",
-    title: "An agent is a job with access — not a chat window.",
+    title: "An agent is a job with access, not a chat window.",
     body: "Watch one worker read the systems you already run, do the approved next step, and stop when a person is required.",
-    host: "cortex@agents — live",
+    host: "cortex@agents · live",
     files: [
       { path: "agents/monitor.md", tag: "watch" },
       { path: "agents/follow-up.md", tag: "queue" },
@@ -72,7 +72,7 @@ export const SERVICE_SESSIONS: Record<string, TerminalSession> = {
     kicker: "Implementation",
     title: "How a Cortex build actually gets installed.",
     body: "Audit the paths. Connect the stack. Deploy one agent. Prove it with your team before anything auto-sends.",
-    host: "cortex@build — deploy",
+    host: "cortex@build · deploy",
     files: [
       { path: "audit/paths.md", tag: "map" },
       { path: "connect/stack.md", tag: "api" },
@@ -95,7 +95,7 @@ export const SERVICE_SESSIONS: Record<string, TerminalSession> = {
     kicker: "How we work",
     title: "Understand the operation first. Then automate it.",
     body: "The same sequence on every engagement: audit, design, connect, deploy, watch the log.",
-    host: "cortex@studio — process",
+    host: "cortex@studio · process",
     files: [
       { path: "01-audit.md", tag: "audit" },
       { path: "02-design.md", tag: "design" },
@@ -115,9 +115,9 @@ export const SERVICE_SESSIONS: Record<string, TerminalSession> = {
   },
   "private-ai": {
     kicker: "Infrastructure",
-    title: "Cloud, private, or hybrid — routed per job.",
+    title: "Cloud, private, or hybrid, routed per job.",
     body: "Routine work can stay on hardware you control. Hard reasoning can still call a cloud model. Rules when AI is not needed at all.",
-    host: "cortex@infra — router",
+    host: "cortex@infra · router",
     files: [
       { path: "runtime/local.md", tag: "private" },
       { path: "runtime/cloud.md", tag: "cloud" },
@@ -139,7 +139,7 @@ export const SERVICE_SESSIONS: Record<string, TerminalSession> = {
     kicker: "Managed operations",
     title: "After go-live, someone still has to keep it honest.",
     body: "APIs change. Models drift. We watch the runs, repair connectors, and expand only what is earning its keep.",
-    host: "cortex@ops — managed",
+    host: "cortex@ops · managed",
     files: [
       { path: "watch/uptime.md", tag: "health" },
       { path: "watch/connectors.md", tag: "api" },
@@ -162,7 +162,7 @@ export const SERVICE_SESSIONS: Record<string, TerminalSession> = {
     kicker: "Workshop",
     title: "What the room actually sees in ninety minutes.",
     body: "Agents vs chatbots. What to automate. What to leave human. A live walkthrough against real service software.",
-    host: "cortex@workshop — demo",
+    host: "cortex@workshop · demo",
     files: [
       { path: "deck/agents-vs-chat.md", tag: "talk" },
       { path: "demo/connect.md", tag: "live" },
@@ -209,8 +209,8 @@ export function sessionFromIndustry(industry: Industry): TerminalSession {
   return {
     kicker: industry.name,
     title: "This is what an agent does in this operation.",
-    body: `A live pass against the software ${industry.name.toLowerCase()} already runs — watch, draft, escalate. Your team keeps the judgment.`,
-    host: `cortex@${slugify(industry.slug)} — live`,
+    body: `A live pass against the software ${industry.name.toLowerCase()} already runs, watch, draft, escalate. Your team keeps the judgment.`,
+    host: `cortex@${slugify(industry.slug)} · live`,
     files,
     script,
   };
@@ -218,6 +218,7 @@ export function sessionFromIndustry(industry: Industry): TerminalSession {
 
 export function AgentTerminal({ session = DEFAULT_SESSION }: { session?: TerminalSession }) {
   const wrap = useRef<HTMLDivElement>(null);
+  const log = useRef<HTMLPreElement>(null);
   const [started, setStarted] = useState(false);
   const [line, setLine] = useState(0);
   const [typed, setTyped] = useState("");
@@ -240,7 +241,7 @@ export function AgentTerminal({ session = DEFAULT_SESSION }: { session?: Termina
           io.disconnect();
         }
       },
-      { threshold: 0.35 },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -250,43 +251,78 @@ export function AgentTerminal({ session = DEFAULT_SESSION }: { session?: Termina
     if (!started || line >= script.length) return;
     const row = script[line];
     if (row.file != null) setActiveFile(row.file);
+    const step = Math.max(2, Math.ceil(row.text.length / 18));
     if (typed.length < row.text.length) {
-      const t = window.setTimeout(() => setTyped(row.text.slice(0, typed.length + 1)), row.kind === "cmd" ? 18 : 12);
+      const t = window.setTimeout(() => setTyped(row.text.slice(0, typed.length + step)), 20);
       return () => window.clearTimeout(t);
     }
     const t = window.setTimeout(() => {
       setTyped("");
       setLine((n) => n + 1);
-    }, 420);
+    }, 180);
     return () => window.clearTimeout(t);
   }, [started, line, typed, script]);
 
+  useEffect(() => {
+    const el = log.current;
+    if (!el) return;
+    el.scrollTop = el.scrollHeight;
+  }, [typed, line]);
+
   const done = line >= script.length;
+  const rerun = () => {
+    setLine(0);
+    setTyped("");
+    setActiveFile(0);
+    setStarted(true);
+  };
 
   return (
-    <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+    <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
       <SectionHead kicker={session.kicker} title={session.title} body={session.body} />
-      <div ref={wrap} className="mx-auto max-w-5xl px-6">
-        <div className="term-frame overflow-hidden rounded-2xl border border-gold/25 bg-surface shadow-[0_0_80px_-28px_rgb(var(--gold-rgb)/0.55)]">
-          <div className="flex items-center gap-2 border-b border-fg/10 px-4 py-3">
-            <span className="size-2.5 rounded-full bg-gold/80" />
-            <span className="size-2.5 rounded-full bg-fg/20" />
-            <span className="size-2.5 rounded-full bg-fg/20" />
-            <span className="ml-3 font-mono text-[10px] tracking-[0.18em] text-fg/45 uppercase">{session.host}</span>
+      <div ref={wrap} className="mx-auto max-w-5xl px-4 sm:px-6">
+        <div className="term-frame overflow-hidden rounded-xl border border-fg/12 bg-elevated">
+          <div className="flex items-center gap-2 border-b border-fg/10 px-3 py-2.5 sm:px-4 sm:py-3">
+            <span className="size-2.5 shrink-0 rounded-full bg-gold/80" />
+            <span className="size-2.5 shrink-0 rounded-full bg-fg/20" />
+            <span className="size-2.5 shrink-0 rounded-full bg-fg/20" />
+            <span className="ml-2 truncate font-mono text-[10px] tracking-wide text-fg/45 uppercase sm:ml-3 sm:tracking-[0.18em]">
+              {session.host}
+            </span>
+          </div>
+          <div className="flex gap-1.5 overflow-x-auto border-b border-fg/10 px-3 py-2 md:hidden no-scrollbar">
+            {files.map((f, i) => (
+              <span
+                key={f.path}
+                className={
+                  i === activeFile
+                    ? "shrink-0 rounded-md bg-gold/15 px-2 py-1 font-mono text-[10px] text-gold"
+                    : "shrink-0 rounded-md px-2 py-1 font-mono text-[10px] text-fg/40"
+                }
+              >
+                {f.path.split("/").pop()}
+              </span>
+            ))}
           </div>
           <div className="grid md:grid-cols-[13rem_1fr]">
             <aside className="hidden border-r border-fg/10 p-4 font-mono text-[11px] md:block">
               <p className="mb-3 tracking-widest text-gold/70 uppercase">cortex/</p>
               <ul className="space-y-1.5 text-fg/50">
                 {files.map((f, i) => (
-                  <li key={f.path} className={i === activeFile ? "text-gold" : ""}>
+                  <li
+                    key={f.path}
+                    className={i === activeFile ? "rounded-md bg-gold/10 px-1.5 py-0.5 text-gold" : "px-1.5 py-0.5"}
+                  >
                     <span className="mr-2 text-fg/25">{i === activeFile ? "▸" : "·"}</span>
                     {f.path}
                   </li>
                 ))}
               </ul>
             </aside>
-            <pre className="term-scan min-h-[16rem] overflow-x-auto overflow-y-hidden p-4 font-mono text-[11px] leading-6 text-fg/80 sm:p-5 sm:text-[13px] md:min-h-[24rem]">
+            <pre
+              ref={log}
+              className="term-scan h-[18rem] overflow-x-hidden overflow-y-auto p-3 font-mono text-[11px] leading-6 break-words whitespace-pre-wrap text-fg/80 sm:h-[22rem] sm:p-5 sm:text-[13px] md:h-[24rem]"
+            >
               {script.slice(0, line).map((row, i) => (
                 <div key={i} className={tone(row.kind)}>
                   {prefix(row.kind)}
@@ -308,9 +344,14 @@ export function AgentTerminal({ session = DEFAULT_SESSION }: { session?: Termina
             </pre>
           </div>
         </div>
-        <div className="mx-auto mt-6 grid max-w-3xl gap-3 font-mono text-[11px] tracking-wide text-fg/45 sm:grid-cols-2">
-          <p className="rounded-xl border border-fg/10 px-4 py-3">without cortex · someone still has to remember to look</p>
-          <p className="rounded-xl border border-gold/30 px-4 py-3 text-gold/80">with cortex · the layer watches, drafts, and waits for you</p>
+        <div className="mt-4 grid gap-2 font-mono text-[11px] tracking-wide text-fg/45 sm:mt-5 sm:grid-cols-2 sm:gap-3">
+          <p className="rounded-lg border border-fg/10 px-3 py-2.5 sm:px-4 sm:py-3">without cortex · someone still has to remember to look</p>
+          <p className="rounded-lg border border-gold/30 px-3 py-2.5 text-gold/80 sm:px-4 sm:py-3">with cortex · the layer watches, drafts, and waits for you</p>
+        </div>
+        <div className="mt-4 text-center">
+          <button type="button" onClick={rerun} className="min-h-11 px-3 font-mono text-[12px] text-fg/45 hover:text-gold">
+            ↻ Run it again
+          </button>
         </div>
       </div>
     </RevealSection>

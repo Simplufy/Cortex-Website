@@ -63,7 +63,7 @@ function Hero() {
         <VslPlayer
           src={BRAND.homeServicesVslSrc}
           poster={BRAND.homeServicesVslPoster}
-          cover="/images/cortex/covers/home-services.jpg?v=4"
+          cover="/images/cortex/covers/home-services.jpg?v=10"
           designed
           label="Watch how this works in a home service company"
         />
@@ -99,7 +99,7 @@ function ProofStrip() {
 
 function Problem() {
   return (
-    <RevealSection className="mx-auto max-w-6xl px-4 pt-14 pb-12 sm:px-6 sm:pt-24 sm:pb-16">
+    <RevealSection className="mx-auto max-w-6xl px-4 pt-14 pb-12 sm:px-6 sm:pt-16 sm:pb-12">
       <p className="mb-4 text-center text-[10px] font-bold tracking-widest text-gold uppercase">The stall</p>
       <h2 className="mx-auto max-w-3xl text-center text-2xl font-medium tracking-tight text-fg sm:text-3xl md:text-5xl">
         You already have the software. Your team still does the work between it.
@@ -126,13 +126,13 @@ function Problem() {
 
 function AuditWhat() {
   return (
-    <RevealSection className="border-t border-fg/5 pt-14 pb-14 sm:pt-24 sm:pb-24">
+    <RevealSection className="border-t border-fg/5 pt-14 pb-14 sm:pt-16 sm:pb-16">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <p className="mb-4 text-[10px] font-bold tracking-widest text-gold uppercase">The free audit</p>
         <h2 className="text-2xl font-medium tracking-tight text-fg sm:text-3xl md:text-5xl">What you actually get</h2>
         <p className="mt-4 text-sm font-light text-fg/60 sm:mt-5 sm:text-lg">
           We'll review your software stack, workflows, bottlenecks, reporting, follow-up, and repetitive administrative
-          work. Then we'll show you the highest-value places AI could help — including what we'd automate first, what
+          work. Then we'll show you the highest-value places AI could help, including what we'd automate first, what
           integrations are required, and what should stay human.
         </p>
       </div>
@@ -175,7 +175,7 @@ function AuditWhat() {
 function Method() {
   const study = CASE_STUDIES[0];
   return (
-    <RevealSection className="border-t border-fg/5 pt-14 pb-14 sm:pt-24 sm:pb-24">
+    <RevealSection className="border-t border-fg/5 pt-14 pb-14 sm:pt-16 sm:pb-16">
       <div className="mx-auto mb-10 max-w-3xl px-4 text-center sm:mb-14 sm:px-6">
         <p className="mb-4 text-[10px] font-bold tracking-widest text-gold uppercase">How it works</p>
         <h2 className="text-2xl font-medium tracking-tight text-fg sm:text-3xl md:text-5xl">Audit. Design. Build. Deploy. Manage.</h2>
@@ -219,7 +219,7 @@ function Method() {
 
 function Industries() {
   return (
-    <RevealSection className="border-t border-fg/5 pt-14 pb-14 sm:pt-24 sm:pb-24">
+    <RevealSection className="border-t border-fg/5 pt-14 pb-14 sm:pt-16 sm:pb-16">
       <div className="mx-auto mb-8 max-w-3xl px-4 text-center sm:mb-12 sm:px-6">
         <p className="mb-4 text-[10px] font-bold tracking-widest text-gold uppercase">Who this is for</p>
         <h2 className="text-2xl font-medium tracking-tight text-fg sm:text-3xl md:text-4xl">
@@ -247,7 +247,7 @@ function Industries() {
 
 function Founder() {
   return (
-    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-14 sm:px-6 sm:pt-24 sm:pb-24">
+    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-14 sm:px-6 sm:pt-16 sm:pb-16">
       <p className="mb-6 text-center text-[10px] font-bold tracking-widest text-gold uppercase sm:mb-8">From the founder</p>
       <blockquote className="mx-auto max-w-4xl text-center">
         <p className="text-balance text-xl leading-snug font-medium tracking-tight text-fg sm:text-2xl md:text-4xl">
@@ -272,7 +272,7 @@ function Founder() {
 
 function Faq() {
   return (
-    <RevealSection className="border-t border-fg/5 pt-14 pb-14 sm:pt-24 sm:pb-24">
+    <RevealSection className="border-t border-fg/5 pt-14 pb-14 sm:pt-16 sm:pb-16">
       <h2 className="mb-8 px-4 text-center text-2xl font-medium tracking-tight text-fg sm:mb-12 sm:text-3xl md:text-4xl">
         Questions before the audit
       </h2>
@@ -301,7 +301,7 @@ function Faq() {
 
 function Final() {
   return (
-    <RevealSection className="border-t border-fg/5 py-16 sm:py-28">
+    <RevealSection className="border-t border-fg/5 py-16 sm:py-16">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <h2 className="text-2xl font-medium tracking-tight text-fg sm:text-3xl md:text-5xl">
           Find the highest-value work AI can take off your team.

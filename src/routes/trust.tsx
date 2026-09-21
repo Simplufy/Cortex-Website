@@ -62,7 +62,7 @@ const SECTIONS = [
   },
   {
     title: "Do I own the system?",
-    body: "You own the systems of record. The custom agents, prompts, and routing we build for your operation are part of the engagement. What happens to that work if you leave is covered in offboarding — not locked behind a surprise clause.",
+    body: "You own the systems of record. The custom agents, prompts, and routing we build for your operation are part of the engagement. What happens to that work if you leave is covered in offboarding, not locked behind a surprise clause.",
   },
   {
     title: "Backups and recovery",
@@ -98,7 +98,7 @@ function Page() {
         title="AI agents should have exactly as much access as they need. No more."
         body="You are about to let software sit next to some of the most important systems in the company. These are the questions we answer before we connect anything."
       />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="The short version"
           body="Least privilege. Human approval on anything that matters. Logs. Your systems of record stay yours."

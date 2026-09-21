@@ -17,21 +17,23 @@ const TITLES: Record<string, string> = {
 };
 
 export const Route = createFileRoute("/industries/$slug")({
-  head: ({ params }) => {
+  loader: ({ params }) => {
     const industry = industryByPath(params.slug);
-    if (!industry) return pageHead({ title: "Industry", description: "Cortex industries.", path: `/industries/${params.slug}` });
+    if (!industry) throw notFound();
+    return industry;
+  },
+  head: ({ loaderData }) => {
+    if (!loaderData) return pageHead({ title: "Industry", description: "Cortex industries.", path: "/industries" });
     return pageHead({
-      title: TITLES[industry.slug] || `AI Agents for ${industry.name}`,
-      description: industry.intro,
-      path: industry.href,
+      title: TITLES[loaderData.slug] || `AI Agents for ${loaderData.name}`,
+      description: loaderData.intro,
+      path: loaderData.href,
     });
   },
   component: Page,
 });
 
 function Page() {
-  const { slug } = Route.useParams();
-  const industry = industryByPath(slug);
-  if (!industry) throw notFound();
+  const industry = Route.useLoaderData();
   return <IndustryPage industry={industry} />;
 }

@@ -8,8 +8,8 @@ import { AgentTerminal, sessionFromIndustry } from "@/components/fx/agent-termin
 import { auditPath } from "@/lib/audit-path";
 
 export function FinalCtaBlock({
-  title = "Find the highest-value work AI can take off your team.",
-  body = "Start with a Free AI Operations Audit. We'll show you what is worth automating, what isn't, and what a practical first deployment could look like.",
+  title = "See where AI belongs in your operation, without learning it.",
+  body = "Start with a Free AI Operations Audit. You don't have to understand AI. We'll show you what is worth implementing in the software you already run, and what isn't.",
   ctaTo = "/audit",
 }: {
   title?: string;
@@ -17,7 +17,7 @@ export function FinalCtaBlock({
   ctaTo?: string;
 }) {
   return (
-    <RevealSection className="relative py-20 sm:py-32">
+    <RevealSection className="relative py-14 sm:py-20">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <h2 className="text-balance text-2xl font-medium tracking-tight text-fg sm:text-3xl md:text-5xl">{title}</h2>
         <p className="mt-5 text-sm font-light text-fg/60 sm:mt-6 sm:text-lg">{body}</p>
@@ -37,7 +37,7 @@ export function IndustryPage({ industry }: { industry: Industry }) {
       <PageHero
         eyebrow={industry.name}
         titleNode={
-          <h1 className="text-balance text-[1.65rem] leading-[1.12] font-medium tracking-tighter text-fg sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="text-balance text-[1.65rem] leading-[1.12] font-medium tracking-tight text-fg sm:text-4xl md:text-5xl">
             {industry.hero[0]}
             <br />
             <span className="text-gold">{industry.hero[1]}</span>
@@ -49,11 +49,11 @@ export function IndustryPage({ industry }: { industry: Industry }) {
           label: "Get Your Free AI Operations Audit",
         }}
       />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead title="Does this sound familiar?" body="The stalls we hear in this trade every week." />
-        <div className="mx-auto max-w-3xl divide-y divide-fg/10 px-6">
+        <div className="mx-auto max-w-3xl divide-y divide-fg/10 px-4 sm:px-6">
           {industry.symptoms.map((s, i) => (
-            <article key={s.title} className="grid gap-3 py-8 sm:grid-cols-[3.5rem_1fr] sm:gap-6">
+            <article key={s.title} className="grid gap-2 py-5 sm:grid-cols-[3.5rem_1fr] sm:gap-6 sm:py-7">
               <span className="text-sm font-medium tracking-widest text-gold">
                 {String(i + 1).padStart(2, "0")}
               </span>
@@ -65,9 +65,9 @@ export function IndustryPage({ industry }: { industry: Industry }) {
           ))}
         </div>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead title="What agents can watch" body="Examples. Your list comes from the audit, not a template." />
-        <div className="mx-auto grid max-w-6xl gap-x-10 gap-y-12 px-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-x-8 gap-y-8 px-4 sm:px-6 md:grid-cols-2">
           {industry.systems.map((s) => (
             <article key={s.title} className="border-t border-gold/45 pt-5">
               <h3 className="text-xl font-medium text-fg">{s.title}</h3>
@@ -85,12 +85,12 @@ export function IndustryPage({ industry }: { industry: Industry }) {
         </div>
       </RevealSection>
       <AgentTerminal key={industry.slug} session={sessionFromIndustry(industry)} />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="Built to work with the software your industry already uses."
           body={`Examples of systems we commonly evaluate for integration. ${industry.software.intro}`}
         />
-        <div className="mx-auto grid max-w-6xl gap-x-10 gap-y-10 px-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-x-8 gap-y-8 px-4 sm:px-6 md:grid-cols-2">
           {industry.software.groups.map((g) => (
             <article key={g.title} className="border-t border-gold/45 pt-5">
               <h3 className="text-lg font-medium text-fg">{g.title}</h3>
@@ -104,12 +104,12 @@ export function IndustryPage({ industry }: { industry: Industry }) {
             </article>
           ))}
         </div>
-        <p className="mx-auto mt-8 max-w-3xl px-6 text-center text-sm text-fg/40">
+        <p className="mx-auto mt-8 max-w-3xl px-4 text-center text-sm text-fg/40 sm:px-6">
           Named tools are examples we see in this trade, not a certified integration list. What we can connect depends
           on APIs, vendor access, and the audit. We do not replace these systems.
         </p>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead title="How we install it" body="Audit. Design. Build. Deploy. Manage. Your existing software stays in place." />
         <ProcessSteps
           items={[
@@ -129,9 +129,9 @@ export function IndustryPage({ industry }: { industry: Industry }) {
 
 function OtherIndustries({ current }: { current: string }) {
   return (
-    <RevealSection className="border-t border-fg/5 pt-24 pb-16">
+    <RevealSection className="border-t border-fg/5 py-12 sm:py-14">
       <SectionHead title="Other industries we serve" />
-      <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-3 px-6">
+      <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-2 px-4 sm:gap-3 sm:px-6">
         {INDUSTRIES.filter((i) => i.slug !== current).map((i) => (
           <Link
             key={i.slug}
@@ -148,7 +148,7 @@ function OtherIndustries({ current }: { current: string }) {
 }
 
 export function ArticleBody({ children }: { children: React.ReactNode }) {
-  return <div className="mx-auto max-w-2xl space-y-6 px-6 pb-24 text-lg leading-relaxed font-light text-fg/70">{children}</div>;
+  return <div className="mx-auto max-w-2xl space-y-6 px-6 pb-12 text-lg leading-relaxed font-light text-fg/70">{children}</div>;
 }
 
 export function CardGrid({
@@ -158,7 +158,7 @@ export function CardGrid({
   children: React.ReactNode;
   cols?: string;
 }) {
-  return <div className={`mx-auto grid max-w-6xl gap-x-10 gap-y-12 px-6 ${cols}`}>{children}</div>;
+  return <div className={`mx-auto grid max-w-6xl gap-x-8 gap-y-8 px-4 sm:px-6 ${cols}`}>{children}</div>;
 }
 
 export function InfoCard({ kicker, title, body, to, extra }: { kicker?: string; title: string; body: string; to?: string; extra?: string }) {
@@ -192,9 +192,9 @@ export function NumberedBlocks({
   items: readonly { title: string; body: string }[];
 }) {
   return (
-    <ol className="mx-auto max-w-3xl divide-y divide-fg/10 px-6">
+    <ol className="mx-auto max-w-3xl divide-y divide-fg/10 px-4 sm:px-6">
       {items.map((item, i) => (
-        <li key={item.title} className="grid gap-3 py-8 sm:grid-cols-[3.5rem_1fr] sm:gap-6">
+        <li key={item.title} className="grid gap-2 py-5 sm:grid-cols-[3.5rem_1fr] sm:gap-6 sm:py-7">
           <span className="text-sm font-medium tracking-widest text-gold">
             {String(i + 1).padStart(2, "0")}
           </span>
@@ -299,7 +299,7 @@ export function ProcessSteps({
   items: readonly { num: string; kicker?: string; title: string; body: string }[];
 }) {
   return (
-    <ol className="mx-auto grid max-w-6xl gap-10 px-6 sm:grid-cols-2 lg:grid-cols-5">
+    <ol className="mx-auto grid max-w-6xl gap-6 px-4 sm:gap-8 sm:px-6 sm:grid-cols-2 lg:grid-cols-5">
       {items.map((p, i) => (
         <li key={p.num} className="relative">
           {i < items.length - 1 ? (

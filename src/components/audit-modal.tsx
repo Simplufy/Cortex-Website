@@ -75,7 +75,7 @@ const empty = {
 };
 
 const inputCls =
-  "w-full rounded-lg border border-fg/10 bg-bg px-3 py-2.5 text-sm text-fg outline-none placeholder:text-fg/30 focus:border-gold/50 focus-visible:ring-2 focus-visible:ring-gold/60";
+  "w-full rounded-lg border border-fg/10 bg-bg px-3 py-2 text-sm text-fg outline-none placeholder:text-fg/30 focus:border-gold/50 focus-visible:ring-2 focus-visible:ring-gold/60";
 
 function utms() {
   if (typeof window === "undefined") return { utmSource: "", utmMedium: "", utmCampaign: "" };
@@ -188,74 +188,71 @@ function AuditModal() {
   if (!open || typeof document === "undefined") return null;
 
   const ui = (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center p-0 sm:items-center sm:p-6">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6">
       <button type="button" aria-label="Close" className="absolute inset-0 bg-bg/80 backdrop-blur-sm" onClick={closeAudit} />
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-10 max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl border border-fg/10 bg-surface shadow-2xl sm:rounded-2xl"
+        className="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl border border-fg/10 bg-surface shadow-2xl"
       >
         <button
           type="button"
           onClick={closeAudit}
-          className="absolute top-4 right-4 rounded-full p-2 text-fg/50 hover:bg-fg/5 hover:text-fg focus-visible:ring-2 focus-visible:ring-gold/60"
+          className="absolute top-3 right-3 rounded-full p-2 text-fg/50 hover:bg-fg/5 hover:text-fg focus-visible:ring-2 focus-visible:ring-gold/60"
           aria-label="Close form"
         >
-          <X className="size-5" />
+          <X className="size-4" />
         </button>
-        <div className="p-5 sm:p-8">
+        <div className="px-4 py-4 sm:px-6 sm:py-5">
           {step === 2 ? (
             <>
               <p className="text-[10px] font-bold tracking-widest text-gold uppercase">Step 2 of 2</p>
-              <h2 id={titleId} className="mt-2 pr-8 text-2xl font-medium tracking-tight text-fg md:text-3xl">
+              <h2 id={titleId} className="mt-1 pr-8 text-xl font-medium tracking-tight text-fg sm:text-2xl">
                 Help us prepare.
               </h2>
-              <p className="mt-2 text-sm font-light text-fg/50">A few facts so the walkthrough is about your operation.</p>
-              <form onSubmit={sendStep2} className="mt-6 space-y-3">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <label className="block">
-                    <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Employees</span>
-                    <input required {...field("employees")} className={inputCls} placeholder="e.g. 28" />
-                  </label>
-                  <label className="block">
-                    <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Locations</span>
-                    <input required {...field("locations")} className={inputCls} placeholder="e.g. 3" />
-                  </label>
-                </div>
+              <form onSubmit={sendStep2} className="mt-4 grid grid-cols-2 gap-2.5">
                 <label className="block">
-                  <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Employees</span>
+                  <input required {...field("employees")} className={inputCls} placeholder="e.g. 28" />
+                </label>
+                <label className="block">
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Locations</span>
+                  <input required {...field("locations")} className={inputCls} placeholder="e.g. 3" />
+                </label>
+                <label className="col-span-2 block">
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">
                     What software do you use?
                   </span>
                   <input required {...field("software")} className={inputCls} placeholder="Tekmetric, GHL, QuickBooks…" />
                 </label>
-                <label className="block">
-                  <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">
+                <label className="col-span-2 block sm:col-span-1">
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">
                     Biggest repetitive processes
                   </span>
                   <textarea
                     required
                     {...field("pain")}
-                    rows={3}
-                    className={inputCls}
-                    placeholder="Follow-up, reporting, stalled jobs, unbilled work…"
+                    rows={2}
+                    className={`${inputCls} resize-none`}
+                    placeholder="Follow-up, reporting, stalled jobs…"
                   />
                 </label>
-                <label className="block">
-                  <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">
-                    What would you most like AI to help with?
+                <label className="col-span-2 block sm:col-span-1">
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">
+                    What should AI help with?
                   </span>
                   <textarea
                     required
                     {...field("help")}
-                    rows={3}
-                    className={inputCls}
-                    placeholder="The one queue that still depends on someone remembering."
+                    rows={2}
+                    className={`${inputCls} resize-none`}
+                    placeholder="The queue that still depends on memory."
                   />
                 </label>
-                {error ? <p className="text-sm text-red-400">{error}</p> : null}
-                <div className="pt-2">
+                {error ? <p className="col-span-2 text-sm text-red-400">{error}</p> : null}
+                <div className="col-span-2 pt-1">
                   <BeamButton type="submit" className="w-full" disabled={busy}>
                     {busy ? "Saving…" : "Submit audit"}
                   </BeamButton>
@@ -265,70 +262,63 @@ function AuditModal() {
           ) : (
             <>
               <p className="text-[10px] font-bold tracking-widest text-gold uppercase">Free AI Operations Audit · Step 1</p>
-              <h2 id={titleId} className="mt-2 pr-8 text-2xl font-medium tracking-tight text-fg md:text-3xl">
+              <h2 id={titleId} className="mt-1 pr-8 text-xl font-medium tracking-tight text-fg sm:text-2xl">
                 See where AI could actually help.
               </h2>
-              <p className="mt-2 text-sm font-light text-fg/50">
-                Apply in a minute. Then a 30-minute walkthrough. You leave with an AI Opportunity Map.
-              </p>
-              <form onSubmit={sendStep1} className="mt-6 space-y-3">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <label className="block">
-                    <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">First name</span>
-                    <input required {...field("first")} className={inputCls} placeholder="McGuire" autoComplete="given-name" />
-                  </label>
-                  <label className="block">
-                    <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Last name</span>
-                    <input required {...field("last")} className={inputCls} placeholder="Flanigan" autoComplete="family-name" />
-                  </label>
-                </div>
+              <form onSubmit={sendStep1} className="mt-4 grid grid-cols-2 gap-2.5">
                 <label className="block">
-                  <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Work email</span>
-                  <input required type="email" {...field("email")} className={inputCls} placeholder="you@company.com" autoComplete="email" />
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">First name</span>
+                  <input required {...field("first")} className={inputCls} placeholder="McGuire" autoComplete="given-name" />
                 </label>
                 <label className="block">
-                  <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Phone</span>
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Last name</span>
+                  <input required {...field("last")} className={inputCls} placeholder="Flanigan" autoComplete="family-name" />
+                </label>
+                <label className="col-span-2 block sm:col-span-1">
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Work email</span>
+                  <input required type="email" {...field("email")} className={inputCls} placeholder="you@company.com" autoComplete="email" />
+                </label>
+                <label className="col-span-2 block sm:col-span-1">
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Phone</span>
                   <input required type="tel" {...field("phone")} className={inputCls} placeholder="(614) 000-0000" autoComplete="tel" />
                 </label>
                 <label className="block">
-                  <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Company</span>
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Company</span>
                   <input required {...field("company")} className={inputCls} placeholder="Company name" autoComplete="organization" />
                 </label>
                 <label className="block">
-                  <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Website</span>
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Website</span>
                   <input required {...field("website")} className={inputCls} placeholder="https://" autoComplete="url" />
                 </label>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <label className="block">
-                    <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Industry</span>
-                    <select required {...field("industry")} className={inputCls}>
-                      <option value="" disabled>
-                        Select
+                <label className="block">
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Industry</span>
+                  <select required {...field("industry")} className={inputCls}>
+                    <option value="" disabled>
+                      Select
+                    </option>
+                    {INDUSTRIES.map((i) => (
+                      <option key={i.slug} value={i.slug}>
+                        {i.name}
                       </option>
-                      {INDUSTRIES.map((i) => (
-                        <option key={i.slug} value={i.slug}>
-                          {i.name}
-                        </option>
-                      ))}
-                      <option value="other">Other</option>
-                    </select>
-                  </label>
-                  <label className="block">
-                    <span className="mb-1.5 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Annual revenue</span>
-                    <select required {...field("revenue")} className={inputCls}>
-                      <option value="" disabled>
-                        Select
+                    ))}
+                    <option value="other">Other</option>
+                  </select>
+                </label>
+                <label className="block">
+                  <span className="mb-1 block text-[10px] font-bold tracking-widest text-fg/50 uppercase">Annual revenue</span>
+                  <select required {...field("revenue")} className={inputCls}>
+                    <option value="" disabled>
+                      Select
+                    </option>
+                    {REVENUE_OPTIONS.map((r) => (
+                      <option key={r.value} value={r.value}>
+                        {r.label}
                       </option>
-                      {REVENUE_OPTIONS.map((r) => (
-                        <option key={r.value} value={r.value}>
-                          {r.label}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                </div>
-                <div className="pt-2">
-                  {error ? <p className="mb-3 text-sm text-red-400">{error}</p> : null}
+                    ))}
+                  </select>
+                </label>
+                <div className="col-span-2 pt-1">
+                  {error ? <p className="mb-2 text-sm text-red-400">{error}</p> : null}
                   <BeamButton type="submit" className="w-full" disabled={busy}>
                     {busy ? "Sending…" : "Get my free audit"}
                   </BeamButton>

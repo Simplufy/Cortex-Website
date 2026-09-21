@@ -27,14 +27,14 @@ export function BeamButton({
 }: Props) {
   const pad =
     size === "sm"
-      ? "min-h-11 px-4 py-2.5 text-[10px] tracking-[0.14em] sm:px-5 sm:text-[11px] sm:tracking-widest"
-      : "min-h-12 px-5 py-3.5 text-[10px] tracking-[0.12em] sm:min-h-14 sm:px-10 sm:py-4 sm:text-sm sm:tracking-widest";
+      ? "min-h-10 px-4 py-2 text-sm sm:px-4"
+      : "min-h-11 px-5 py-2.5 text-[15px] sm:min-h-12 sm:px-5";
   const solid = variant === "solid";
   const cls = cn(
-    "group relative inline-flex max-w-full touch-manipulation uppercase transition-all duration-500 hover:scale-[1.02] font-semibold rounded-full items-center justify-center text-center leading-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 disabled:pointer-events-none disabled:opacity-50",
+    "group relative inline-flex max-w-full touch-manipulation font-medium rounded-lg items-center justify-center text-center leading-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 disabled:pointer-events-none disabled:opacity-50 transition-colors duration-200",
     solid
-      ? "bg-gold text-bg hover:bg-gold-light hover:shadow-[0_0_40px_-8px_rgb(var(--gold-rgb)/0.7)]"
-      : "overflow-hidden text-fg hover:shadow-[0_0_40px_-10px_rgb(var(--gold-rgb)/0.35)]",
+      ? "bg-gold text-on-gold hover:bg-gold-light"
+      : "overflow-hidden text-fg border border-fg/12 bg-elevated hover:border-gold/40",
     pad,
     className,
   );
@@ -54,21 +54,21 @@ export function BeamButton({
       <div className="absolute inset-0 -z-20 overflow-hidden rounded-full p-px">
         <div
           className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_300deg,var(--color-gold)_360deg)]"
-          style={{ animation: "beam-spin 3s linear infinite" }}
+          style={{ animation: "beam-spin 4.5s linear infinite" }}
         />
         <div className="absolute inset-px rounded-full bg-bg" />
       </div>
-      <div className="absolute inset-0.5 -z-10 overflow-hidden rounded-full bg-zinc-950">
-        <div className="absolute inset-0 bg-linear-to-b from-zinc-800/60 to-transparent" />
+      <div className="absolute inset-0.5 -z-10 overflow-hidden rounded-full bg-elevated">
+        <div className="absolute inset-0 bg-linear-to-b from-fg/5 to-transparent" />
         <div
-          className="absolute inset-0 mix-blend-overlay opacity-30"
+          className="absolute inset-0 mix-blend-multiply opacity-20"
           style={{
-            backgroundImage: "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(rgba(22,18,16,0.35) 1px, transparent 1px)",
             backgroundSize: "12px 12px",
             animation: "dots-move 8s linear infinite",
           }}
         />
-        <div className="pointer-events-none absolute bottom-0 left-1/2 h-1/2 w-2/3 -translate-x-1/2 rounded-full bg-gold/10 blur-2xl transition-colors duration-500 group-hover:bg-gold/30" />
+        <div className="pointer-events-none absolute bottom-0 left-1/2 h-1/2 w-2/3 -translate-x-1/2 rounded-full bg-gold/10 blur-2xl transition-colors duration-500 group-hover:bg-gold/25" />
       </div>
       <span className="relative z-10 text-balance text-fg/90 transition-colors group-hover:text-fg">{children}</span>
       <ArrowRight
@@ -115,7 +115,7 @@ export function GhostButton({
     <Link
       to={to}
       className={cn(
-        "inline-flex min-h-12 w-full items-center justify-center rounded-full border border-fg/5 px-6 py-3.5 text-sm font-medium text-fg/60 transition-all hover:bg-fg/5 hover:text-fg sm:min-h-0 sm:w-auto sm:px-8 sm:py-4",
+        "inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-fg/15 bg-transparent px-5 py-2.5 text-[15px] font-medium text-fg/70 transition-colors hover:border-gold/40 hover:text-fg sm:w-auto",
         className,
       )}
     >

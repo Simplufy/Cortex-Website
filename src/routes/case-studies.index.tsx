@@ -23,10 +23,10 @@ function Listing() {
       <PageHero
         eyebrow="Case Study"
         title="One real deployment. Not a gallery of examples."
-        body="Detail Driven Enterprises in Jackson Hole. Repair, collision, detailing, and glass. Agents on the leftover work. The build included a secure dashboard for operations, marketing, finance, and the shops — on the software they already ran."
+        body="Detail Driven Enterprises in Jackson Hole. Repair, collision, detailing, and glass. Agents on the leftover work. The build included a secure dashboard for operations, marketing, finance, and the shops, on the software they already ran."
         primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
       />
-      <RevealSection className="pb-24">
+      <RevealSection className="pb-12">
         <div className="mx-auto max-w-3xl px-6">
           <Link
             to="/case-studies/$slug"

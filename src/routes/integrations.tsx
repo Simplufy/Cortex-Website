@@ -25,10 +25,10 @@ function Page() {
     <>
       <PageHero
         eyebrow="Integrations"
-        title="Connect AI to the software your business already runs."
-        body="Cortex agents work across the systems your team already relies on. What we can reach is confirmed in the audit — not promised by a logo."
+        title="AI implemented in the software you already run."
+        body="You don't learn a new platform. Cortex agents work across the systems your team already relies on. What we can reach is confirmed in the audit, not promised by a logo."
       />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="How we connect"
           body="Official APIs first. Then approved integrations, webhooks, and MCP where a vendor supports them. Controlled browser automation only when there is no usable API and the work still needs to happen."
@@ -48,7 +48,7 @@ function Page() {
           ))}
         </div>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="Systems we commonly evaluate"
           body="Every integration is evaluated individually. A product appearing here means it is relevant to businesses we serve, not that Cortex has a certified or unrestricted integration with that vendor."

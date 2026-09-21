@@ -1,5 +1,36 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import {
+  BadgeCheck,
+  Bird,
+  Bug,
+  Building2,
+  Car,
+  CheckCircle2,
+  CircleDot,
+  ClipboardList,
+  CloudRain,
+  DoorOpen,
+  Droplets,
+  Flame,
+  Hammer,
+  House,
+  Layers,
+  Leaf,
+  Lightbulb,
+  Monitor,
+  PaintRoller,
+  Shield,
+  Sparkles,
+  Sprout,
+  Store,
+  Sun,
+  Timer,
+  Warehouse,
+  Wrench,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
 import { BRAND } from "@/data/brand";
 import { CASE_STUDIES } from "@/data/site";
 import type { Lander } from "@/data/landers";
@@ -32,9 +63,8 @@ function Cta({
 
 export function IndustryLander({ lander }: { lander: Lander }) {
   return (
-    <article className="overflow-x-clip pb-24 md:pb-0">
+    <article className="overflow-x-clip pb-8 md:pb-0">
       <Hero lander={lander} />
-      <Chips lander={lander} />
       <Problem lander={lander} />
       <Between lander={lander} />
       <Layer lander={lander} />
@@ -44,22 +74,22 @@ export function IndustryLander({ lander }: { lander: Lander }) {
       <Founder />
       <Faq lander={lander} />
       <Final lander={lander} />
-      <MobileDock industry={lander.slug} />
     </article>
   );
 }
 
 function Hero({ lander }: { lander: Lander }) {
   return (
-    <RevealSection className="mx-auto flex max-w-5xl flex-col items-center px-4 pt-4 pb-8 text-center sm:px-6 sm:pt-6 lg:pt-8">
-      <p className="mb-3 text-[10px] font-bold tracking-[0.22em] text-gold uppercase">{lander.eyebrow}</p>
-      <h1 className="text-balance text-[1.55rem] leading-[1.12] font-medium tracking-tighter text-fg sm:text-4xl lg:text-[2.75rem]">
-        {lander.headline}
-        <br />
-        <span className="text-gold">{lander.headlineGold}</span>
+    <RevealSection className="mx-auto flex max-w-6xl flex-col items-center px-4 pt-8 pb-8 text-center sm:px-6 sm:pt-10 sm:pb-10 lg:pt-12">
+      <h1 className="font-medium tracking-tight text-fg">
+        <span className="block text-[1.35rem] leading-snug sm:text-[clamp(1.75rem,2.8vw,2.55rem)] sm:whitespace-nowrap">
+          {lander.headline}
+        </span>
+        <span className="mt-1 block text-[1.3rem] leading-snug text-gold sm:mt-2 sm:text-[clamp(1.75rem,2.8vw,2.55rem)] sm:whitespace-nowrap">
+          {lander.headlineGold}
+        </span>
       </h1>
-      <p className="mt-3 max-w-md px-1 text-xs text-fg/50 sm:mt-4">{lander.keepLine}</p>
-      <div className="mx-auto mt-5 w-full max-w-3xl sm:mt-6">
+      <div className="mx-auto mt-4 w-full max-w-md sm:mt-5 sm:max-w-xl lg:max-w-2xl">
         <VslPlayer
           src={lander.vslSrc}
           poster={lander.vslPoster}
@@ -67,38 +97,108 @@ function Hero({ lander }: { lander: Lander }) {
           designed={lander.designed}
           label={lander.vslLabel}
         />
+        <p className="mt-2 text-sm font-medium text-gold sm:mt-3">Watch the 2 min video</p>
       </div>
-      <div className="mt-5 w-full max-w-md sm:mt-6">
+      <div className="mt-3 w-full max-w-md sm:mt-4">
         <Cta industry={lander.slug} />
       </div>
-      <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed font-light text-fg/60 sm:mt-5 sm:text-base">
-        {lander.subcopy}
-      </p>
+      <div className="mt-3 w-full sm:mt-4">
+        <Chips chips={lander.chips} />
+      </div>
     </RevealSection>
   );
 }
 
-function Chips({ lander }: { lander: Lander }) {
+const CHIP_ICON: Record<string, LucideIcon> = {
+  "Auto repair": Wrench,
+  Collision: Car,
+  Detailing: Sparkles,
+  Glass: Monitor,
+  Tires: CircleDot,
+  Residential: House,
+  Commercial: Building2,
+  Install: Hammer,
+  Service: Wrench,
+  Memberships: BadgeCheck,
+  Drain: Droplets,
+  "Water heater": Flame,
+  Repipe: Droplets,
+  Emergency: Timer,
+  Panel: Zap,
+  Lighting: Lightbulb,
+  Generator: Zap,
+  "Bid work": ClipboardList,
+  Storm: CloudRain,
+  Retail: Store,
+  Insurance: Shield,
+  Repair: Hammer,
+  Garage: Warehouse,
+  Lawn: Leaf,
+  Restoration: PaintRoller,
+  "Multi-trade": Layers,
+  Cleaning: Sparkles,
+  Recurring: Sprout,
+  "One-time": Timer,
+  Termite: Bug,
+  Wildlife: Bird,
+  Remodel: Hammer,
+  Custom: PaintRoller,
+  "Light commercial": Building2,
+  Punch: ClipboardList,
+  Closeout: CheckCircle2,
+  Cinema: Monitor,
+  Security: Shield,
+  Vinyl: Monitor,
+  Wood: Leaf,
+  "Entry doors": DoorOpen,
+  Sunrooms: Sun,
+};
+
+function Chip({ label }: { label: string }) {
+  const Icon = CHIP_ICON[label] ?? Wrench;
   return (
-    <section className="border-y border-fg/5 py-6 sm:py-10">
-      <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-2 px-4 sm:px-6">
-        {lander.chips.map((s) => (
-          <span
-            key={s}
-            className="rounded-full border border-gold/25 bg-gold/5 px-3 py-1.5 text-xs tracking-wide text-fg/80 sm:px-4 sm:text-sm"
-          >
-            {s}
-          </span>
+    <span className="inline-flex max-w-full items-center gap-1 rounded-full border border-gold/25 bg-gold/5 px-2.5 py-1 text-[11px] tracking-wide text-fg/80 sm:gap-1.5 sm:px-4 sm:py-1.5 sm:text-sm">
+      <Icon className="size-3 shrink-0 text-gold sm:size-4" strokeWidth={2} aria-hidden />
+      {label}
+    </span>
+  );
+}
+
+function Chips({ chips }: { chips: string[] }) {
+  const top = chips.length === 5 ? chips.slice(0, 3) : chips.length === 4 ? chips.slice(0, 2) : chips.slice(0, Math.ceil(chips.length / 2));
+  const rest = chips.slice(top.length);
+  return (
+    <div className="w-full">
+      <div className="flex flex-col items-center gap-2 sm:hidden">
+        <div className="flex justify-center gap-1.5">
+          {top.map((c) => (
+            <Chip key={c} label={c} />
+          ))}
+        </div>
+        {rest.length > 0 && (
+          <div className="flex justify-center gap-1.5">
+            {rest.map((c) => (
+              <Chip key={c} label={c} />
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="hidden flex-wrap justify-center gap-2 sm:flex">
+        {chips.map((c) => (
+          <Chip key={c} label={c} />
         ))}
       </div>
-    </section>
+    </div>
   );
 }
 
 function Problem({ lander }: { lander: Lander }) {
   return (
-    <RevealSection className="mx-auto max-w-6xl px-4 pt-14 pb-10 sm:px-6 sm:pt-24 sm:pb-12">
+    <RevealSection className="mx-auto max-w-6xl px-4 pt-14 pb-10 sm:px-6 sm:pt-16 sm:pb-10">
       <p className="mb-4 text-center text-[10px] font-bold tracking-widest text-gold uppercase">The stall</p>
+      <p className="mx-auto mb-3 max-w-2xl text-center text-sm text-fg/50">
+        You might use ChatGPT. It doesn't watch this software. The leftover still does.
+      </p>
       <h2 className="mx-auto max-w-3xl text-center text-2xl font-medium tracking-tight text-fg sm:text-4xl md:text-5xl">
         {lander.problemTitle}
       </h2>
@@ -116,7 +216,7 @@ function Problem({ lander }: { lander: Lander }) {
 
 function Between({ lander }: { lander: Lander }) {
   return (
-    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-24 sm:pb-12">
+    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-16 sm:pb-10">
       <p className="mb-4 text-center text-[10px] font-bold tracking-widest text-gold uppercase">The work between the software</p>
       <h2 className="mx-auto max-w-3xl text-center text-2xl font-medium tracking-tight text-fg sm:text-4xl">
         {lander.betweenTitle}
@@ -144,7 +244,7 @@ function Between({ lander }: { lander: Lander }) {
 
 function Layer({ lander }: { lander: Lander }) {
   return (
-    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-24 sm:pb-12">
+    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-16 sm:pb-10">
       <p className="mb-4 text-center text-[10px] font-bold tracking-widest text-gold uppercase">What we install</p>
       <h2 className="mx-auto max-w-3xl text-center text-2xl font-medium tracking-tight text-fg sm:text-4xl md:text-5xl">
         Custom AI around the software your {lander.noun} <span className="text-gold">already uses.</span>
@@ -162,7 +262,7 @@ function Layer({ lander }: { lander: Lander }) {
         ))}
       </div>
       <p className="mx-auto mt-6 max-w-lg text-center text-xs text-fg/40">
-        Named tools are examples {lander.noun === "shop" ? "shops" : "operators"} already run — not a pack you have to buy, and not a
+        Named tools are examples {lander.noun === "shop" ? "shops" : "operators"} already run, not a pack you have to buy, and not a
         rip-and-replace list.
       </p>
     </RevealSection>
@@ -171,7 +271,7 @@ function Layer({ lander }: { lander: Lander }) {
 
 function Agents({ lander }: { lander: Lander }) {
   return (
-    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-24 sm:pb-12">
+    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-16 sm:pb-10">
       <p className="mb-4 text-center text-[10px] font-bold tracking-widest text-gold uppercase">Specialized agents</p>
       <h2 className="mx-auto max-w-3xl text-center text-2xl font-medium tracking-tight text-fg sm:text-4xl">
         Built around your {lander.noun}. Not a predetermined pack.
@@ -193,7 +293,7 @@ function Agents({ lander }: { lander: Lander }) {
 
 function AuditWhat({ lander }: { lander: Lander }) {
   return (
-    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-24 sm:pb-12">
+    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-16 sm:pb-10">
       <p className="mb-4 text-center text-[10px] font-bold tracking-widest text-gold uppercase">The free audit</p>
       <h2 className="mx-auto max-w-3xl text-center text-2xl font-medium tracking-tight text-fg sm:text-4xl md:text-5xl">
         We’ll show you where AI can realistically help. If it can’t, we’ll say so.
@@ -220,7 +320,7 @@ function AuditWhat({ lander }: { lander: Lander }) {
 function Proof({ lander }: { lander: Lander }) {
   const study = CASE_STUDIES[0];
   return (
-    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-24 sm:pb-12">
+    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-16 sm:pb-10">
       <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-gold/25 bg-[radial-gradient(ellipse_at_top_left,rgb(var(--gold-rgb)/0.12),transparent_55%)] px-5 py-10 sm:px-14 sm:py-16">
         <p className="text-[10px] font-bold tracking-[0.22em] text-gold uppercase">In the field</p>
         <h2 className="mt-3 text-2xl font-medium tracking-tight text-fg sm:text-4xl">{study.name}</h2>
@@ -244,7 +344,7 @@ function Proof({ lander }: { lander: Lander }) {
 
 function Founder() {
   return (
-    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-24 sm:pb-12">
+    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-16 sm:pb-10">
       <blockquote className="mx-auto max-w-4xl text-center">
         <p className="text-balance text-xl leading-snug font-medium tracking-tight text-fg sm:text-3xl md:text-4xl">
           “Most operators do not have a software shortage.{" "}
@@ -267,10 +367,16 @@ function Founder() {
 
 function Faq({ lander }: { lander: Lander }) {
   return (
-    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-24 sm:pb-12">
+    <RevealSection className="border-t border-fg/5 px-4 pt-14 pb-10 sm:px-6 sm:pt-16 sm:pb-10">
       <h2 className="mb-8 text-center text-2xl font-medium tracking-tight text-fg sm:mb-12 sm:text-4xl">{lander.faqTitle}</h2>
       <div className="mx-auto max-w-3xl space-y-3">
-        {lander.faqs.map((item) => (
+        {[{
+          title: "Do I need to understand AI?",
+          body: "No. That's the point. We understand it. We implement agents in the software you already run. You stay the operator.",
+        }, {
+          title: "I already use ChatGPT. Why would I need this?",
+          body: "ChatGPT is a tab you open. It waits for a prompt. It does not watch your shop software, CRM, or books unless you paste the job in. Cortex implements agents inside those systems so leftover work gets done without you becoming someone who 'does AI.'",
+        }, ...lander.faqs].map((item) => (
           <article key={item.title} className="rounded-2xl border border-fg/10 bg-surface p-5 sm:p-6">
             <h3 className="font-medium text-fg">{item.title}</h3>
             <p className="mt-2 text-sm leading-relaxed font-light text-fg/60">{item.body}</p>
@@ -283,12 +389,11 @@ function Faq({ lander }: { lander: Lander }) {
 
 function Final({ lander }: { lander: Lander }) {
   return (
-    <RevealSection className="border-t border-fg/5 px-4 py-14 sm:px-6 sm:py-28">
+    <RevealSection className="border-t border-fg/5 px-4 py-14 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-2xl font-medium tracking-tight text-fg sm:text-4xl md:text-5xl">{lander.finalTitle}</h2>
         <p className="mt-4 text-sm font-light text-fg/60 sm:mt-5 sm:text-lg">
-          A minute to apply. Thirty minutes on how the work moves. If we can help, we’ll show you the build. If we
-          can’t, we’ll say so.
+          A minute to apply. Thirty minutes on how the work moves. You don't have to learn AI. If we can help, we'll show you the build. If we can't, we'll say so.
         </p>
         <div className="mx-auto mt-8 w-full max-w-md sm:mt-10">
           <Cta industry={lander.slug} />
@@ -298,12 +403,3 @@ function Final({ lander }: { lander: Lander }) {
   );
 }
 
-function MobileDock({ industry }: { industry: string }) {
-  return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-fg/10 bg-bg/92 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md md:hidden">
-      <Cta industry={industry} className="w-full">
-        Request your free audit
-      </Cta>
-    </div>
-  );
-}

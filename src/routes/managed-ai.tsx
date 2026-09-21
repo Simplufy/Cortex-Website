@@ -29,11 +29,11 @@ function Page() {
     <>
       <PageHero
         eyebrow="Managed AI Operations"
-        title="AI systems are operational infrastructure. We keep yours reliable."
-        body="Models change. APIs change. Your business changes. Managed AI Operations keeps the agents, integrations, permissions, evaluations, and workflows working as intended after install day — closer to running infrastructure than an agency retainer."
+        title="You shouldn't have to become the AI person after install day."
+        body="Models change. APIs change. Your business changes. We keep the agents, integrations, and workflows working, so implementing AI isn't a project you have to learn how to maintain."
         primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
       />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="What the monthly work actually is"
           body="Not a status meeting. Not a recap deck. The paths that are in production, watched and kept current."
@@ -41,7 +41,7 @@ function Page() {
         <CardGrid>
           <InfoCard
             title="System monitoring"
-            body="Successful runs, failures, latency, escalations. We care whether the estimate agent drafted and whether a connector 401’d at 2am — not whether a vanity dashboard is green."
+            body="Successful runs, failures, latency, escalations. We care whether the estimate agent drafted and whether a connector 401’d at 2am, not whether a vanity dashboard is green."
           />
           <InfoCard
             title="Integration maintenance"
@@ -61,18 +61,18 @@ function Page() {
           />
           <InfoCard
             title="Continuous improvement"
-            body="New membership product, second location, a reporting hole the owner just found. Scoped to what is running — not a forty-agent roadmap on retainer."
+            body="New membership product, second location, a reporting hole the owner just found. Scoped to what is running, not a forty-agent roadmap on retainer."
           />
         </CardGrid>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="How a week of this looks"
           body="Watch the runs. Keep the connectors. Evaluate the output. Fix incidents. Add the next job when the last one is trusted."
         />
         <NumberedBlocks items={MANAGED_PAGE.week} />
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="Why not staff this internally"
           body="Most service businesses need the care. They do not need a department of AI engineers babysitting a follow-up agent."
@@ -80,10 +80,10 @@ function Page() {
         <NumberedBlocks items={MANAGED_PAGE.why} />
       </RevealSection>
       <AgentTerminal session={SERVICE_SESSIONS["managed-ai"]} />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           title="What this looks like after install day"
-          body="Connectors break. Models drift. The company grows. These are examples of the leftover we own after the build — not a promise that nothing will ever fail."
+          body="Connectors break. Models drift. The company grows. These are examples of the leftover we own after the build, not a promise that nothing will ever fail."
         />
         <div className="mx-auto grid max-w-6xl gap-6 px-6 lg:grid-cols-2">
           {MANAGED_PAGE.examples.map((ex) => (
@@ -91,7 +91,7 @@ function Page() {
           ))}
         </div>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead title="What is in, and what is not" />
         <CardGrid cols="md:grid-cols-2">
           <InfoCard
@@ -104,7 +104,7 @@ function Page() {
           />
         </CardGrid>
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-8">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-14">
         <SectionHead title="Questions operators actually ask" />
         <FaqList items={MANAGED_PAGE.faqs} />
       </RevealSection>

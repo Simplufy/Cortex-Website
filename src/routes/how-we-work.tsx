@@ -23,12 +23,12 @@ function HowWeWorkPage() {
     <>
       <PageHero
         eyebrow="How we work"
-        title="Understand the operation first. Then automate it."
-        body="We start by mapping how work actually moves through your business. From there, we identify the highest-value opportunities, design the system, connect the software, deploy the agents, and measure how they perform. A secure dashboard is included in the same build."
+        title="You don't learn AI. We implement it in how the work already moves."
+        body="We start by mapping leftover work in the software you already run. Then we design the agents, connect the stack, deploy, and measure. You stay the operator. A dashboard is included in the same build."
         primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
       />
       <RevealSection className="border-t border-fg/5 py-16">
-        <div className="mx-auto grid max-w-5xl gap-6 px-6 md:grid-cols-3">
+        <div className="mx-auto grid max-w-5xl gap-6 px-4 sm:px-6 md:grid-cols-3">
           {[
             ["Start with an audit", "software, repetitive work, stalls"],
             ["Keep your systems", "agents work across them. The dashboard is included"],
@@ -41,7 +41,7 @@ function HowWeWorkPage() {
           ))}
         </div>
       </RevealSection>
-      <RevealSection className="pt-24 pb-24">
+      <RevealSection className="py-12 sm:py-16">
         <SectionHead
           kicker="The work"
           title="Audit. Design. Build. Deploy. Manage."
@@ -50,7 +50,7 @@ function HowWeWorkPage() {
         <ProcessSteps items={PILLARS} />
       </RevealSection>
       <AgentTerminal session={SERVICE_SESSIONS["how-we-work"]} />
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead
           kicker="Included"
           title="A secure dashboard for the numbers that used to hide in five logins."
@@ -58,7 +58,7 @@ function HowWeWorkPage() {
         />
         <DashboardShowcase />
       </RevealSection>
-      <RevealSection className="border-t border-fg/5 pt-24 pb-24">
+      <RevealSection className="border-t border-fg/5 py-12 sm:py-16">
         <SectionHead title="What you walk away with after the first project" />
         <ProcessSteps items={WHAT_WE_DO} />
       </RevealSection>

@@ -33,7 +33,7 @@ export function CortexLogo({
     <Link to={to} className="group flex items-center gap-3">
       <CortexMark className={size === "sm" ? "h-8 w-8" : "h-10 w-10"} />
       <span className="flex min-w-0 flex-col items-start leading-none">
-        <span className={cn("font-semibold tracking-[0.18em] text-fg uppercase", size === "sm" ? "text-sm" : "text-base")}>
+        <span className={cn("font-semibold tracking-tight text-fg", size === "sm" ? "text-[15px]" : "text-lg")}>
           {BRAND.name}
         </span>
         {withTagline && (

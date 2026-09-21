@@ -17,8 +17,7 @@ export function SiteFooter() {
             </div>
             <p className="mb-2 text-[10px] font-bold tracking-[0.18em] text-gold uppercase">{BRAND.legal}</p>
             <p className="mb-6 max-w-md text-lg leading-relaxed font-light text-fg/70">
-              Custom AI systems that work across the software your business already runs. Agents monitor, follow up,
-              report, and escalate. The same build includes a secure dashboard for the numbers.
+              You don't have to understand AI. We implement agents in the software your business already runs so leftover work (follow-up, reporting, the stuff between systems) doesn't wait on a ChatGPT tab.
             </p>
             <div className="space-y-2 text-sm text-fg/70">
               <p>{BRAND.name} · {BRAND.city}</p>
@@ -34,14 +33,14 @@ export function SiteFooter() {
           </div>
           <div className="lg:col-span-7 lg:flex lg:items-end lg:justify-end">
             <div className="max-w-md">
-              <h3 className="text-2xl font-medium tracking-tight text-fg">See where AI could actually help.</h3>
+              <h3 className="text-2xl font-medium tracking-tight text-fg">See where AI belongs, without learning it.</h3>
               <p className="mt-3 mb-6 font-light text-fg/60">A Free AI Operations Audit. Practical, specific, no obligation to build.</p>
               <BeamButton className="w-full sm:w-auto" to="/audit">Get Your Free AI Operations Audit</BeamButton>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-10 py-16 md:grid-cols-4 lg:gap-12">
+        <div className="grid grid-cols-2 gap-8 py-10 md:grid-cols-4 lg:gap-12">
           <div>
             <div className="mb-5 text-[10px] font-bold tracking-widest text-gold uppercase">Services</div>
             <ul className="space-y-3 text-sm font-light text-fg/60">

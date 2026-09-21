@@ -16,7 +16,6 @@ export function SiteHeader() {
   const [openMenu, setOpenMenu] = useState<"industries" | "services" | null>(null);
   const [mobile, setMobile] = useState(false);
   const [mobileAcc, setMobileAcc] = useState<string | null>(null);
-  const [hidden, setHidden] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const headerRef = useRef<HTMLElement>(null);
   const openMenuRef = useRef(openMenu);
@@ -30,7 +29,6 @@ export function SiteHeader() {
   };
   const openNav = (menu: "industries" | "services") => {
     cancelClose();
-    setHidden(false);
     setOpenMenu(menu);
   };
   const closeNav = () => {
@@ -71,17 +69,6 @@ export function SiteHeader() {
     };
   }, []);
 
-  useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setHidden(y > 80 && y > lastY && !openMenuRef.current && !mobile);
-      lastY = y;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [mobile]);
-
   const navLink = (href: string, label: string) => (
     <Link
       to={href}
@@ -98,14 +85,10 @@ export function SiteHeader() {
     <div className="h-16 sm:h-[81px]">
       <header
         ref={headerRef}
-        className="fixed top-0 right-0 left-0 z-50 w-full border-b border-fg/5 bg-bg/50 font-sans backdrop-blur-xl"
-        style={{
-          transform: hidden ? "translateY(-100%)" : "translateY(0)",
-          transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
-        }}
+        className="fixed top-0 right-0 left-0 z-50 w-full border-b border-fg/8 bg-bg/90 font-sans backdrop-blur-xl"
       >
         <nav className="relative z-50 mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6">
-          <CortexLogo size="sm" />
+          <CortexLogo size="sm" withTagline={false} />
           <ul className="m-0 hidden list-none items-center gap-2 p-0 lg:flex">
             <li>{navLink("/how-we-work", "How It Works")}</li>
             <li className="relative" onMouseEnter={() => openNav("industries")} onMouseLeave={closeNav}>
@@ -163,18 +146,22 @@ export function SiteHeader() {
             <li>{navLink("/case-studies", "Case Study")}</li>
             <li>{navLink("/resources", "Resources")}</li>
           </ul>
-          <AuditButton size="sm" className="hidden lg:inline-flex">
+          <AuditButton size="sm" variant="solid" className="hidden lg:inline-flex">
             Free AI Audit
           </AuditButton>
           <button
             type="button"
-            aria-label="Open menu"
-            className={cn("flex min-h-11 min-w-11 items-center justify-center p-2 lg:hidden", mobile && "hamburger-active")}
-            onClick={() => setMobile(true)}
+            aria-label={mobile ? "Close menu" : "Open menu"}
+            aria-expanded={mobile}
+            className={cn(
+              "relative z-[70] flex min-h-11 min-w-11 shrink-0 flex-col items-center justify-center gap-[5px] p-2 lg:hidden",
+              mobile && "hamburger-active",
+            )}
+            onClick={() => setMobile((open) => !open)}
           >
-            <span className="line my-[5px] block h-0.5 w-[25px] bg-fg transition-all duration-300" />
-            <span className="line my-[5px] block h-0.5 w-[25px] bg-fg transition-all duration-300" />
-            <span className="line my-[5px] block h-0.5 w-[25px] bg-fg transition-all duration-300" />
+            <span className="line block h-0.5 w-[22px] bg-fg transition-all duration-300" />
+            <span className="line block h-0.5 w-[22px] bg-fg transition-all duration-300" />
+            <span className="line block h-0.5 w-[22px] bg-fg transition-all duration-300" />
           </button>
         </nav>
 
