@@ -9,40 +9,34 @@ import { INDUSTRIES, SERVICES, industryParam } from "@/data/site";
 
 export function SiteFooter() {
   return (
-    <footer className="relative z-20 mt-24 border-t border-fg/10 bg-bg pt-20 pb-10">
+    <footer className="relative z-20 mt-12 border-t border-fg/10 bg-bg pt-10 pb-8">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-12 border-b border-fg/5 pb-16 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
-            <div className="mb-6">
-              <CortexLogo />
-            </div>
-            <p className="mb-2 text-[10px] font-bold tracking-[0.18em] text-gold uppercase">{BRAND.legal}</p>
-            <p className="mb-6 max-w-md text-lg leading-relaxed font-light text-fg/70">
-              You don't have to understand AI. We implement agents in the software your business already runs so leftover work (follow-up, reporting, the stuff between systems) doesn't wait on a ChatGPT tab.
-            </p>
-            <div className="space-y-2 text-sm text-fg/70">
-              <p>{BRAND.name} · {BRAND.city}</p>
-              <a href={BRAND.phoneHref} className="flex items-center gap-2 hover:text-gold">
-                <Phone className="size-3.5" />
-                {BRAND.phone}
-              </a>
-              <a href={`mailto:${BRAND.email}`} className="flex items-center gap-2 hover:text-gold">
-                <Mail className="size-3.5" />
-                {BRAND.email}
-              </a>
-            </div>
-            <SocialLinks className="mt-6" />
-          </div>
-          <div className="lg:col-span-7 lg:flex lg:items-end lg:justify-end">
-            <div className="max-w-md">
-              <h3 className="text-2xl font-medium tracking-tight text-fg">See where AI belongs, without learning it.</h3>
-              <p className="mt-3 mb-6 font-light text-fg/60">A Free AI Operations Audit. Practical, specific, no obligation to build.</p>
-              <BeamButton className="w-full sm:w-auto" to="/audit">Get Your Free AI Operations Audit</BeamButton>
-            </div>
+        <div className="flex flex-col gap-5 border-b border-fg/5 pb-8 lg:flex-row lg:items-center lg:justify-between">
+          <CortexLogo withTagline={false} />
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+            <h3 className="text-xl font-medium tracking-tight text-fg sm:text-2xl">
+              See where AI belongs, without learning it.
+            </h3>
+            <BeamButton className="w-full shrink-0 sm:w-auto" to="/audit" size="sm">
+              Get Your Free AI Operations Audit
+            </BeamButton>
           </div>
         </div>
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-fg/5 py-5">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-fg/60">
+            <a href={BRAND.phoneHref} className="flex items-center gap-2 hover:text-gold">
+              <Phone className="size-3.5" />
+              {BRAND.phone}
+            </a>
+            <a href={`mailto:${BRAND.email}`} className="flex items-center gap-2 hover:text-gold">
+              <Mail className="size-3.5" />
+              {BRAND.email}
+            </a>
+          </div>
+          <SocialLinks />
+        </div>
 
-        <div className="grid grid-cols-2 gap-8 py-10 md:grid-cols-4 lg:gap-12">
+        <div className="grid grid-cols-2 gap-8 py-8 md:grid-cols-4 lg:gap-12">
           <div>
             <div className="mb-5 text-[10px] font-bold tracking-widest text-gold uppercase">Services</div>
             <ul className="space-y-3 text-sm font-light text-fg/60">

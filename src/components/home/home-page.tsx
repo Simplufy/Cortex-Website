@@ -4,6 +4,7 @@ import { FounderPhoto } from "@/components/logo";
 import { AuditButton } from "@/components/audit-modal";
 import { RevealSection } from "@/components/reveal";
 import { AgentTerminal } from "@/components/fx/agent-terminal";
+import { PillarScene } from "@/components/home/pillar-scenes";
 import { BRAND } from "@/data/brand";
 import {
   CASE_STUDIES,
@@ -18,7 +19,6 @@ export function HomePage() {
     <>
       <Hero />
       <ProofRow />
-      <Stats />
       <Assistant />
       <AgentTerminal />
       <Pillars />
@@ -58,10 +58,10 @@ function Hero() {
 }
 
 const PROOF = [
-  { img: "/images/cortex/covers/automotive.jpg?v=10", kicker: "Live deployment", title: "Detail Driven", body: "Repair, collision, detailing, glass" },
-  { img: "/images/cortex/covers/plumbing.jpg?v=10", kicker: "Plumbing", title: "Agents in the shop software", body: "Follow-up isn't whoever is free" },
-  { img: "/images/cortex/covers/hvac.jpg?v=10", kicker: "HVAC", title: "Watch the leftover", body: "Memberships, stalled jobs, missed calls" },
-  { img: "/images/cortex/covers/electrical.jpg?v=10", kicker: "Electrical", title: "Implemented, not a chatbot", body: "CRM, dispatch, and books stay" },
+  { img: "/images/cortex/trades/automotive.jpg", kicker: "Automotive", title: "Redline Auto", body: "Repair, collision, detailing" },
+  { img: "/images/cortex/trades/plumbing.jpg", kicker: "Plumbing", title: "Bluewater Plumbing", body: "Follow-up isn't whoever is free" },
+  { img: "/images/cortex/trades/hvac.jpg", kicker: "HVAC", title: "Arctic Air", body: "Memberships, stalled jobs, missed calls" },
+  { img: "/images/cortex/trades/roofing.jpg", kicker: "Roofing", title: "Skyline Roofing", body: "Storm file leftover, watched" },
 ];
 
 function ProofRow() {
@@ -80,26 +80,6 @@ function ProofRow() {
         ))}
       </div>
     </div>
-  );
-}
-
-function Stats() {
-  const items = [
-    ["Software you already run", "CRM, field, ads, books stay the system of record"],
-    ["30-minute audit", "A ranked map of what AI can actually take off your team"],
-    ["Human in the loop", "Agents draft. You approve anything that commits the company"],
-  ];
-  return (
-    <section className="border-y border-fg/6 bg-surface">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 sm:py-16 md:grid-cols-3">
-        {items.map(([n, b]) => (
-          <div key={n}>
-            <p className="text-2xl font-medium tracking-tight text-fg sm:text-3xl">{n}</p>
-            <p className="mt-2 text-sm leading-relaxed text-fg/50">{b}</p>
-          </div>
-        ))}
-      </div>
-    </section>
   );
 }
 
@@ -152,9 +132,9 @@ function Assistant() {
 const PILLAR_BLOCKS = [
   {
     kicker: "Get work",
+    kind: "get" as const,
     title: "Show up where customers are looking. Stand out when they find you.",
     body: "Marketing leftover still sits in ads, GBP, and a review tab nobody opened. We implement agents that keep you visible in the channels you already pay for.",
-    img: "/images/cortex/covers/home-services.jpg?v=10",
     points: [
       ["Get discovered", "Keep Google, ads, and the site moving without a ChatGPT session."],
       ["Stay active", "Job recaps and review asks go out from the software you already run."],
@@ -163,9 +143,9 @@ const PILLAR_BLOCKS = [
   },
   {
     kicker: "Win work",
+    kind: "win" as const,
     title: "Answer every leftover request and convert it before it goes cold.",
     body: "Speed to lead is not a personality trait. It is a job. Agents watch the CRM and the phone so follow-up is not whoever happens to be free.",
-    img: "/images/cortex/covers/automotive.jpg?v=10",
     points: [
       ["Answer inbound", "Missed calls and web leads get a first response while you stay in the loop."],
       ["Qualify the job", "Spam and tire-kickers get filtered. Real work gets to a person."],
@@ -174,9 +154,9 @@ const PILLAR_BLOCKS = [
   },
   {
     kicker: "Run the shop",
+    kind: "run" as const,
     title: "Watch the queue in field software and books, not in a chat tab.",
     body: "Reporting, stalled jobs, unbilled work. The leftover between systems is where shops leak. Agents sit on top of the stack you already bought.",
-    img: "/images/cortex/covers/plumbing.jpg?v=10",
     points: [
       ["See the leftover", "What did not move today, in the software the team already uses."],
       ["Get paid", "Unbilled and unpaid work gets flagged instead of remembered."],
@@ -204,8 +184,8 @@ function Pillars() {
                 ))}
               </ul>
             </div>
-            <div className="overflow-hidden rounded-[22px]">
-              <img src={p.img} alt="" className="aspect-[4/3] w-full object-cover" />
+            <div className="min-h-[280px]">
+              <PillarScene kind={p.kind} />
             </div>
           </div>
         </RevealSection>
@@ -215,7 +195,9 @@ function Pillars() {
 }
 
 function Industries() {
-  const featured = INDUSTRIES.filter((i) => ["automotive", "hvac", "plumbing", "electrical", "home-services", "roofing"].includes(i.slug));
+  const featured = INDUSTRIES.filter((i) =>
+    ["automotive", "hvac", "plumbing", "roofing", "home-services", "pest-control", "contracting", "smart-home", "windows"].includes(i.slug),
+  );
   const rest = INDUSTRIES.filter((i) => !featured.some((f) => f.slug === i.slug));
   return (
     <RevealSection className="px-4 py-16 sm:px-6 sm:py-24">
@@ -233,7 +215,7 @@ function Industries() {
             params={{ slug: industryParam(ind) }}
             className="group overflow-hidden rounded-[22px] border border-fg/8 bg-elevated transition-shadow hover:shadow-[0_16px_50px_rgba(17,17,17,0.08)]"
           >
-            <img src={`/images/cortex/covers/${ind.slug}.jpg?v=10`} alt="" className="h-40 w-full object-cover" />
+            <img src={`/images/cortex/trades/${ind.slug}.jpg`} alt="" className="h-44 w-full object-cover" />
             <div className="p-5">
               <h3 className="font-medium text-fg group-hover:text-gold">{ind.name}</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-fg/50">{ind.blurb}</p>
