@@ -1,8 +1,10 @@
-export const INDUSTRIES = [
+import { MORE_INDUSTRIES } from "@/data/more-industries";
+
+export const CORE_INDUSTRIES = [
 	{
 		slug: "automotive",
 		href: "/industries/automotive-service",
-		name: "Automotive Service",
+		name: "Auto Services",
 		blurb: "Agents that watch ROs, declined work, and the daily owner report.",
 		hero: ["You don't have to learn how to use AI in your auto shop.", "See how we implement it across operations, marketing, and sales."],
 		intro: "Most shop owners have tried ChatGPT. That's a tab you open, it doesn't watch aging ROs, declined work, or missed calls unless you paste them in. Cortex implements AI agents in the shop software you already run so those workflows get watched, drafted, and escalated without you becoming an AI person.",
@@ -325,7 +327,7 @@ export const INDUSTRIES = [
 	{
 		slug: "electrical",
 		href: "/industries/electrical",
-		name: "Electrical",
+		name: "Electrical Services",
 		blurb: "Agents on estimates, permits, and change orders that never hit the file.",
 		hero: ["You don't have to learn how to use AI in your electrical company.", "See how we implement it across operations, marketing, and sales."],
 		intro: "You don't need to become an AI person to get bids, permits, and extras watched. ChatGPT can't see the estimate sitting in the job file. Cortex implements agents in the estimating tools, email, and books you already run.",
@@ -736,7 +738,7 @@ export const INDUSTRIES = [
 	{
 		slug: "contracting",
 		href: "/industries/contracting",
-		name: "Contracting",
+		name: "Construction & Contracting",
 		blurb: "Bid follow-up, job-file gaps, and closeout that is still a scavenger hunt.",
 		hero: ["You don't have to learn how to use AI in your contracting business.", "See how we implement it across operations, marketing, and sales."],
 		intro: "You don't need to learn AI to get change orders, aged bids, and closeout out of the job file. ChatGPT doesn't live in your project software. Cortex implements agents in the systems you already use.",
@@ -1034,6 +1036,8 @@ export const INDUSTRIES = [
 		}
 	}
 ] as const;
+
+export const INDUSTRIES = [...CORE_INDUSTRIES, ...MORE_INDUSTRIES];
 
 export type Industry = (typeof INDUSTRIES)[number];
 

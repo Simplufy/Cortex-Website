@@ -5,7 +5,6 @@ import { BeamButton } from "@/components/ui/beam-button";
 import { RevealSection } from "@/components/reveal";
 import { INDUSTRIES, type Industry, industryParam } from "@/data/site";
 import { AgentTerminal, sessionFromIndustry } from "@/components/fx/agent-terminal";
-import { auditPath } from "@/lib/audit-path";
 
 export function FinalCtaBlock({
   title = "See where AI belongs in your operation, without learning it.",
@@ -45,7 +44,7 @@ export function IndustryPage({ industry }: { industry: Industry }) {
         }
         body={industry.intro}
         primary={{
-          to: auditPath(industry.slug),
+          to: "/audit",
           label: "Get Your Free AI Operations Audit",
         }}
       />
@@ -122,7 +121,7 @@ export function IndustryPage({ industry }: { industry: Industry }) {
         />
       </RevealSection>
       <OtherIndustries current={industry.slug} />
-      <FinalCtaBlock ctaTo={auditPath(industry.slug)} />
+      <FinalCtaBlock ctaTo="/audit" />
     </>
   );
 }

@@ -106,13 +106,17 @@ export function SiteHeader() {
                 <ChevronDown className={cn("size-3.5", openMenu === "industries" && "rotate-180")} />
               </button>
               {openMenu === "industries" && (
-                <div className="absolute top-full left-0 z-70 min-w-56 rounded-xl border border-fg/10 bg-surface p-2 shadow-2xl">
-                  {INDUSTRIES.map((ind) => (
-                    <Link key={ind.slug} to="/industries/$slug" params={{ slug: industryParam(ind) }} className="block rounded-lg px-3 py-2 text-sm text-fg/70 hover:bg-fg/5 hover:text-fg">
-                      {ind.name}
-                    </Link>
-                  ))}
-                  <Link to="/industries" className="mt-1 block rounded-lg px-3 py-2 text-sm font-medium text-gold">
+                <div className="absolute top-full left-0 z-70 w-[min(720px,calc(100vw-2rem))] rounded-xl border border-fg/10 bg-surface p-3 shadow-2xl">
+                  <div className="grid max-h-[70vh] grid-cols-2 gap-x-2 overflow-y-auto sm:grid-cols-3">
+                    {[...INDUSTRIES]
+                      .sort((a, b) => a.name.localeCompare(b.name))
+                      .map((ind) => (
+                      <Link key={ind.slug} to="/industries/$slug" params={{ slug: industryParam(ind) }} className="rounded-lg px-3 py-2 text-sm text-fg/70 hover:bg-fg/5 hover:text-fg">
+                        {ind.name}
+                      </Link>
+                    ))}
+                  </div>
+                  <Link to="/industries" className="mt-2 block rounded-lg px-3 py-2 text-sm font-medium text-gold">
                     All industries
                   </Link>
                 </div>
@@ -195,7 +199,9 @@ export function SiteHeader() {
                 </button>
                 {mobileAcc === "ind" && (
                   <ul className="ml-1 flex flex-col border-l border-fg/10 pl-4">
-                    {INDUSTRIES.map((i) => (
+                    {[...INDUSTRIES]
+                      .sort((a, b) => a.name.localeCompare(b.name))
+                      .map((i) => (
                       <li key={i.slug}>
                         <Link to="/industries/$slug" params={{ slug: industryParam(i) }} className="block py-2 text-base text-fg/60 hover:text-fg">
                           {i.name}

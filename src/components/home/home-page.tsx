@@ -18,7 +18,6 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <ProofRow />
       <Assistant />
       <AgentTerminal />
       <Pillars />
@@ -32,18 +31,15 @@ export function HomePage() {
 
 function Hero() {
   return (
-    <main className="px-4 pt-10 pb-4 sm:px-6 sm:pt-16 lg:pt-20">
+    <main className="px-4 pt-6 pb-6 sm:px-6 sm:pt-8 lg:pt-10">
       <div className="hero-enter mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-        <p className="mb-5 text-[13px] font-medium tracking-[0.18em] text-gold uppercase">AI for service companies</p>
-        <h1 className="max-w-4xl text-[clamp(2rem,6.2vw,4.35rem)] leading-[1.04] font-medium tracking-[-0.04em] text-fg">
+        <p className="mb-3 text-[12px] font-medium tracking-[0.18em] text-gold uppercase sm:mb-4">AI for service companies</p>
+        <h1 className="max-w-4xl text-[clamp(1.55rem,4.6vw,3.35rem)] leading-[1.06] font-medium tracking-[-0.04em] text-fg">
           <span className="block text-gold">Stop trying to learn AI.</span>
           <span className="block">ChatGPT can't run a company.</span>
           <span className="block">Agents inside your software can.</span>
         </h1>
-        <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-fg/55 sm:mt-7 sm:text-xl">
-          Get leftover work done, win more follow-up, and keep the tools you already pay for. Cortex implements agents in your CRM, field software, ads, and books.
-        </p>
-        <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:items-center">
+        <div className="mt-5 flex w-full flex-col items-stretch gap-3 sm:mt-6 sm:w-auto sm:flex-row sm:items-center">
           <AuditButton variant="solid" className="w-full sm:w-auto">
             Get your free audit
           </AuditButton>
@@ -51,7 +47,18 @@ function Hero() {
             See how it works
           </GhostButton>
         </div>
-        <p className="mt-4 text-[13px] text-fg/40">No obligation to build. 30 minutes. You keep your software.</p>
+      </div>
+      <div className="mx-auto mt-6 grid max-w-6xl grid-cols-2 gap-3 sm:mt-8 lg:grid-cols-4">
+        {PROOF.map((p) => (
+          <article key={p.title} className="overflow-hidden rounded-2xl border border-fg/8 bg-elevated shadow-[0_12px_40px_rgba(17,17,17,0.06)]">
+            <img src={p.img} alt="" className="h-24 w-full object-cover sm:h-28" />
+            <div className="p-3 sm:p-4">
+              <p className="text-[10px] font-medium tracking-wide text-gold uppercase sm:text-[11px]">{p.kicker}</p>
+              <p className="mt-0.5 text-[13px] font-medium text-fg sm:text-sm">{p.title}</p>
+              <p className="mt-0.5 text-[12px] text-fg/50">{p.body}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </main>
   );
@@ -63,25 +70,6 @@ const PROOF = [
   { img: "/images/cortex/trades/hvac.jpg", kicker: "HVAC", title: "Arctic Air", body: "Memberships, stalled jobs, missed calls" },
   { img: "/images/cortex/trades/roofing.jpg", kicker: "Roofing", title: "Skyline Roofing", body: "Storm file leftover, watched" },
 ];
-
-function ProofRow() {
-  return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
-      <div className="flex gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-4 sm:overflow-visible">
-        {PROOF.map((p) => (
-          <article key={p.title} className="w-[220px] shrink-0 overflow-hidden rounded-2xl border border-fg/8 bg-elevated shadow-[0_12px_40px_rgba(17,17,17,0.06)] sm:w-auto">
-            <img src={p.img} alt="" className="h-28 w-full object-cover sm:h-32" />
-            <div className="p-4">
-              <p className="text-[11px] font-medium tracking-wide text-gold uppercase">{p.kicker}</p>
-              <p className="mt-1 text-sm font-medium text-fg">{p.title}</p>
-              <p className="mt-1 text-[13px] text-fg/50">{p.body}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 const COMMANDS = [
   "Follow up leftover estimates",
@@ -195,46 +183,33 @@ function Pillars() {
 }
 
 function Industries() {
-  const featured = INDUSTRIES.filter((i) =>
-    ["automotive", "hvac", "plumbing", "roofing", "home-services", "pest-control", "contracting", "smart-home", "windows"].includes(i.slug),
-  );
-  const rest = INDUSTRIES.filter((i) => !featured.some((f) => f.slug === i.slug));
+  const list = [...INDUSTRIES].sort((a, b) => a.name.localeCompare(b.name));
   return (
     <RevealSection className="px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-3xl text-center">
-        <p className="text-[13px] font-medium tracking-[0.18em] text-gold uppercase">Built for the trades</p>
+        <p className="text-[13px] font-medium tracking-[0.18em] text-gold uppercase">Industries</p>
         <h2 className="mt-4 text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] font-medium tracking-tight text-fg">
-          Powering service businesses that already have software.
+          Cortex is here to service your industry.
         </h2>
       </div>
-      <div className="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {featured.map((ind) => (
-          <Link
-            key={ind.slug}
-            to="/industries/$slug"
-            params={{ slug: industryParam(ind) }}
-            className="group overflow-hidden rounded-[22px] border border-fg/8 bg-elevated transition-shadow hover:shadow-[0_16px_50px_rgba(17,17,17,0.08)]"
-          >
-            <img src={`/images/cortex/trades/${ind.slug}.jpg`} alt="" className="h-44 w-full object-cover" />
-            <div className="p-5">
-              <h3 className="font-medium text-fg group-hover:text-gold">{ind.name}</h3>
-              <p className="mt-2 text-[13px] leading-relaxed text-fg/50">{ind.blurb}</p>
-            </div>
-          </Link>
+      <ul className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+        {list.map((ind) => (
+          <li key={ind.slug}>
+            <Link
+              to="/industries/$slug"
+              params={{ slug: industryParam(ind) }}
+              className="group flex items-center gap-2.5 text-[15px] font-medium text-fg hover:text-gold"
+            >
+              <span className="grid size-5 shrink-0 place-items-center rounded-full bg-emerald-600 text-white">
+                <svg viewBox="0 0 12 12" className="size-3" aria-hidden>
+                  <path d="M2 6.2 L4.5 8.6 L10 3.2" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <span className="underline decoration-fg/20 underline-offset-4 group-hover:decoration-gold">{ind.name}</span>
+            </Link>
+          </li>
         ))}
-      </div>
-      <div className="mx-auto mt-8 flex max-w-6xl flex-wrap justify-center gap-2">
-        {rest.map((i) => (
-          <Link
-            key={i.slug}
-            to="/industries/$slug"
-            params={{ slug: industryParam(i) }}
-            className="rounded-full border border-fg/8 bg-surface px-4 py-2 text-[13px] text-fg/60 hover:border-gold/30 hover:text-fg"
-          >
-            {i.name}
-          </Link>
-        ))}
-      </div>
+      </ul>
     </RevealSection>
   );
 }

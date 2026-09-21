@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import { PageHero, SectionHead } from "@/components/ui/page-hero";
+import { PageHero } from "@/components/ui/page-hero";
 import { FinalCtaBlock } from "@/components/pages/inner";
 import { INDUSTRIES, industryParam } from "@/data/site";
 import { pageHead } from "@/lib/seo";
@@ -11,36 +10,43 @@ export const Route = createFileRoute("/industries/")({
     pageHead({
       title: "AI for Auto Repair, HVAC, Roofing & Home Services",
       description:
-        "AI agents for service businesses. Automotive, HVAC, plumbing, electrical, roofing, pest, contracting, smart home, and windows. Built for the software and workflows your industry actually uses.",
+        "AI agents for service businesses across auto, HVAC, plumbing, electrical, roofing, cleaning, landscaping, and more. Built for the software your industry already uses.",
       path: "/industries",
     }),
   component: IndustriesPage,
 });
 
 function IndustriesPage() {
+  const list = [...INDUSTRIES].sort((a, b) => a.name.localeCompare(b.name));
   return (
     <>
       <PageHero
         eyebrow="Industries"
-        title="You don't have to learn AI to get it working in your trade."
-        body="ChatGPT doesn't know HVAC from collision. Cortex implements agents in the software and workflows your industry already uses (ServiceTitan, Tekmetric, AccuLynx, PestPac, Jobber) without making you the AI person."
+        title="Cortex is here to service your industry."
+        body="You don't have to learn AI for your trade. We implement agents in the software you already run, then you see it on a 30-minute audit."
+        primary={{ to: "/audit", label: "Get Your Free AI Operations Audit" }}
       />
-      <RevealSection className="pt-8 pb-12">
-        <SectionHead title="Where we work" />
-        <div className="mx-auto max-w-5xl space-y-16 px-6">
-          {INDUSTRIES.map((ind) => (
-            <article key={ind.slug} className="border-t border-fg/5 pt-12">
-              <h2 className="text-3xl font-medium tracking-tight text-fg">{ind.name}</h2>
-              <p className="mt-4 max-w-3xl text-lg leading-relaxed font-light text-fg/60">{ind.intro}</p>
-              <Link to="/industries/$slug" params={{ slug: industryParam(ind) }} className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-gold hover:text-gold-light">
-                See {ind.name} page
-                <ArrowRight className="size-4" />
+      <RevealSection className="pt-4 pb-16">
+        <ul className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-3 px-6 sm:grid-cols-2 lg:grid-cols-4">
+          {list.map((ind) => (
+            <li key={ind.slug}>
+              <Link
+                to="/industries/$slug"
+                params={{ slug: industryParam(ind) }}
+                className="group flex items-center gap-2.5 text-[15px] font-medium text-fg hover:text-gold"
+              >
+                <span className="grid size-5 shrink-0 place-items-center rounded-full bg-emerald-600 text-white">
+                  <svg viewBox="0 0 12 12" className="size-3" aria-hidden>
+                    <path d="M2 6.2 L4.5 8.6 L10 3.2" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+                <span className="underline decoration-fg/20 underline-offset-4 group-hover:decoration-gold">{ind.name}</span>
               </Link>
-            </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </RevealSection>
-      <FinalCtaBlock />
+      <FinalCtaBlock ctaTo="/audit" />
     </>
   );
 }
