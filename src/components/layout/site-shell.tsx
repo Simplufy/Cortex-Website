@@ -1,13 +1,11 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { NetBackground } from "@/components/net-bg";
-import { CookieBanner } from "@/components/cookie-banner";
 import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
 import { AuditProvider, AuditButton } from "@/components/audit-modal";
 import { CortexLogo } from "@/components/logo";
 import { RevealRoot } from "@/components/reveal";
 import { BRAND } from "@/data/brand";
-import { openCookieManager } from "@/components/cookie-banner";
 import { PointerGlow } from "@/components/constellation-field";
 import { ScrollProgress } from "@/components/fx/scroll-progress";
 
@@ -33,7 +31,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           </div>
           {landing ? <LandingFooter /> : <SiteFooter />}
         </div>
-        <CookieBanner />
       </div>
     </AuditProvider>
   );
@@ -74,9 +71,6 @@ function LandingFooter() {
           <Link to="/terms" className="hover:text-fg">
             Terms
           </Link>
-          <button type="button" onClick={openCookieManager} className="hover:text-fg">
-            Cookies
-          </button>
         </div>
       </div>
     </footer>

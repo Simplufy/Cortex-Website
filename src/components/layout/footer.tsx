@@ -3,7 +3,6 @@ import { Mail, Phone } from "lucide-react";
 import { BeamButton } from "@/components/ui/beam-button";
 import { CortexLogo } from "@/components/logo";
 import { SocialLinks } from "@/components/social-links";
-import { openCookieManager } from "@/components/cookie-banner";
 import { BRAND } from "@/data/brand";
 import { INDUSTRIES, SERVICES, industryParam } from "@/data/site";
 import { HELP_GROUPS } from "@/data/help";
@@ -136,11 +135,6 @@ export function SiteFooter() {
                 <Link to="/terms" className="hover:text-fg">
                   Terms
                 </Link>
-              </li>
-              <li>
-                <button type="button" onClick={openCookieManager} className="hover:text-fg">
-                  Cookies
-                </button>
               </li>
             </ul>
           </div>

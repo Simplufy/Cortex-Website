@@ -71,9 +71,7 @@ function Privacy() {
         <RevealSection>
           <h2 className="text-xl font-medium text-fg">5. Cookies</h2>
           <p className="mt-3">
-            The site needs a few cookies to run. The banner stores your choice in this browser so we do not ask every
-            visit. We do not currently load optional analytics scripts. If that changes, we will only load them after
-            you accept, and we will update this page.
+            The site uses cookies needed to run, including session and form-related cookies. We do not currently load optional analytics scripts. If that changes, we will update this page.
           </p>
         </RevealSection>
         <RevealSection>
