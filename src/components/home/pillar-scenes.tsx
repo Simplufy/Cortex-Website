@@ -149,7 +149,7 @@ export function RunShopScene() {
 
 export function PillarScene({ kind }: { kind: "get" | "win" | "run" }) {
   return (
-    <div className="relative aspect-[4/3] overflow-hidden rounded-[22px] bg-[#f3efe8]">
+    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[22px] bg-[#f3efe8]">
       {kind === "get" ? <GetWorkScene /> : kind === "win" ? <WinWorkScene /> : <RunShopScene />}
     </div>
   );

@@ -4,6 +4,7 @@ import { ChevronDown, X } from "lucide-react";
 import { AuditButton } from "@/components/audit-modal";
 import { CortexLogo } from "@/components/logo";
 import { INDUSTRIES, SERVICES, industryParam } from "@/data/site";
+import { HELP_GROUPS, HELP_TOPICS, helpParam } from "@/data/help";
 import { cn } from "@/lib/utils";
 
 function isActivePath(pathname: string, href: string) {
@@ -13,7 +14,7 @@ function isActivePath(pathname: string, href: string) {
 
 export function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const [openMenu, setOpenMenu] = useState<"industries" | "services" | null>(null);
+  const [openMenu, setOpenMenu] = useState<"industries" | "help" | "services" | null>(null);
   const [mobile, setMobile] = useState(false);
   const [mobileAcc, setMobileAcc] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -27,7 +28,7 @@ export function SiteHeader() {
       closeTimer.current = null;
     }
   };
-  const openNav = (menu: "industries" | "services") => {
+  const openNav = (menu: "industries" | "help" | "services") => {
     cancelClose();
     setOpenMenu(menu);
   };
@@ -35,7 +36,7 @@ export function SiteHeader() {
     cancelClose();
     closeTimer.current = setTimeout(() => setOpenMenu(null), 180);
   };
-  const toggleNav = (menu: "industries" | "services") => {
+  const toggleNav = (menu: "industries" | "help" | "services") => {
     cancelClose();
     setOpenMenu((cur) => (cur === menu ? null : menu));
   };
@@ -106,18 +107,65 @@ export function SiteHeader() {
                 <ChevronDown className={cn("size-3.5", openMenu === "industries" && "rotate-180")} />
               </button>
               {openMenu === "industries" && (
-                <div className="absolute top-full left-0 z-70 w-[min(720px,calc(100vw-2rem))] rounded-xl border border-fg/10 bg-surface p-3 shadow-2xl">
-                  <div className="grid max-h-[70vh] grid-cols-2 gap-x-2 overflow-y-auto sm:grid-cols-3">
+                <div className="absolute top-full left-1/2 z-70 w-[min(840px,calc(100vw-2rem))] -translate-x-[30%] rounded-xl border border-fg/10 bg-surface p-5 shadow-2xl">
+                  <div className="grid grid-cols-2 gap-x-8 gap-y-1 sm:grid-cols-3 lg:grid-cols-4">
                     {[...INDUSTRIES]
                       .sort((a, b) => a.name.localeCompare(b.name))
                       .map((ind) => (
-                      <Link key={ind.slug} to="/industries/$slug" params={{ slug: industryParam(ind) }} className="rounded-lg px-3 py-2 text-sm text-fg/70 hover:bg-fg/5 hover:text-fg">
+                      <Link
+                        key={ind.slug}
+                        to="/industries/$slug"
+                        params={{ slug: industryParam(ind) }}
+                        className="rounded-md px-1 py-1.5 text-[13px] leading-snug text-fg/70 hover:text-fg"
+                      >
                         {ind.name}
                       </Link>
                     ))}
                   </div>
-                  <Link to="/industries" className="mt-2 block rounded-lg px-3 py-2 text-sm font-medium text-gold">
+                  <Link to="/industries" className="mt-4 inline-block text-[13px] font-medium text-gold hover:text-gold-light">
                     All industries
+                  </Link>
+                </div>
+              )}
+            </li>
+            <li className="relative" onMouseEnter={() => openNav("help")} onMouseLeave={closeNav}>
+              <button
+                type="button"
+                aria-expanded={openMenu === "help"}
+                aria-haspopup="true"
+                onClick={() => toggleNav("help")}
+                className={cn(
+                  "flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-fg/70 outline-none hover:bg-fg/5 hover:text-fg focus-visible:ring-2 focus-visible:ring-gold/60",
+                  (openMenu === "help" || pathname.startsWith("/help")) && "nav-active",
+                )}
+              >
+                What we help with
+                <ChevronDown className={cn("size-3.5", openMenu === "help" && "rotate-180")} />
+              </button>
+              {openMenu === "help" && (
+                <div className="absolute top-full left-1/2 z-70 w-[min(980px,calc(100vw-2rem))] -translate-x-[40%] rounded-xl border border-fg/10 bg-surface p-5 shadow-2xl">
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
+                    {HELP_GROUPS.map((group) => (
+                      <div key={group}>
+                        <p className="mb-2 text-[11px] font-medium tracking-[0.12em] text-gold uppercase">{group}</p>
+                        <ul className="space-y-0.5">
+                          {HELP_TOPICS.filter((t) => t.group === group).map((t) => (
+                            <li key={t.slug}>
+                              <Link
+                                to="/help/$slug"
+                                params={{ slug: helpParam(t) }}
+                                className="block rounded-md py-1 text-[13px] leading-snug text-fg/70 hover:text-fg"
+                              >
+                                {t.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  <Link to="/help" className="mt-4 inline-block text-[13px] font-medium text-gold hover:text-gold-light">
+                    See everything we help with
                   </Link>
                 </div>
               )}
@@ -134,14 +182,15 @@ export function SiteHeader() {
                     "nav-active",
                 )}
               >
-                Services
+                What we build
                 <ChevronDown className={cn("size-3.5", openMenu === "services" && "rotate-180")} />
               </button>
               {openMenu === "services" && (
-                <div className="absolute top-full left-0 z-70 min-w-56 rounded-xl border border-fg/10 bg-surface p-2 shadow-2xl">
+                <div className="absolute top-full left-0 z-70 min-w-64 rounded-xl border border-fg/10 bg-surface p-2 shadow-2xl">
                   {SERVICES.map((s) => (
                     <Link key={s.slug} to={s.href} className="block rounded-lg px-3 py-2 text-sm text-fg/70 hover:bg-fg/5 hover:text-fg">
-                      {s.name}
+                      <span className="block font-medium text-fg">{s.name}</span>
+                      <span className="mt-0.5 block text-[12px] leading-snug text-fg/50">{s.blurb}</span>
                     </Link>
                   ))}
                 </div>
@@ -214,10 +263,44 @@ export function SiteHeader() {
               <li>
                 <button
                   type="button"
+                  onClick={() => setMobileAcc(mobileAcc === "help" ? null : "help")}
+                  className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-lg font-medium text-fg/80"
+                >
+                  What we help with
+                  <ChevronDown className={cn("size-5 text-fg/40", mobileAcc === "help" && "rotate-180")} />
+                </button>
+                {mobileAcc === "help" && (
+                  <ul className="ml-1 flex flex-col border-l border-fg/10 pl-4">
+                    {HELP_GROUPS.map((group) => (
+                      <li key={group} className="pt-2">
+                        <p className="py-1 text-[11px] font-medium tracking-[0.12em] text-gold uppercase">{group}</p>
+                        {HELP_TOPICS.filter((t) => t.group === group).map((t) => (
+                          <Link
+                            key={t.slug}
+                            to="/help/$slug"
+                            params={{ slug: helpParam(t) }}
+                            className="block py-1.5 text-base text-fg/60 hover:text-fg"
+                          >
+                            {t.name}
+                          </Link>
+                        ))}
+                      </li>
+                    ))}
+                    <li>
+                      <Link to="/help" className="block py-2 text-base font-medium text-gold">
+                        See everything
+                      </Link>
+                    </li>
+                  </ul>
+                )}
+              </li>
+              <li>
+                <button
+                  type="button"
                   onClick={() => setMobileAcc(mobileAcc === "svc" ? null : "svc")}
                   className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-lg font-medium text-fg/80"
                 >
-                  Services
+                  What we build
                   <ChevronDown className={cn("size-5 text-fg/40", mobileAcc === "svc" && "rotate-180")} />
                 </button>
                 {mobileAcc === "svc" && (

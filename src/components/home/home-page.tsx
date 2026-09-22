@@ -31,27 +31,30 @@ export function HomePage() {
 
 function Hero() {
   return (
-    <main className="px-4 pt-6 pb-6 sm:px-6 sm:pt-8 lg:pt-10">
-      <div className="hero-enter mx-auto flex w-full max-w-5xl flex-col items-center text-center">
+    <main className="flex flex-col px-4 pt-6 pb-6 sm:px-6 sm:pt-8 lg:min-h-[calc(100svh-5.0625rem)] lg:px-6 lg:pt-0 lg:pb-5">
+      <div className="hero-enter mx-auto flex w-full max-w-5xl flex-col items-center text-center lg:flex-1 lg:justify-center">
         <p className="mb-3 text-[12px] font-medium tracking-[0.18em] text-gold uppercase sm:mb-4">AI for service companies</p>
         <h1 className="max-w-4xl text-[clamp(1.55rem,4.6vw,3.35rem)] leading-[1.06] font-medium tracking-[-0.04em] text-fg">
           <span className="block text-gold">Stop trying to learn AI.</span>
           <span className="block">ChatGPT can't run a company.</span>
           <span className="block">Agents inside your software can.</span>
         </h1>
-        <div className="mt-5 flex w-full flex-col items-stretch gap-3 sm:mt-6 sm:w-auto sm:flex-row sm:items-center">
-          <AuditButton variant="solid" className="w-full sm:w-auto">
+        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-fg/55 sm:mt-5 sm:text-[17px]">
+          We implement agents into your existing tech stack to help you get more work, win more work & get paid more every single month.
+        </p>
+        <div className="mt-5 flex w-full max-w-md flex-row items-center justify-center gap-2 sm:mt-6 sm:max-w-none sm:gap-3">
+          <AuditButton variant="solid" className="min-w-0 flex-1 sm:flex-none sm:w-auto">
             Get your free audit
           </AuditButton>
-          <GhostButton className="w-full sm:w-auto" to="/how-we-work">
+          <GhostButton className="w-auto min-w-0 flex-1 sm:flex-none" to="/how-we-work">
             See how it works
           </GhostButton>
         </div>
       </div>
-      <div className="mx-auto mt-6 grid max-w-6xl grid-cols-2 gap-3 sm:mt-8 lg:grid-cols-4">
+      <div className="mx-auto mt-6 grid w-full max-w-6xl grid-cols-2 gap-3 lg:mt-0 lg:grid-cols-4">
         {PROOF.map((p) => (
           <article key={p.title} className="overflow-hidden rounded-2xl border border-fg/8 bg-elevated shadow-[0_12px_40px_rgba(17,17,17,0.06)]">
-            <img src={p.img} alt="" className="h-24 w-full object-cover sm:h-28" />
+            <img src={p.img} alt="" className="h-24 w-full object-cover sm:h-28 lg:h-32" />
             <div className="p-3 sm:p-4">
               <p className="text-[10px] font-medium tracking-wide text-gold uppercase sm:text-[11px]">{p.kicker}</p>
               <p className="mt-0.5 text-[13px] font-medium text-fg sm:text-sm">{p.title}</p>
@@ -182,34 +185,34 @@ function Pillars() {
   );
 }
 
+const FEATURED = ["automotive", "hvac", "plumbing", "roofing", "home-services", "pest-control", "contracting", "smart-home", "windows"] as const;
+
 function Industries() {
-  const list = [...INDUSTRIES].sort((a, b) => a.name.localeCompare(b.name));
+  const featured = FEATURED.map((slug) => INDUSTRIES.find((i) => i.slug === slug)!);
   return (
     <RevealSection className="px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-3xl text-center">
         <p className="text-[13px] font-medium tracking-[0.18em] text-gold uppercase">Industries</p>
         <h2 className="mt-4 text-[clamp(1.8rem,4vw,3rem)] leading-[1.1] font-medium tracking-tight text-fg">
-          Cortex is here to service your industry.
+          Built for the trades you already run.
         </h2>
       </div>
-      <ul className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
-        {list.map((ind) => (
-          <li key={ind.slug}>
-            <Link
-              to="/industries/$slug"
-              params={{ slug: industryParam(ind) }}
-              className="group flex items-center gap-2.5 text-[15px] font-medium text-fg hover:text-gold"
-            >
-              <span className="grid size-5 shrink-0 place-items-center rounded-full bg-emerald-600 text-white">
-                <svg viewBox="0 0 12 12" className="size-3" aria-hidden>
-                  <path d="M2 6.2 L4.5 8.6 L10 3.2" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              <span className="underline decoration-fg/20 underline-offset-4 group-hover:decoration-gold">{ind.name}</span>
-            </Link>
-          </li>
+      <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {featured.map((ind) => (
+          <Link
+            key={ind.slug}
+            to="/industries/$slug"
+            params={{ slug: industryParam(ind) }}
+            className="group overflow-hidden rounded-[22px] border border-fg/8 bg-elevated transition-shadow hover:shadow-[0_16px_50px_rgba(17,17,17,0.08)]"
+          >
+            <img src={`/images/cortex/trades/${ind.slug}.jpg`} alt="" className="h-44 w-full object-cover" />
+            <div className="p-5">
+              <h3 className="font-medium text-fg group-hover:text-gold">{ind.name}</h3>
+              <p className="mt-2 text-[13px] leading-relaxed text-fg/50">{ind.blurb}</p>
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </RevealSection>
   );
 }
@@ -284,7 +287,9 @@ function FinalCta() {
           A free 30-minute audit. You leave with a ranked map of what agents could take off your team in the software you already run.
         </p>
         <div className="mt-8">
-          <AuditButton variant="solid">Get your free audit</AuditButton>
+          <AuditButton variant="solid" className="text-white hover:bg-white/10">
+            Get your free audit
+          </AuditButton>
         </div>
         <p className="mt-4 text-[13px] text-white/40">No credit card. No obligation to build.</p>
       </div>

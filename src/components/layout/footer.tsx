@@ -6,6 +6,7 @@ import { SocialLinks } from "@/components/social-links";
 import { openCookieManager } from "@/components/cookie-banner";
 import { BRAND } from "@/data/brand";
 import { INDUSTRIES, SERVICES, industryParam } from "@/data/site";
+import { HELP_GROUPS } from "@/data/help";
 
 export function SiteFooter() {
   return (
@@ -36,9 +37,9 @@ export function SiteFooter() {
           <SocialLinks />
         </div>
 
-        <div className="grid grid-cols-2 gap-8 py-8 md:grid-cols-4 lg:gap-12">
+        <div className="grid grid-cols-2 gap-8 py-8 md:grid-cols-3 lg:grid-cols-5 lg:gap-10">
           <div>
-            <div className="mb-5 text-[10px] font-bold tracking-widest text-gold uppercase">Services</div>
+            <div className="mb-5 text-[10px] font-bold tracking-widest text-gold uppercase">What we build</div>
             <ul className="space-y-3 text-sm font-light text-fg/60">
               {SERVICES.map((s) => (
                 <li key={s.slug}>
@@ -52,9 +53,21 @@ export function SiteFooter() {
                   How We Work
                 </Link>
               </li>
+            </ul>
+          </div>
+          <div>
+            <div className="mb-5 text-[10px] font-bold tracking-widest text-gold uppercase">What we help with</div>
+            <ul className="space-y-3 text-sm font-light text-fg/60">
+              {HELP_GROUPS.map((g) => (
+                <li key={g}>
+                  <Link to="/help" hash={g.toLowerCase().replace(/\s+/g, "-")} className="hover:text-fg">
+                    {g}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <Link to="/ai-workshops" className="hover:text-fg">
-                  AI Workshops
+                <Link to="/help" className="hover:text-fg">
+                  All leftover jobs
                 </Link>
               </li>
             </ul>

@@ -9,7 +9,6 @@ import { RevealRoot } from "@/components/reveal";
 import { BRAND } from "@/data/brand";
 import { openCookieManager } from "@/components/cookie-banner";
 import { PointerGlow } from "@/components/constellation-field";
-import { BootScreen } from "@/components/fx/boot-screen";
 import { ScrollProgress } from "@/components/fx/scroll-progress";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
@@ -26,7 +25,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <div className="relative min-h-screen overflow-x-clip bg-bg text-fg">
         <NetBackground />
         <PointerGlow className="fixed inset-0 z-[5] mix-blend-screen" />
-        <BootScreen />
         <ScrollProgress />
         <div className="relative z-10 flex min-h-screen flex-col">
           {landing ? <LandingHeader /> : <SiteHeader />}

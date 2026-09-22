@@ -19,6 +19,7 @@ import { Route as BrandKitRouteImport } from './routes/brand-kit'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as ConfirmedRouteImport } from './routes/confirmed'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as HelpRouteImport } from './routes/help'
 import { Route as HowWeWorkRouteImport } from './routes/how-we-work'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as IndustryAutomotiveRouteImport } from './routes/industry-automotive'
@@ -45,6 +46,8 @@ import { Route as AuditSlugRouteImport } from './routes/audit.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
+import { Route as HelpIndexRouteImport } from './routes/help.index'
+import { Route as HelpSlugRouteImport } from './routes/help.$slug'
 import { Route as IndustriesIndexRouteImport } from './routes/industries.index'
 import { Route as IndustriesSlugRouteImport } from './routes/industries.$slug'
 
@@ -96,6 +99,11 @@ const ConfirmedRoute = ConfirmedRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowWeWorkRoute = HowWeWorkRouteImport.update({
@@ -228,6 +236,16 @@ const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => CaseStudiesRoute,
 } as any)
+const HelpIndexRoute = HelpIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HelpRoute,
+} as any)
+const HelpSlugRoute = HelpSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => HelpRoute,
+} as any)
 const IndustriesIndexRoute = IndustriesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -250,6 +268,7 @@ export interface FileRoutesByFullPath {
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/confirmed': typeof ConfirmedRoute
   '/contact': typeof ContactRoute
+  '/help': typeof HelpRouteWithChildren
   '/how-we-work': typeof HowWeWorkRoute
   '/industries': typeof IndustriesRouteWithChildren
   '/industry-automotive': typeof IndustryAutomotiveRoute
@@ -274,9 +293,11 @@ export interface FileRoutesByFullPath {
   '/audit/$slug': typeof AuditSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/help/$slug': typeof HelpSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/audit/': typeof AuditIndexRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
+  '/help/': typeof HelpIndexRoute
   '/industries/': typeof IndustriesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -311,9 +332,11 @@ export interface FileRoutesByTo {
   '/audit/$slug': typeof AuditSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/help/$slug': typeof HelpSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/audit': typeof AuditIndexRoute
   '/case-studies': typeof CaseStudiesIndexRoute
+  '/help': typeof HelpIndexRoute
   '/industries': typeof IndustriesIndexRoute
 }
 export interface FileRoutesById {
@@ -328,6 +351,7 @@ export interface FileRoutesById {
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/confirmed': typeof ConfirmedRoute
   '/contact': typeof ContactRoute
+  '/help': typeof HelpRouteWithChildren
   '/how-we-work': typeof HowWeWorkRoute
   '/industries': typeof IndustriesRouteWithChildren
   '/industry-automotive': typeof IndustryAutomotiveRoute
@@ -352,9 +376,11 @@ export interface FileRoutesById {
   '/audit/$slug': typeof AuditSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/help/$slug': typeof HelpSlugRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/audit/': typeof AuditIndexRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
+  '/help/': typeof HelpIndexRoute
   '/industries/': typeof IndustriesIndexRoute
 }
 export interface FileRouteTypes {
@@ -370,6 +396,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/confirmed'
     | '/contact'
+    | '/help'
     | '/how-we-work'
     | '/industries'
     | '/industry-automotive'
@@ -394,9 +421,11 @@ export interface FileRouteTypes {
     | '/audit/$slug'
     | '/blog/$slug'
     | '/case-studies/$slug'
+    | '/help/$slug'
     | '/industries/$slug'
     | '/audit/'
     | '/case-studies/'
+    | '/help/'
     | '/industries/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -431,9 +460,11 @@ export interface FileRouteTypes {
     | '/audit/$slug'
     | '/blog/$slug'
     | '/case-studies/$slug'
+    | '/help/$slug'
     | '/industries/$slug'
     | '/audit'
     | '/case-studies'
+    | '/help'
     | '/industries'
   id:
     | '__root__'
@@ -447,6 +478,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/confirmed'
     | '/contact'
+    | '/help'
     | '/how-we-work'
     | '/industries'
     | '/industry-automotive'
@@ -471,9 +503,11 @@ export interface FileRouteTypes {
     | '/audit/$slug'
     | '/blog/$slug'
     | '/case-studies/$slug'
+    | '/help/$slug'
     | '/industries/$slug'
     | '/audit/'
     | '/case-studies/'
+    | '/help/'
     | '/industries/'
   fileRoutesById: FileRoutesById
 }
@@ -488,6 +522,7 @@ export interface RootRouteChildren {
   CaseStudiesRoute: typeof CaseStudiesRouteWithChildren
   ConfirmedRoute: typeof ConfirmedRoute
   ContactRoute: typeof ContactRoute
+  HelpRoute: typeof HelpRouteWithChildren
   HowWeWorkRoute: typeof HowWeWorkRoute
   IndustriesRoute: typeof IndustriesRouteWithChildren
   IndustryAutomotiveRoute: typeof IndustryAutomotiveRoute
@@ -582,6 +617,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-we-work': {
@@ -766,6 +808,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaseStudiesSlugRouteImport
       parentRoute: typeof CaseStudiesRoute
     }
+    '/help/': {
+      id: '/help/'
+      path: '/'
+      fullPath: '/help/'
+      preLoaderRoute: typeof HelpIndexRouteImport
+      parentRoute: typeof HelpRoute
+    }
+    '/help/$slug': {
+      id: '/help/$slug'
+      path: '/$slug'
+      fullPath: '/help/$slug'
+      preLoaderRoute: typeof HelpSlugRouteImport
+      parentRoute: typeof HelpRoute
+    }
     '/industries/': {
       id: '/industries/'
       path: '/'
@@ -809,6 +865,18 @@ const CaseStudiesRouteWithChildren = CaseStudiesRoute._addFileChildren(
   CaseStudiesRouteChildren,
 )
 
+interface HelpRouteChildren {
+  HelpSlugRoute: typeof HelpSlugRoute
+  HelpIndexRoute: typeof HelpIndexRoute
+}
+
+const HelpRouteChildren: HelpRouteChildren = {
+  HelpSlugRoute: HelpSlugRoute,
+  HelpIndexRoute: HelpIndexRoute,
+}
+
+const HelpRouteWithChildren = HelpRoute._addFileChildren(HelpRouteChildren)
+
 interface IndustriesRouteChildren {
   IndustriesSlugRoute: typeof IndustriesSlugRoute
   IndustriesIndexRoute: typeof IndustriesIndexRoute
@@ -834,6 +902,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesRoute: CaseStudiesRouteWithChildren,
   ConfirmedRoute: ConfirmedRoute,
   ContactRoute: ContactRoute,
+  HelpRoute: HelpRouteWithChildren,
   HowWeWorkRoute: HowWeWorkRoute,
   IndustriesRoute: IndustriesRouteWithChildren,
   IndustryAutomotiveRoute: IndustryAutomotiveRoute,

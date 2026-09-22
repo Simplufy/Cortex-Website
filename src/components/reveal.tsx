@@ -6,16 +6,96 @@ function reduced() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-function arm(el: HTMLElement) {
-  el.dataset.reveal = "up";
-  el.classList.add("js-reveal");
-  el.querySelectorAll<HTMLElement>(":scope .grid > *, :scope ol > *, :scope ul > *, :scope details").forEach((child, i) => {
-    child.dataset.revealItem = String(Math.min(i, 8));
-  });
+function inView(el: HTMLElement) {
+  const r = el.getBoundingClientRect();
+  return r.top < window.innerHeight * 0.92 && r.bottom > 40;
 }
 
 function show(el: HTMLElement) {
   el.classList.add("is-on");
+}
+
+function skip(el: Element) {
+  return Boolean(el.closest(".help-stage, .scene, header, footer"));
+}
+
+export function arm(root: HTMLElement) {
+  if (reduced()) {
+    root.querySelectorAll<HTMLElement>("[data-rise]").forEach(show);
+    return;
+  }
+
+  const seen = new Set<HTMLElement>();
+  let i = 0;
+  const add = (el: HTMLElement) => {
+    if (seen.has(el) || skip(el)) return;
+    if (el.dataset.rise != null) {
+      seen.add(el);
+      return;
+    }
+    const parent = el.parentElement?.closest<HTMLElement>("[data-rise]");
+    if (parent && parent !== el) return;
+    seen.add(el);
+    const n = String(Math.min(i % 8, 7));
+    i += 1;
+    el.dataset.rise = n;
+    el.style.setProperty("--rise", n);
+  };
+
+  root.querySelectorAll<HTMLElement>("article, figure, blockquote, details, a.group").forEach(add);
+  root.querySelectorAll<HTMLElement>(".grid > *").forEach(add);
+
+  Array.from(root.children).forEach((child) => {
+    if (!(child instanceof HTMLElement)) return;
+    if (child.dataset.rise != null) return;
+    if (child.querySelector("[data-rise]")) return;
+    add(child);
+  });
+
+  root.querySelectorAll<HTMLElement>("h2, h3, img").forEach((el) => {
+    if (el.closest("[data-rise]")) return;
+    if (el.tagName === "IMG" && el.getBoundingClientRect().width < 48) return;
+    add(el);
+  });
+}
+
+let io: IntersectionObserver | null = null;
+
+function ensureIo() {
+  if (io) return io;
+  io = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        show(entry.target as HTMLElement);
+        io?.unobserve(entry.target);
+      }
+    },
+    { threshold: 0.08, rootMargin: "0px 0px -10% 0px" },
+  );
+  return io;
+}
+
+function watch(el: HTMLElement) {
+  if (el.classList.contains("is-on")) return;
+  if (inView(el)) {
+    show(el);
+    return;
+  }
+  ensureIo().observe(el);
+}
+
+function scan() {
+  const root = document.querySelector(".flex-1") ?? document.body;
+  if (reduced()) {
+    root.querySelectorAll<HTMLElement>("[data-rise]").forEach(show);
+    return;
+  }
+  root.querySelectorAll<HTMLElement>("section").forEach((section) => {
+    if (section.closest("header, footer")) return;
+    arm(section);
+  });
+  root.querySelectorAll<HTMLElement>("[data-rise]").forEach(watch);
 }
 
 export function RevealSection({ className, children, ...props }: ComponentProps<"section">) {
@@ -24,29 +104,8 @@ export function RevealSection({ className, children, ...props }: ComponentProps<
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (reduced()) {
-      show(el);
-      return;
-    }
     arm(el);
-    const r = el.getBoundingClientRect();
-    if (r.top < window.innerHeight * 0.92) show(el);
-  }, []);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || reduced()) return;
-    if (el.classList.contains("is-on")) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        show(el);
-        io.disconnect();
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
+    el.querySelectorAll<HTMLElement>("[data-rise]").forEach(watch);
   }, []);
 
   return (
@@ -60,24 +119,12 @@ export function RevealRoot({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
-    if (reduced()) {
-      document.querySelectorAll<HTMLElement>("section.js-reveal").forEach(show);
-      return;
-    }
-    const nodes = [...document.querySelectorAll<HTMLElement>("section.js-reveal:not(.is-on)")];
-    if (!nodes.length) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          show(entry.target as HTMLElement);
-          io.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" },
-    );
-    nodes.forEach((n) => io.observe(n));
-    return () => io.disconnect();
+    const id = requestAnimationFrame(() => scan());
+    return () => {
+      cancelAnimationFrame(id);
+      io?.disconnect();
+      io = null;
+    };
   }, [pathname]);
 
   return <>{children}</>;

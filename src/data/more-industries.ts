@@ -235,7 +235,7 @@ export const MORE_INDUSTRIES: ExtraIndustry[] = [
   ),
   trade(
     "junk-removal",
-    "Junk Removal & Waste Management",
+    "Junk & Waste Removal",
     "your junk removal company",
     "Same-day jobs, no-shows, and quotes from photos that never got a second touch.",
     "You don't have to learn AI to keep the trucks full. ChatGPT is not looking at the photo estimate or the no-show from this morning. Cortex implements agents in the booking software you already run so leftover demand gets handled.",
@@ -403,7 +403,7 @@ export const MORE_INDUSTRIES: ExtraIndustry[] = [
   ),
   trade(
     "pressure-washing",
-    "Pressure Washing & Soft Washing",
+    "Pressure and Softwashing",
     "your pressure washing company",
     "Photo quotes, seasonal density, and houses on the same street you never asked.",
     "You don't have to learn AI to keep a wash book full. ChatGPT is not looking at the photo they sent or the neighbor two doors down. Cortex implements agents in the booking software you already run.",
